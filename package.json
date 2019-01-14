@@ -1,0 +1,29 @@
+{
+  "name": "dilemma-llama",
+  "version": "1.0.0",
+  "description": "crowdsourced decision making",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mit6148/zoellallen-artemiissia-viviandzhang.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mit6148/zoellallen-artemiissia-viviandzhang/issues"
+  },
+  "homepage": "https://github.com/mit6148/zoellallen-artemiissia-viviandzhang#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http": "0.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  },
+  "keywords": []
+}
