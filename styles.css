@@ -2,7 +2,6 @@ body {
     background-color: #FCFCFD;
     font-size: 14px;
     font-family: Avenir, Helvetica, sans-serif;
-    letter-spacing: -0.3px;
     font-weight: 400;
     margin: 0;
 }
@@ -156,7 +155,7 @@ nav {
 
 .d-card-body {
     color: #5C7080;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .section-title {
@@ -176,6 +175,7 @@ nav {
 
 .debate-section {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .col {
