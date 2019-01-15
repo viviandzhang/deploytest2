@@ -16,18 +16,52 @@ router.get('/dilemmas', function(req, res) {
 
 // post Dilemma
 router.post('/story', function(req, res) {
-    // CODE TGT: Create a new story with the "content" parameter
-    // Question: Do we get content with req.body.content or req.query.content? 
-    // req.body because this is a post request
-    const newStory = new Story({
-        'creator_id': 'anonid',
-        'creator_name': 'Anonymous',
-        'content': req.body.content
+    const newDilemma = new Dilemma({
+        // currently dummy data
+        creator_id      : 'anonid',
+        creator_name    : 'Anonymous',
+        timestamp       : 'Time',
+        categories      : 'Categories',
+        title           : req.body.title,
+        body            : req.body.body,
+        active          : true,
+        votes_yes       : 1,
+        votes_no        : 2,
     });
     // Save the story
-    newStory.save(function(err, story) {
+    newDilemma.save(function(err, story) {
         if (err) console.log(err);
     });
     // Send an empty response
     res.send({});
 });
+router.get('/comment', function(req, res) {
+    // CODE TGT: Fetch the comments that have the parent given in the "parent" parameter
+    Comment.find({ parent: req.query.parent }, function(err, comments) {
+        res.send(comments);
+    });
+});
+
+router.post('/comment', function(req, res) {
+    // CODE: populate the parent and content keys below
+    const newComment = new Comment({
+        creator_id      : 'anonid',
+        creator_name    : 'Anonymous',
+        timestamp       : 'date',
+        body            : req.body.body,
+        yes_or_no       : yes,
+        votes           : 12,
+        parent          : req.body.parent,
+    });
+
+    // CODE: save the comment
+    newComment.save(function(err, comment) {
+        if (err) console.log(err);
+    });
+    
+    res.send({});
+});
+
+
+
+module.exports = router;
