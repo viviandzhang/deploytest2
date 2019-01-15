@@ -9,6 +9,7 @@ const CommentModelSchema = new mongoose.Schema ({
     body            : String,
     yes_or_no       : String,
     votes           : Number,
+    parent          : String,
 });
 
 // compile model from schema

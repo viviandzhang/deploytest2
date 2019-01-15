@@ -1,13 +1,21 @@
+// libraries
 const http = require('http');
 const express = require('express');
+
+// local dependencies
 const db = require('./db');
 const views = require('./routes/views');
+const api = require('./routes/api');
 
+// initialize express app
 const app = express();
 
+// set routes
 app.use('/', views);
+app.use('api', api);
 app.use('/static', express.static('public'));
 
+// route error handler
 app.use(function (req, res, next) {
     const err = new Error('Not Found');
     err.status = 404;
@@ -22,6 +30,7 @@ app.use(function (err, req, res, next) {
     })
 });
 
+// post config
 const port = 3000;
 server = http.Server(app);
 server.listen(port, function () {

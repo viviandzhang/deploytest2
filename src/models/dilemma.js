@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // define a schema
-const StoryModelSchema = new mongoose.Schema ({
+const DilemmaModelSchema = new mongoose.Schema ({
     creator_id      : String,
     creator_name    : String,
     timestamp       : Date,
