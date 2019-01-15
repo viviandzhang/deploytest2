@@ -1,5 +1,6 @@
 const http = require('http');
 const express = require('express');
+const db = require('./db');
 const views = require('./routes/views');
 
 const app = express();
