@@ -83,16 +83,22 @@ function createNewComment () {
 
 }
 
+// click Add New Dilemma --> composer appears
 const newDilemma = document.getElementById('new-dilemma');
-/*newDilemmaSubmit.addEventListener('click', submitDilemmaHandler);*/
 newDilemma.addEventListener('click', composerAppears);
 
+// closing composer (x and Cancel):
 const closeNewDilemma = document.getElementById('close');
 closeNewDilemma.addEventListener('click', closeComposer)
 
+const cancelNewDilemma = document.getElementById('cancel-button');
+cancelNewDilemma.addEventListener('click', closeComposer)
+
+// post Dilemma 
 const postDilemma = document.getElementById('post-button');
 postDilemma.addEventListener('click', submitDilemmaHandler);
 
+// creates expanded d card
 const expandDilemma = document.getElementById ('d-card-expand-footer');
 expandDilemma.addEventListener('click', expandDilemmas);
 
