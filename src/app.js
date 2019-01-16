@@ -1,5 +1,6 @@
 // libraries
 const http = require('http');
+const bodyParser = require('body-parser');
 const express = require('express');
 const session = require('express-session'); //have cookies to remember you
 
@@ -10,6 +11,10 @@ const api = require('./routes/api');
 
 // initialize express app
 const app = express();
+
+// set POST request body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // set routes
 app.use('/', views);

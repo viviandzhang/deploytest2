@@ -5,7 +5,7 @@ const express = require('express');
 
 // models
 const Dilemma = require('../models/dilemma');
-const Comment = require('../models/comment');
+//const Comment = require('../models/comment');
 
 const router = express.Router();
 
@@ -39,28 +39,30 @@ router.get('/whoami', function(req, res) {
   });
 
 // post Dilemma
+<<<<<<< HEAD
 router.post('/story', 
 connect.ensureLoggedIn(), //make sure only logged in users can post
 function(req, res) {
+=======
+router.post('/dilemma', function(req, res) {
+>>>>>>> ff8be421462461ea482a7f52bced4b17370654c0
     const newDilemma = new Dilemma({
-        // currently dummy data
-        creator_id      : 'anonid',
-        creator_name    : 'Anonymous',
-        timestamp       : 'Time',
-        categories      : 'Categories',
-        title           : req.body.title,
-        body            : req.body.body,
-        active          : true,
-        votes_yes       : 1,
-        votes_no        : 2,
+        'creator_id'        : 'anon_id',
+        'creator_name'      : 'anon',
+        'timestamp'         : null,
+        'categories'        : ['Uncategorized'],
+        'title'             : req.body.title,
+        'body'              : req.body.body,
+        'active'            : true,
+        'votes_yes'         : 3,
+        'votes_no'          : 4
     });
-    // Save the story
-    newDilemma.save(function(err, story) {
+    newDilemma.save(function(err, dilemma) {
         if (err) console.log(err);
     });
-    // Send an empty response
     res.send({});
 });
+<<<<<<< HEAD
 router.get('/comment', function(req, res) {
     // CODE TGT: Fetch the comments that have the parent given in the "parent" parameter
     Comment.find({ parent: req.query.parent }, function(err, comments) {
@@ -91,5 +93,7 @@ function(req, res) {
 });
 
 
+=======
+>>>>>>> ff8be421462461ea482a7f52bced4b17370654c0
 
 module.exports = router;
