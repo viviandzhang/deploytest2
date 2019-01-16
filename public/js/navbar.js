@@ -11,7 +11,7 @@ function newNavbarItem(text, url) {
   }
   
 
-  //CHANGE THESE LINKS TO MATCH WHAT WE HAVE
+  //CHANGE THESE LINKS TO MATCH WHAT WE HAVE //figure this out...
   //logout button is NOT in navbar, but likely in profile. 
   function renderNavbar(user) {
     const navbarDiv = document.getElementById('nav-item-container');
