@@ -35,6 +35,7 @@ nav {
     background-color: transparent;
     margin-right: 0px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .nav-item {
@@ -173,9 +174,10 @@ nav {
     font-weight: 600;
 }
 
-.debate-section {
+#debate-section {
     display: flex;
     margin-bottom: 20px;
+    display: none;
 }
 
 .col {
@@ -231,6 +233,7 @@ form {
     padding: 6px;
     width: 16%;
     float: left;
+    cursor: pointer;
 }
 
 .comment-wrapper {
@@ -324,12 +327,13 @@ form {
     float: right;
 }
 
-.d-card-expand-footer {
+#d-card-expand-footer {
     padding: 10px 0px;
     border-top: 1px solid #D8E1E8;
+    cursor: pointer;
 }
 
-.d-card-expand-footer > .section-title {
+#d-card-expand-footer > .section-title {
     text-align: center;
     margin-bottom: 0;
 }
@@ -345,9 +349,10 @@ form {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: -1; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     /*cursor: pointer; /* Add a pointer on hover */
   }
+
 
 #comp-container {
     background-color: #ffffff;
@@ -358,6 +363,7 @@ form {
     transform: translateX(-50%);
     width: 540px;
     top: 155px;
+    z-index: 3;
 }
 
 #comp-form{
@@ -414,16 +420,22 @@ form {
      flex-wrap: wrap;
  }
 
+ .comp-button{
+    width: 80px;
+    height: 30px;
+    background-color: #46D9E5;
+    color: #ffffff;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-top: 20px;
+    font-family: Avenir, Helvetica, sans-serif;
+    font-size: 14px; 
+    cursor: pointer;
+ }
+
  .post-button{
-     width: 80px;
-     height: 30px;
      background-color: #46D9E5;
      color: #ffffff;
-     border-radius: 3px;
-     margin-left: 10px;
-     margin-top: 20px;
-     font-family: Avenir, Helvetica, sans-serif;
-     font-size: 14px;
  }
 
  #cancel-button{
@@ -441,10 +453,15 @@ form {
     justify-content: flex-end;
  }
 
- .close{
+ #close{
      top: 0;
      right: 0;
      position: absolute;
      margin-top: 20px;
      margin-right: 20px;
+     cursor: pointer;
+ }
+
+ #composer{
+     display: none;
  }
