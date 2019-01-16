@@ -83,16 +83,20 @@ function createNewComment () {
 
 }
 
+// click Add New Dilemma --> composer appears
 const newDilemma = document.getElementById('new-dilemma');
-/*newDilemmaSubmit.addEventListener('click', submitDilemmaHandler);*/
 newDilemma.addEventListener('click', openComposer);
-
+// closing composer (x and Cancel):
 const closeNewDilemma = document.getElementById('close');
 const overlay = document.getElementById('overlay');
 closeNewDilemma.addEventListener('click', closeComposer)
 overlay.addEventListener('click', closeComposer)
 
 
+const cancelNewDilemma = document.getElementById('cancel-button');
+cancelNewDilemma.addEventListener('click', closeComposer)
+
+// post Dilemma 
 const postDilemma = document.getElementById('post-button');
 postDilemma.addEventListener('click', submitDilemmaHandler);
 
