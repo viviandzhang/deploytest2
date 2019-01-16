@@ -1,9 +1,11 @@
+
 // dependencies
 const express = require('express');
+//const connect = require('connect-ensure-login'); }authentication??
 
 // models
 const Dilemma = require('../models/dilemma');
-const Comment = require('../models/comment');
+//const Comment = require('../models/comment');
 
 const router = express.Router();
 
@@ -14,28 +16,57 @@ router.get('/dilemmas', function(req, res) {
     });
 });
 
-// post Dilemma
-router.post('/story', function(req, res) {
-    const newDilemma = new Dilemma({
-        // currently dummy data
-        creator_id      : 'anonid',
-        creator_name    : 'Anonymous',
-        timestamp       : 'Time',
-        categories      : 'Categories',
-        title           : req.body.title,
-        body            : req.body.body,
-        active          : true,
-        votes_yes       : 1,
-        votes_no        : 2,
+
+// user/authentication stuff- don't completely understand
+//make/whoam i route return get user 
+router.get('/whoami', function(req, res) {
+  
+    if(req.isAuthenticated()){
+      res.send(req.user);
+    }
+    else{
+      res.send({});
+    }
+  });
+  
+  
+ router.get('/user', function(req, res) {
+    res.send({
+      _id: 'anonid',
+      name: 'Anonymous',
+      color: 'Anon was here',
     });
-    // Save the story
-    newDilemma.save(function(err, story) {
+  });
+
+// post Dilemma
+<<<<<<< HEAD
+router.post('/story', 
+connect.ensureLoggedIn(), //make sure only logged in users can post
+function(req, res) {
+=======
+router.post('/dilemma', function(req, res) {
+>>>>>>> ff8be421462461ea482a7f52bced4b17370654c0
+    const newDilemma = new Dilemma({
+        'creator_id'        : 'anon_id',
+        'creator_name'      : 'anon',
+        'timestamp'         : null,
+        'categories'        : ['Uncategorized'],
+        'title'             : req.body.title,
+        'body'              : req.body.body,
+        'active'            : true,
+        'votes_yes'         : 3,
+        'votes_no'          : 4
+    });
+    newDilemma.save(function(err, dilemma) {
         if (err) console.log(err);
     });
-    // Send an empty response
     res.send({});
 });
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 351d7f3d0554f81abaea4b7c8bf0e7d1ca13394c
 router.get('/comment', function(req, res) {
     // CODE TGT: Fetch the comments that have the parent given in the "parent" parameter
     Comment.find({ parent: req.query.parent }, function(err, comments) {
@@ -43,7 +74,9 @@ router.get('/comment', function(req, res) {
     });
 });
 
-router.post('/comment', function(req, res) {
+router.post('/comment', 
+connect.ensureLoggedIn(),
+function(req, res) {
     // CODE: populate the parent and content keys below
     const newComment = new Comment({
         creator_id      : 'anonid',
@@ -64,5 +97,7 @@ router.post('/comment', function(req, res) {
 });
 
 
+=======
+>>>>>>> ff8be421462461ea482a7f52bced4b17370654c0
 
 module.exports = router;

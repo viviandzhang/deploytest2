@@ -5,8 +5,8 @@ const User = require('./models/user');
 
 // set up passport configs
 passport.use(new GoogleStrategy({
-  clientID: '802188459296-h1gska49bie30n68mti8d07tosc5rc7d.apps.googleusercontent.com',
-  clientSecret: 'h7n4UrnZk18vLKjBH6uzPn0u',
+  clientID: '547066553751-eg70ltf1pi9mhqcs7porv6qkv7g1aqv7.apps.googleusercontent.com', //i hope i did this right
+  clientSecret: 'iuHIWS_WDHwFO907tnBDTI5v',//changed to our project secret- hope i did it right?
   callbackURL: '/auth/google/callback'
 }, function (accessToken, refreshToken, profile, done) {
     //look up the user in database- if no user exists, create them and save to database
@@ -33,6 +33,8 @@ passport.use(new GoogleStrategy({
   });
 }));
 
+
+//saves user info so you don't have to keep logging in again - cookies
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
@@ -41,3 +43,6 @@ passport.deserializeUser(function (obj, done) {
 });
 
 module.exports = passport;
+
+
+
