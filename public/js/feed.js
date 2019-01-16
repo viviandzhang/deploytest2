@@ -1,11 +1,21 @@
-
-function composerAppears() {
+function openComposer() {
   let overlayComposer = document.getElementById('composer');
   overlayComposer.style.display = "block";
 }
 
 function closeComposer() {
   let overlayComposer = document.getElementById('composer');
+
+  let title = document.getElementById('comp-title');
+  let body = document.getElementById('comp-body');
+
+  let categories = document.getElementsByClassName('comp-categories');
+
+  for(let i=0; i<categories.length; i++){
+    categories[i].className = "comp-categories";
+  }
+  title.value="";
+  body.value="";
   overlayComposer.style.display = "none";
 }
 
@@ -18,7 +28,7 @@ function submitDilemmaHandler() {
   console.log('this is working')
 }
 
-function expandDilemmas(){
+function expandDilemma(){
   let debateSection = document.getElementById('debate-section');
   debateSection.style.display = "block";
 
@@ -75,16 +85,35 @@ function createNewComment () {
 
 const newDilemma = document.getElementById('new-dilemma');
 /*newDilemmaSubmit.addEventListener('click', submitDilemmaHandler);*/
-newDilemma.addEventListener('click', composerAppears);
+newDilemma.addEventListener('click', openComposer);
 
 const closeNewDilemma = document.getElementById('close');
+const overlay = document.getElementById('overlay');
 closeNewDilemma.addEventListener('click', closeComposer)
+overlay.addEventListener('click', closeComposer)
+
 
 const postDilemma = document.getElementById('post-button');
 postDilemma.addEventListener('click', submitDilemmaHandler);
 
-const expandDilemma = document.getElementById ('d-card-expand-footer');
-expandDilemma.addEventListener('click', expandDilemmas);
+const expandFooter = document.getElementById ('d-card-expand-footer');
+expandFooter.addEventListener('click', expandDilemma);
 
 const submitComment = document.getElementById('submit-comment-yes');
 submitComment.addEventListener('click', createNewComment)
+
+function makeCategoriesSelectable() {
+  let categories = document.getElementsByClassName('comp-categories');
+
+  for(let i=0; i<categories.length; i++){
+    console.log(categories[i]);
+    categories[i].addEventListener('click', function(){
+      if (categories[i].className === "comp-categories comp-categories-selected"){
+        categories[i].className = "comp-categories";
+      } else {
+        categories[i].className = "comp-categories comp-categories-selected";
+      }
+    })
+  }
+}
+makeCategoriesSelectable();

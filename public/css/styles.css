@@ -353,9 +353,17 @@ form {
     /*cursor: pointer; /* Add a pointer on hover */
   }
 
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+      outline: none;
+  }
+
 
 #comp-container {
     background-color: #ffffff;
+    border-radius: 3px;
     color: #a7b6c2;
     font-family: Avenir, Helvetica, sans-serif;
     position: fixed;
@@ -373,9 +381,7 @@ form {
 
 .comp-categories {
     padding: 2px 7px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #a7b6c2;
+    border: 1px solid #a7b6c2;
     background: #ffffff;
     font-family: Avenir, Helvetica, sans-serif;
     font-size: 12px;
@@ -384,6 +390,18 @@ form {
     margin-top: 10px;
     width: "max-content";
     border-radius: 3px;
+}
+
+.comp-categories:hover {
+    border-color: #738694;
+    color: #738694;
+    cursor: pointer;
+}
+
+.comp-categories-selected, .comp-categories-selected:hover {
+    border: 1px solid #A7B6C2;
+    background-color: #A7B6C2;
+    color: white;
 }
 
 #comp-title {
