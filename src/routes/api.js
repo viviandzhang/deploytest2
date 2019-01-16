@@ -35,6 +35,7 @@ router.post('/story', function(req, res) {
     // Send an empty response
     res.send({});
 });
+
 router.get('/comment', function(req, res) {
     // CODE TGT: Fetch the comments that have the parent given in the "parent" parameter
     Comment.find({ parent: req.query.parent }, function(err, comments) {
@@ -49,7 +50,7 @@ router.post('/comment', function(req, res) {
         creator_name    : 'Anonymous',
         timestamp       : 'date',
         body            : req.body.body,
-        yes_or_no       : yes,
+        yes_or_no       : 'yes',
         votes           : 12,
         parent          : req.body.parent,
     });

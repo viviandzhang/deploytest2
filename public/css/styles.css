@@ -333,3 +333,118 @@ form {
     text-align: center;
     margin-bottom: 0;
 }
+
+#overlay {
+    /* Source: https://www.w3schools.com/howto/howto_css_overlay.asp*/
+    position: fixed; /* Sit on top of the page content */
+    /* display: none; Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: -1; /* Specify a stack order in case you're using a different order for other elements */
+    /*cursor: pointer; /* Add a pointer on hover */
+  }
+
+#comp-container {
+    background-color: #ffffff;
+    color: #a7b6c2;
+    font-family: Avenir, Helvetica, sans-serif;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 540px;
+    top: 155px;
+}
+
+#comp-form{
+    padding: 30px;
+    margin-bottom: 0px;
+}
+
+.comp-categories {
+    padding: 2px 7px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #a7b6c2;
+    background: #ffffff;
+    font-family: Avenir, Helvetica, sans-serif;
+    font-size: 12px;
+    border-radius: 3 px;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: "max-content";
+    border-radius: 3px;
+}
+
+#comp-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #394B59;
+    width: 480px;
+    height: 22px;
+    margin-bottom: 20px;
+    border-width: 0px;
+    resize: none;
+}
+
+#comp-body{
+    width: 480px;
+    height: 75px;
+    margin-bottom: 20px;
+    color: #5c7080;
+    font-size: 14px;
+    border-width: 0px;
+    width: 480px;
+    resize: none;
+
+}
+
+
+::-webkit-input-placeholder {
+    color: #a7b6c2;
+ }
+
+ #comp-cat-container{
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+ }
+
+ .post-button{
+     width: 80px;
+     height: 30px;
+     background-color: #46D9E5;
+     color: #ffffff;
+     border-radius: 3px;
+     margin-left: 10px;
+     margin-top: 20px;
+     font-family: Avenir, Helvetica, sans-serif;
+     font-size: 14px;
+ }
+
+ #cancel-button{
+    background-color: #ffffff;
+    color: #a7b6c2;
+    border-radius: 3px;
+    font-family: Avenir, Helvetica, sans-serif;
+    font-size: 14px;
+    border-color: #a7b6c2;
+}
+
+ #post-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+ }
+
+ .close{
+     top: 0;
+     right: 0;
+     position: absolute;
+     margin-top: 20px;
+     margin-right: 20px;
+ }
