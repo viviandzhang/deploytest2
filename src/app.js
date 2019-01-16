@@ -1,6 +1,7 @@
 // libraries
 const http = require('http');
 const express = require('express');
+const session = require('express-session'); //have cookies to remember you
 
 // local dependencies
 const db = require('./db');
@@ -36,3 +37,38 @@ server = http.Server(app);
 server.listen(port, function () {
     console.log('server listening on port ' + port);
 });
+
+
+// ALL PASSPORT STUFF // 
+
+
+// set up sessions
+app.use(session({
+    secret: 'session-secret',
+    resave: 'false',
+    saveUninitialized: 'true'
+  }));
+  
+// hook up passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// authentication routes
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+
+app.get(
+  '/auth/google/callback',
+  passport.authenticate(
+    'google',
+    { failureRedirect: '/signin' }
+  ),
+  function(req, res) {
+    res.redirect('/');
+  }
+);
+
+// logout route
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+  });

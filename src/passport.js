@@ -5,8 +5,8 @@ const User = require('./models/user');
 
 // set up passport configs
 passport.use(new GoogleStrategy({
-  clientID: '802188459296-h1gska49bie30n68mti8d07tosc5rc7d.apps.googleusercontent.com', //change this 
-  clientSecret: 'h7n4UrnZk18vLKjBH6uzPn0u',//change this 
+  clientID: '547066553751-eg70ltf1pi9mhqcs7porv6qkv7g1aqv7.apps.googleusercontent.com', //i hope i did this right
+  clientSecret: 'iuHIWS_WDHwFO907tnBDTI5v',//changed to our project secret- hope i did it right?
   callbackURL: '/auth/google/callback'
 }, function (accessToken, refreshToken, profile, done) {
     //look up the user in database- if no user exists, create them and save to database
@@ -46,22 +46,3 @@ module.exports = passport;
 
 
 
-// ALL PASSPORT STUFF VVV // 
-
-// hook up passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-// authentication routes
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
-
-app.get(
-  '/auth/google/callback',
-  passport.authenticate(
-    'google',
-    { failureRedirect: '/signin' }
-  ),
-  function(req, res) {
-    res.redirect('/');
-  }
-);

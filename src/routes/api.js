@@ -1,5 +1,7 @@
+
 // dependencies
 const express = require('express');
+//const connect = require('connect-ensure-login'); }authentication??
 
 // models
 const Dilemma = require('../models/dilemma');
@@ -16,6 +18,7 @@ router.get('/dilemmas', function(req, res) {
 
 
 // user/authentication stuff- don't completely understand
+//make/whoam i route return get user 
 router.get('/whoami', function(req, res) {
   
     if(req.isAuthenticated()){
@@ -27,16 +30,18 @@ router.get('/whoami', function(req, res) {
   });
   
   
-  router.get('/user', function(req, res) {
+ router.get('/user', function(req, res) {
     res.send({
       _id: 'anonid',
       name: 'Anonymous',
-      last_post: 'Anon was here',
+      color: 'Anon was here',
     });
   });
 
 // post Dilemma
-router.post('/story', function(req, res) {
+router.post('/story', 
+connect.ensureLoggedIn(), //make sure only logged in users can post
+function(req, res) {
     const newDilemma = new Dilemma({
         // currently dummy data
         creator_id      : 'anonid',
@@ -63,7 +68,9 @@ router.get('/comment', function(req, res) {
     });
 });
 
-router.post('/comment', function(req, res) {
+router.post('/comment', 
+connect.ensureLoggedIn(),
+function(req, res) {
     // CODE: populate the parent and content keys below
     const newComment = new Comment({
         creator_id      : 'anonid',
