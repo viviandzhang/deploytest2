@@ -14,6 +14,27 @@ router.get('/dilemmas', function(req, res) {
     });
 });
 
+
+// user/authentication stuff- don't completely understand
+router.get('/whoami', function(req, res) {
+  
+    if(req.isAuthenticated()){
+      res.send(req.user);
+    }
+    else{
+      res.send({});
+    }
+  });
+  
+  
+  router.get('/user', function(req, res) {
+    res.send({
+      _id: 'anonid',
+      name: 'Anonymous',
+      last_post: 'Anon was here',
+    });
+  });
+
 // post Dilemma
 router.post('/dilemma', function(req, res) {
     const newDilemma = new Dilemma({
