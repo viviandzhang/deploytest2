@@ -31,9 +31,12 @@ router.get('/whoami', function(req, res) {
   
  router.get('/user', function(req, res) {
     res.send({
-      _id: 'anonid',
-      name: 'Anonymous',
-      color: 'Anon was here',
+        name: 'Anonymous',
+        _id: 'anonid',
+        adjective: 'angry',
+        color: 'Anon was here',
+      
+      
     });
   });
 
