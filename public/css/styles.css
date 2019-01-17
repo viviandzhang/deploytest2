@@ -341,13 +341,13 @@ form {
     float: right;
 }
 
-#d-card-expand-footer {
+.d-card-expand-footer {
     padding: 10px 0px;
     border-top: 1px solid #D8E1E8;
     cursor: pointer;
 }
 
-#d-card-expand-footer > .section-title {
+.d-card-expand-footer > .section-title {
     text-align: center;
     margin-bottom: 0;
 }
