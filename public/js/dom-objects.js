@@ -11,7 +11,7 @@ let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
                     "votes_no":{"$numberInt":"4"},
                     "__v":{"$numberInt":"0"}};
 
-function createNewDilemma (){
+function dilemmaDOMObject (dilemmaJSON){
     // for timestamp
     let d = new Date();
     let hourPost = d.getHours();
@@ -25,14 +25,15 @@ function createNewDilemma (){
   const bodyValue = document.getElementById ('comp-body').value;
 
   console.log('body here: ' + bodyValue);
-  closeComposer();
+  //closeComposer();    // ------------------------ uncomment this later
 
-  const dilemmaDiv = document.getElementById('feed');
+  //const dilemmaDiv = document.getElementById('feed');
 
   // d-container 
   const newDilemma = document.createElement('div');
+  newDilemma.setAttribute('id', dilemmaJSON.creator_id);
   newDilemma.className = 'd-container';
-  dilemmaDiv.prepend(newDilemma);
+  //dilemmaDiv.prepend(newDilemma);
 
   const dMeta = document.createElement('div');
   dMeta.className = 'd-meta';
@@ -44,12 +45,13 @@ function createNewDilemma (){
 
   const dCreator = document.createElement('div');
   dCreator.className = 'd-creator';
-  dCreator.innerText = 'Quirky Llama';
+  dCreator.innerText = dilemmaJSON.creator_alias;
   dMeta.appendChild(dCreator);
 
   const dTimestamp = document.createElement('div');
   dTimestamp.className = 'd-timestamp';
-  dTimestamp.innerText = 'Posted at ' + hourPost + ':' + minutePost;
+  //dTimestamp.innerText = 'Posted at ' + hourPost + ':' + minutePost; ---- date notation
+  dTimestamp.innerText = 'Posted at ' + dilemmaJSON.timestamp;
   dMeta.appendChild(dTimestamp);
 
   // d-card-expanded -- within d-container
@@ -63,27 +65,31 @@ function createNewDilemma (){
 
   const statusBadge = document.createElement('div');
   statusBadge.className = 'status-badge';
-  statusBadge.innerText = '50%';
+  statusBadge.innerText = '50%';   // -----------------fix
   dCardStatus.appendChild(statusBadge);
 
   const statusText = document.createElement('div');
   statusText.className = 'status-text';
-  statusText.innerText = 'for pro';
+  statusText.innerText = 'for pro'; // -----------------fix
   dCardStatus.appendChild(statusText);
 
   const dCardCategories = document.createElement('div');
   dCardCategories.className = 'd-card-categories';
-  dCardCategories.innerText = 'Education'; 
+  let categoriesString = '';
+  for (let i = 0; i < (dilemmaJSON.categories).length; i++){
+    categoriesString += (dilemmaJSON.categories)[i];
+  }
+  dCardCategories.innerText = categoriesString;  // ------- fix
   newDCardExpanded.appendChild(dCardCategories);
 
   const dCardTitle = document.createElement('div');
   dCardTitle.className = 'd-card-title';
-  dCardTitle.innerText = titleValue; 
+  dCardTitle.innerText = dilemmaJSON.title; 
   newDCardExpanded.appendChild(dCardTitle);
 
   const dCardBody = document.createElement('div');
   dCardBody.className = 'd-card-body';
-  dCardBody.innerText = bodyValue; 
+  dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
   const topComments = document.createElement('div');
@@ -110,8 +116,16 @@ function createNewDilemma (){
 
   //fix this ahhh:
   const expandFooterNew = document.getElementById ('d-card-expand-footer-2');
-  expandFooterNew.addEventListener('click', expandDilemma);
+  //expandFooterNew.addEventListener('click', expandDilemma);
+
+  return newDilemma;
 }
+
+let testDomDilemma = dilemmaDOMObject (anonDilemmaJSON);
+let dilemmaDiv = document.getElementById('feed');
+dilemmaDiv.prepend(testDomDilemma);
+
+
 
 
 function commentDOMObject (commentJSON) {
