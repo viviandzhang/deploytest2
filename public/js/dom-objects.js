@@ -1,3 +1,16 @@
+let anonUserJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
+                    "categories":["Uncategorized"],
+                    "creator_id":"anon_id",
+                    "creator_name":"Anon User",
+                    "creator_alias":"Anonymous",
+                    "timestamp":null,
+                    "title":"Should I do X thing?",
+                    "body":"Hello world, this is a fake new dilemma",
+                    "active":true,
+                    "votes_yes":{"$numberInt":"3"},
+                    "votes_no":{"$numberInt":"4"},
+                    "__v":{"$numberInt":"0"}};
+
 function createNewDilemma (){
     // for timestamp
     let d = new Date();

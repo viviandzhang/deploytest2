@@ -42,6 +42,7 @@ router.post('/dilemma', function(req, res) {
     const newDilemma = new Dilemma({
         'creator_id'        : 'anon_id',
         'creator_name'      : 'anon',
+        'creator_alias'     : 'Anon',
         'timestamp'         : null,
         'categories'        : ['Uncategorized'],
         'title'             : req.body.title,
