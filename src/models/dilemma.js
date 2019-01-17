@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const DilemmaModelSchema = new mongoose.Schema ({
     creator_id      : String,
     creator_name    : String,
+    creator_alias   : String,
     timestamp       : Date,
     categories      : Array,
     title           : String,
