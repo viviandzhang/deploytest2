@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Activity</title>
+        <link rel="stylesheet" href="../../public/css/styles.css">
+        <link rel="stylesheet" href="../../public/css/activity-styles.css">
+    </head>
+    <body>
+
+     <nav>
+      <div id="nav-wrapper">
+          <div class="nav-item user-header">Hello, <span class="username">username123!</span></div>
+          
+          <div class="nav-item">Browse</div>
+          <div class="nav-item">Your Activity</div>
+          <div id="button-new-dilemma" class="nav-item">
+              Add New Dilemma
+          </div>
+          
+      </div>
+    </nav>
+
+
+    <div id="user-profile-1">
+
+        <!-- profile image -->
+        <div id="profile-img">
+        <img src="../../public/css/lama.png" alt="Lama" height="80" width="80">
+        </div>
+
+        <!--user description-->
+        <div id="basic-info">
+            <div id="profile-name">Happy Red Llama</div>
+            <div id="profile-email"> artemisialuk@gmail.com</div>
+            <div id="stats"> 
+                <div id="stats-dilemmas"> 15 dilemmas</div>
+                <div id="button-logout"> Logout</div>
+            </div>
+        </div>
+
+    </div>
+
+  
+    <div id="activity-navbar">
+
+            <div class="nav-item-activity"> Your Dilemmas </div>
+            <div id="button-sort"> Sort by category</div>
+    </div>
+
+    <div id="add-new">
+        <button id="add-new-1" action= "composer.html"> + </button>
+    </div>      
+
+<!-- 
+    goal: fix user profile to top of page
+    be able to scrol through dilemmas
+    be able to sort by category
+-->
+<!-- 
+    <div id="feed">
+
+            <div class="d-container">
+              <div class="d-meta">
+                <div class="d-thumbnail"></div>
+                <div class="d-creator">Happy Llama</div>
+                <div class="d-timestamp">Posted 10h ago</div>
+              </div>
+      
+              EXANDED
+              <div class="d-card-expanded">
+                <div class="d-card-status">
+                  <div class="status-badge">67%</div>
+                  <div class="status-text">for yes</div>
+                </div>
+                <div class="d-card-categories">Education Personal Finance</div>
+                <div class="d-card-title">Should I transfer to X college?</div>
+                <div class="d-card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempor turpis ac lectus vehicula tristique ac eget lectus. Nulla sed efficitur dui. In in lorem faucibus, tristique massa sit amet, aliquet arcu. Fusce non tincidunt justo, in fermentum arcu. Pellentesque in orci pulvinar, vestibulum risus at, hendrerit lectus. Morbi luctus felis nec ex suscipit, id feugiat tellus commodo. Integer consequat turpis a tincidunt bibendum. Aliquam varius blandit maximus. Aenean eu purus eros. Vestibulum fringilla condimentum risus vel tempor.
+                    Etiam euismod eleifend auctor. Praesent est urna, porta eget luctus ac, tempus sit amet turpis. Proin tincidunt ipsum diam, vel hendrerit nunc pharetra quis. Duis congue interdum pretium. Duis eu risus ac lacus lacinia blandit sed non ipsum. Proin hendrerit id leo vel convallis. Sed non massa id massa venenatis molestie vitae nec orci.
+                </div>
+      
+                <div id = "top-comments">
+                    <div class="section-title">
+                        TOP COMMENTS
+                      </div>
+                      <div class="comments-section">
+                        <div class="d-card-comment-compact">
+                            <div class="dot-no"></div>
+                            <div class="comment-creator">Fuzzy Red</div>
+                            <div class="comment-body">Not a fan of this college man it sucks</div>
+                            <div class="comment-votes">5 votes</div>
+                        </div>
+                        <div class="d-card-comment-compact">
+                            <div class="dot-yes"></div>
+                            <div class="comment-creator">Bubbly Blue</div>
+                            <div class="comment-body">Ya dude go get that bread</div>
+                            <div class="comment-votes">2 votes</div>
+                        </div>
+                        <div class="d-card-comment-compact">
+                            <div class="dot-no"></div>
+                            <div class="comment-creator">Quirky Yellow</div>
+                            <div class="comment-body">Not a fan of this college man it sucks</div>
+                            <div class="comment-votes">1 vote</div>
+                        </div>
+                      </div>
+                </div>
+                
+                <div id="d-card-expand-footer">
+                    <div class="section-title">EXPAND TO SEE 4 MORE</div>
+                  </div>
+      
+                <div id="debate-section">
+                  <div class="col col-yes">
+                      <div class="col-title">
+                        <div class="bold-section-title">YES</div>
+                        <div class="yes-vote-tag">83 votes</div>
+                      </div>
+                      <form>
+                          <input id = "comment-field-yes" class ="comment-input" type="text" name="fname">
+                          <input id = "submit-comment-yes" class ="comment-button" type="button" value="Post">
+                      </form>
+      
+                      <div id = 'comment-yes'>
+                          <div class="comment-wrapper">
+                              <div class="comment-body">
+                                  Lorem ipsum dolor sit amet, ipsum voluptua conclusionemque ut mel, no purto homero deserunt pri. Quem pertinax an usu, vel at quodsi iuvaret tibique. 
+                              </div>
+                              <div class="comment-vote">
+                                  <div class="vote-button"></div>
+                                  <div class="vote-count">5</div>
+                                </div>
+                              <div class="comment-meta">
+                                <div class="comment-thumb"></div>
+                                <span class="comment-author">Happy Llama posted 5h ago</span>
+                              </div>
+                            </div>
+                            <div class="comment-wrapper">
+                                <div class="comment-body">
+                                    Lorem ipsum dolor sit amet, ipsum voluptua conclusionemque ut mel, no purto homero deserunt pri. Quem pertinax an usu, vel at quodsi iuvaret tibique. 
+                                </div>
+                                <div class="comment-vote">
+                                    <div class="vote-button"></div>
+                                    <div class="vote-count">5</div>
+                                  </div>
+                                <div class="comment-meta">
+                                  <div class="comment-thumb"></div>
+                                  <span class="comment-author">Happy Llama posted 5h ago</span>
+                                </div>
+                              </div>
+                              <div class="comment-wrapper">
+                                  <div class="comment-body">
+                                      Lorem ipsum dolor sit amet, ipsum voluptua conclusionemque ut mel, no purto homero deserunt pri. Quem pertinax an usu, vel at quodsi iuvaret tibique. 
+                                  </div>
+                                  <div class="comment-vote">
+                                      <div class="vote-button"></div>
+                                      <div class="vote-count">5</div>
+                                    </div>
+                                  <div class="comment-meta">
+                                    <div class="comment-thumb"></div>
+                                    <span class="comment-author">Happy Llama posted 5h ago</span>
+                                  </div>
+                                </div>
+                      </div>
+                    
+                  </div>
+                  <div class="col">
+                      <div class="col-title">
+                        <div class="bold-section-title">NO</div>
+                        <div class="no-vote-tag">21 votes</div>
+                      </div>
+                      <form>
+                          <input class ="comment-input" type="text" name="fname">
+                          <input class ="comment-button" type="submit" value="Post">
+                      </form>
+                      <div class="comment-wrapper">
+                          <div class="comment-body">
+                              Lorem ipsum dolor sit amet, ipsum voluptua conclusionemque ut mel, no purto homero deserunt pri. Quem pertinax an usu, vel at quodsi iuvaret tibique. 
+                          </div>
+                          <div class="comment-vote">
+                              <div class="vote-button"></div>
+                              <div class="vote-count">5</div>
+                            </div>
+                          <div class="comment-meta">
+                            <div class="comment-thumb"></div>
+                            <span class="comment-author">Happy Llama posted 5h ago</span>
+                          </div>
+                        </div>
+                        <div class="comment-wrapper">
+                          <div class="comment-body">
+                              Lorem ipsum dolor sit amet, ipsum voluptua conclusionemque ut mel, no purto homero deserunt pri. Quem pertinax an usu, vel at quodsi iuvaret tibique. 
+                          </div>
+                          <div class="comment-vote">
+                              <div class="vote-button"></div>
+                              <div class="vote-count">5</div>
+                            </div>
+                          <div class="comment-meta">
+                            <div class="comment-thumb"></div>
+                            <span class="comment-author">Happy Llama posted 5h ago</span>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+            </div>
+      
+          </div>
+
+    
+
+        -->
+
+</body>
+<script src="static/js/feed.js"></script>
+<script src="static/js/api.js"></script>
+</html>

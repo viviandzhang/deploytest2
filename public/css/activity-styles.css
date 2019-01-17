@@ -1,0 +1,52 @@
+#user-profile-1 {
+    width: 650px;
+    margin: auto;
+    text-align: center; 
+    display: flex; 
+    position: relative;
+    top: 100px;
+    justify-content: center; 
+    align-items: center; 
+
+}
+
+#profile-name {
+    font-size: 30px; 
+}
+
+#profile-email {
+    font-style: italic;
+}
+
+
+#activity-navbar {
+    width: 280px; 
+    margin: auto; 
+    text-align: center; 
+    display: flex; 
+    position: relative;
+    top: 150px; 
+    justify-content: space-between; 
+    
+}
+#add-new {
+    width: 650px; 
+    text-align: center;
+    position: relative; 
+    top: 200px; 
+    margin: 0 auto;
+
+    
+}
+
+#add-new-1 {
+    width: 650px; 
+    font-size: 20px; 
+    background-color: transparent; 
+    border-width: 1px; 
+    border-style: solid;
+    border-color: grey;
+    border-radius: 4px; 
+    padding: 10px; 
+
+}

@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const UserModelSchema = new Mongoose.Schema({
     name        : String,
     googleid    : String,
+    adjective       : String, 
     color       : String, 
 }); 
 
