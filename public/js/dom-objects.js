@@ -113,6 +113,18 @@ function dilemmaDOMObject (dilemmaJSON){
   const expandFooterNew = document.getElementById ('d-card-expand-footer-2');
   //expandFooterNew.addEventListener('click', expandDilemma);
 
+  const debateSection = document.createElement('div');
+  debateSection.id = 'debate-section';   // -------------- change to not id
+  newDCardExpanded.appendChild(debateSection);
+
+  const colColYes = document.createElement('div');
+  colColYes.className = 'col col-yes';
+  debateSection.appendChild(colColYes);
+
+  const colTitle = document.createElement('div');
+  colTitle.className = 'col-title';
+  debateSection.appendChild(colColYes);
+
   return newDilemma;
 }
 

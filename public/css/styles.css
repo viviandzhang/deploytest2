@@ -188,7 +188,7 @@ nav {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 20px;
-    display: none;
+    /*display: none; change this later ????? */
 }
 
 .col {
