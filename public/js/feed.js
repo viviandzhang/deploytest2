@@ -1,3 +1,6 @@
+// for timestamps: https://mattbradley.github.io/livestampjs/
+
+
 function openComposer() {
   let overlayComposer = document.getElementById('composer');
   overlayComposer.style.display = "flex";
@@ -40,6 +43,11 @@ function expandDilemma(){
 }
 
 function createNewDilemma (){
+    // for timestamp
+    let d = new Date();
+    let hourPost = d.getHours();
+    let minutePost = d.getMinutes();
+
   console.log('creating new dilemma');
   const titleValue = document.getElementById ('comp-title').value;
 
@@ -72,7 +80,7 @@ function createNewDilemma (){
 
   const dTimestamp = document.createElement('div');
   dTimestamp.className = 'd-timestamp';
-  dTimestamp.innerText = 'Posted 1s ago';
+  dTimestamp.innerText = 'Posted at ' + hourPost + ':' + minutePost;
   dMeta.appendChild(dTimestamp);
 
   // d-card-expanded -- within d-container
@@ -138,15 +146,26 @@ function createNewDilemma (){
 
 //createNewDilemma();
 
-function createNewComment () {
+function commentDOMObject (commentJSON) {
+  // for timestamp
+  let d = new Date();
+  let hourPost = d.getHours();
+  let minutePost = d.getMinutes();
+
+  // gets the comment from the comment composer:
   const commentValue = document.getElementById('comment-field-yes').value;
   document.getElementById('comment-field-yes').value = '';
 
-  const commentsDiv = document.getElementById('comment-yes');
+  // gets overall comment div
+  // const commentsDiv = document.getElementById('comment-yes');
+
+  // switched to CREATE commentDiv
+  commentDiv = document.createElement('div');
+  commentDiv.setAttribute('id', commentJSON._id);
 
   const newComment = document.createElement('div');
   newComment.className = 'comment-wrapper';
-  commentsDiv.appendChild(newComment);
+  commentsDiv.prepend(newComment);
 
   const commentText = document.createElement('div');
   commentText.innerText = commentValue;
@@ -176,7 +195,7 @@ function createNewComment () {
 
   const commentAuthor = document.createElement('span');
   commentAuthor.className = 'comment-author';
-  commentAuthor.innerText = 'Quirky Lllama poste 1s ago'
+  commentAuthor.innerText = 'Quirky Lllama posted at ' + hourPost + ":" + minutePost;
   commentMeta.appendChild(commentAuthor);
 
 }
@@ -203,7 +222,7 @@ expandFooter.addEventListener('click', expandDilemma);
 
 
 const submitComment = document.getElementById('submit-comment-yes');
-submitComment.addEventListener('click', createNewComment)
+submitComment.addEventListener('click', commentDOMObject)
 
 function makeCategoriesSelectable() {
   let categories = document.getElementsByClassName('comp-categories');
