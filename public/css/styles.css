@@ -185,7 +185,7 @@ nav {
 }
 
 .col-yes {
-    margin-right: 20px;
+    margin-right: 25px;
 }
 
 .col-title {
@@ -230,7 +230,7 @@ form {
     background-color: #46D9E5;
     color: white;
     border: none;
-    padding: 6px;
+    padding: 6px 10px;
     width: 16%;
     float: left;
     cursor: pointer;
@@ -239,6 +239,7 @@ form {
 .comment-wrapper {
     overflow: hidden;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .comment-wrapper > .comment-body {
@@ -270,7 +271,9 @@ form {
 }
 
 .comment-wrapper > .comment-vote {
-    float: right;
+    top: 0;
+    right: 0;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;

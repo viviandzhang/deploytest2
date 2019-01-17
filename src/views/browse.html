@@ -10,7 +10,7 @@
             <form id = "comp-form">
                 <textarea id = "comp-title" placeholder = "Enter your query title here…"></textarea><br>
                 <textarea id = "comp-body" placeholder = "Enter details about your query. The more detailed you are, the better other people will be able to help you."></textarea><br>
-                <div id = "comp-cat-title" class="section-title">SELECT CATEGORIES</div> 
+                <div id = "comp-cat-title">SELECT CATEGORIES</div> 
                 <div id = "comp-cat-container">
                     <div class = "comp-categories">Education</div>
                     <div class = "comp-categories">Personal Finance</div>
@@ -22,7 +22,7 @@
                 </div>
                 <div id = "post-button-container">
                     <input class ="comp-button" id = "cancel-button" type="button" value="Cancel">
-                    <input class ="comp-button" id = "post-button" type="submit" value="Post">
+                    <input class ="comp-button" id = "post-button" type="button" value="Post">
                 </div>
             </form>
             
@@ -115,8 +115,10 @@
                   <div class="yes-vote-tag">83 votes</div>
                 </div>
                 <form>
-                    <input id = "comment-field-yes" class ="comment-input" type="text" name="fname">
-                    <input id = "submit-comment-yes" class ="comment-button" type="button" value="Post">
+                    <div class = "comment-form">
+                        <input id = "comment-field-yes" class ="comment-input" type="text" name="fname" placeholder= 'Add your comment…'>
+                        <input id = "submit-comment-yes" class ="comment-button" type="button" value="Post">
+                    </div>
                 </form>
 
                 <div id = 'comment-yes'>
@@ -160,16 +162,18 @@
                             </div>
                           </div>
                 </div>
-              
             </div>
+
             <div class="col">
                 <div class="col-title">
                   <div class="bold-section-title">NO</div>
                   <div class="no-vote-tag">21 votes</div>
                 </div>
                 <form>
-                    <input class ="comment-input" type="text" name="fname">
-                    <input class ="comment-button" type="submit" value="Post">
+                  <div class = 'comment-form'>
+                      <input class ="comment-input" type="text" name="fname" placeholder= 'Add your comment…'>
+                      <input class ="comment-button" type="submit" value="Post">
+                  </div>
                 </form>
                 <div class="comment-wrapper">
                     <div class="comment-body">
