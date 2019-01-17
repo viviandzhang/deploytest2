@@ -101,12 +101,12 @@ function dilemmaDOMObject (dilemmaJSON){
   topComments.appendChild(dCardCommentCompact);
 
   const dCardExpandFooter = document.createElement('div');
-  dCardExpandFooter.id = 'd-card-expand-footer-2';
+  dCardExpandFooter.className = 'd-card-expand-footer';
   newDCardExpanded.appendChild(dCardExpandFooter);
 
   const expandSectionTitle = document.createElement('div');
   expandSectionTitle.className = 'section-title';
-  expandSectionTitle.innerText = 'EXPAND TO SEE MORE';
+  expandSectionTitle.innerText = 'EXPAND TO SEE X MORE';
   dCardExpandFooter.appendChild(expandSectionTitle);
 
   //fix this ahhh:
