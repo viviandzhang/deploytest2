@@ -40,7 +40,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCreator = document.createElement('div');
   dCreator.className = 'd-creator';
-  dCreator.innerText = dilemmaJSON.creator_alias;
+  dCreator.innerText = dilemmaJSON.creator_alias + " Llamma";
   dMeta.appendChild(dCreator);
 
   const dTimestamp = document.createElement('div');
@@ -123,7 +123,78 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const colTitle = document.createElement('div');
   colTitle.className = 'col-title';
-  debateSection.appendChild(colColYes);
+  colColYes.appendChild(colTitle);
+
+  const boldSectionTitle = document.createElement('div');
+  boldSectionTitle.className = 'bold-section-title';
+  boldSectionTitle.innerText = 'YES';
+  colTitle.appendChild(boldSectionTitle);
+
+  const yesVoteTag = document.createElement('div');
+  yesVoteTag.className = 'yes-vote-tag';
+  yesVoteTag.innerText = (dilemmaJSON.votes_yes).$numberInt + ' votes';
+  colTitle.appendChild(yesVoteTag);
+
+  const commentForm = document.createElement('form');
+  colColYes.appendChild(commentForm);
+
+  const commentFormClass = document.createElement('div');
+  commentFormClass.className = 'comment-form';
+  commentForm.appendChild(commentFormClass);
+
+  const commentFieldYes = document.createElement('input');
+  commentFieldYes.className = 'comment-field-yes comment-input'; // change to id and attach event listener
+  // add placeholder ??
+  commentFormClass.appendChild(commentFieldYes);
+
+  const submitCommentYes = document.createElement('input');
+  submitCommentYes.id = 'submit-comment-yes'; // change to id and add event listener
+  submitCommentYes.className = 'comment-button';
+  submitCommentYes.value = 'Post';
+  submitCommentYes.type = 'Button';
+  // add placeholder ??
+  commentFormClass.appendChild(submitCommentYes);
+
+  const commentYes = document.createElement('div');
+  commentYes.id = 'commentYes'; // change this ahhhh -- might not need to be here
+  colColYes.appendChild(commentYes);
+
+  const col = document.createElement('div');
+  col.className = 'col'; 
+  debateSection.appendChild(col);
+
+  const colTitleNo = document.createElement('div');
+  colTitleNo.className = 'col-title'; 
+  col.appendChild(colTitleNo);
+
+  const boldSectionTitleNo = document.createElement('div');
+  boldSectionTitleNo.className = 'bold-section-title'; 
+  boldSectionTitleNo.innerText = 'NO';
+  colTitleNo.appendChild(boldSectionTitleNo);
+
+  const noVoteTag = document.createElement('div');
+  noVoteTag.className = 'no-vote-tag'; 
+  noVoteTag.innerText = (dilemmaJSON.votes_no).$numberInt + ' votes';
+  colTitleNo.appendChild(noVoteTag);
+
+  const formNo = document.createElement('form');
+  col.appendChild(formNo);
+
+  const commentFormNo = document.createElement('div');
+  commentFormNo.className = 'comment-form'; 
+  formNo.appendChild(commentFormNo);
+
+  const commentInputNo = document.createElement('input');
+  commentInputNo.className = 'comment-input'; // change to id and attach event listener
+  // add placeholder ??
+  commentFormNo.appendChild(commentInputNo);
+
+  const submitCommentNo = document.createElement('input');
+  submitCommentNo.className = 'comment-button'
+  submitCommentNo.value = 'Post';
+  submitCommentNo.type = 'Button';
+  // add placeholder ??
+  commentFormNo.appendChild(submitCommentNo);
 
   return newDilemma;
 }
