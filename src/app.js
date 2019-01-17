@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // set routes
 app.use('/', views);
-app.use('api', api);
+app.use('/api', api);
 app.use('/static', express.static('public'));
 
 // route error handler

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // set up mongoDB connection
-const mongoURL = 'mongodb+srv://admin:admin@cluster0-hkwse.mongodb.net/test?retryWrites=true';
+const mongoURL = 'mongodb+srv://admin:admin@cluster0-ggqro.mongodb.net/test?retryWrites=true';
 const options = {
     useNewUrlParser: true
 };

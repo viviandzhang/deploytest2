@@ -30,7 +30,7 @@ function submitDilemmaHandler() {
 
 function expandDilemma(){
   let debateSection = document.getElementById('debate-section');
-  debateSection.style.display = "block";
+  debateSection.style.display = "flex";
 
   let dCardExpandFooter = document.getElementById ('d-card-expand-footer');
   dCardExpandFooter.style.display = "none";
@@ -110,7 +110,6 @@ function makeCategoriesSelectable() {
   let categories = document.getElementsByClassName('comp-categories');
 
   for(let i=0; i<categories.length; i++){
-    console.log(categories[i]);
     categories[i].addEventListener('click', function(){
       if (categories[i].className === "comp-categories comp-categories-selected"){
         categories[i].className = "comp-categories";
