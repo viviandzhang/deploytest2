@@ -2,7 +2,6 @@
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
-const session = require('express-session'); //for authentication- cookies
 
 // local dependencies
 const db = require('./db');
@@ -15,39 +14,6 @@ const app = express();
 // set POST request body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
-//AUTHENTICATION 
-// set up sessions
-app.use(session({
-  secret: 'session-secret',
-  resave: 'false',
-  saveUninitialized: 'true'
-}));
-// hook up passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-// authentication routes
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
-
-app.get(
-  '/auth/google/callback',
-  passport.authenticate(
-    'google',
-    { failureRedirect: '/signin' }
-  ),
-  function(req, res) {
-    res.redirect('/');
-  }
-);
-
-// logout route
-app.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/signin');
-});
-
 
 // set routes
 app.use('/', views);
@@ -75,4 +41,3 @@ server = http.Server(app);
 server.listen(port, function () {
     console.log('server listening on port ' + port);
 });
-
