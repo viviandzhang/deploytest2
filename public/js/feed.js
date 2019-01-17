@@ -47,9 +47,9 @@ closeNewDilemma.addEventListener('click', closeComposer)
 overlay.addEventListener('click', closeComposer)
 const cancelNewDilemma = document.getElementById('cancel-button');
 cancelNewDilemma.addEventListener('click', closeComposer)
-// Post dilemma
+// Post dilemma                       -------------------- uncomment later
 const postDilemma = document.getElementById('post-button');
-postDilemma.addEventListener('click', createNewDilemma);
+//postDilemma.addEventListener('click', createNewDilemma);
 
 // -------- Expanding a dilemma ---------
 function expandDilemma(dilemma_id){

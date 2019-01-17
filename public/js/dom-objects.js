@@ -1,7 +1,7 @@
 let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
                     "categories":["Uncategorized"],
                     "creator_id":"anon_id",
-                    "creator_name":"Anon User",
+                    "creator_color":"pink",
                     "creator_alias":"Anonymous",
                     "timestamp":null,
                     "title":"Should I do X thing?",
@@ -11,28 +11,24 @@ let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
                     "votes_no":{"$numberInt":"4"},
                     "__v":{"$numberInt":"0"}};
 
-function createNewDilemma (){
+function dilemmaDOMObject (dilemmaJSON){
     // for timestamp
+    /*
     let d = new Date();
     let hourPost = d.getHours();
     let minutePost = d.getMinutes();
+    */
 
-  console.log('creating new dilemma');
-  const titleValue = document.getElementById ('comp-title').value;
 
-  console.log('title value ' + titleValue);
+  //closeComposer();    // ------------------------ uncomment this later
 
-  const bodyValue = document.getElementById ('comp-body').value;
-
-  console.log('body here: ' + bodyValue);
-  closeComposer();
-
-  const dilemmaDiv = document.getElementById('feed');
+  //const dilemmaDiv = document.getElementById('feed');
 
   // d-container 
   const newDilemma = document.createElement('div');
+  newDilemma.setAttribute('id', dilemmaJSON.creator_id);
   newDilemma.className = 'd-container';
-  dilemmaDiv.prepend(newDilemma);
+  //dilemmaDiv.prepend(newDilemma);
 
   const dMeta = document.createElement('div');
   dMeta.className = 'd-meta';
@@ -44,12 +40,13 @@ function createNewDilemma (){
 
   const dCreator = document.createElement('div');
   dCreator.className = 'd-creator';
-  dCreator.innerText = 'Quirky Llama';
+  dCreator.innerText = dilemmaJSON.creator_alias;
   dMeta.appendChild(dCreator);
 
   const dTimestamp = document.createElement('div');
   dTimestamp.className = 'd-timestamp';
-  dTimestamp.innerText = 'Posted at ' + hourPost + ':' + minutePost;
+  //dTimestamp.innerText = 'Posted at ' + hourPost + ':' + minutePost; ---- date notation
+  dTimestamp.innerText = 'Posted at ' + dilemmaJSON.timestamp;
   dMeta.appendChild(dTimestamp);
 
   // d-card-expanded -- within d-container
@@ -63,31 +60,35 @@ function createNewDilemma (){
 
   const statusBadge = document.createElement('div');
   statusBadge.className = 'status-badge';
-  statusBadge.innerText = '50%';
+  statusBadge.innerText = '50%';   // -----------------fix
   dCardStatus.appendChild(statusBadge);
 
   const statusText = document.createElement('div');
   statusText.className = 'status-text';
-  statusText.innerText = 'for pro';
+  statusText.innerText = 'for pro'; // -----------------fix
   dCardStatus.appendChild(statusText);
 
   const dCardCategories = document.createElement('div');
   dCardCategories.className = 'd-card-categories';
-  dCardCategories.innerText = 'Education'; 
+  let categoriesString = '';
+  for (let i = 0; i < (dilemmaJSON.categories).length; i++){
+    categoriesString += (dilemmaJSON.categories)[i];
+  }
+  dCardCategories.innerText = categoriesString;  // ------- fix
   newDCardExpanded.appendChild(dCardCategories);
 
   const dCardTitle = document.createElement('div');
   dCardTitle.className = 'd-card-title';
-  dCardTitle.innerText = titleValue; 
+  dCardTitle.innerText = dilemmaJSON.title; 
   newDCardExpanded.appendChild(dCardTitle);
 
   const dCardBody = document.createElement('div');
   dCardBody.className = 'd-card-body';
-  dCardBody.innerText = bodyValue; 
+  dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
   const topComments = document.createElement('div');
-  dCardCategories.id = 'top-comments';
+  topComments.className = 'top-comments';
   newDCardExpanded.appendChild(topComments);
 
   const sectionTitle = document.createElement('div');
@@ -100,18 +101,38 @@ function createNewDilemma (){
   topComments.appendChild(dCardCommentCompact);
 
   const dCardExpandFooter = document.createElement('div');
-  dCardExpandFooter.id = 'd-card-expand-footer-2';
+  dCardExpandFooter.className = 'd-card-expand-footer';
   newDCardExpanded.appendChild(dCardExpandFooter);
 
   const expandSectionTitle = document.createElement('div');
   expandSectionTitle.className = 'section-title';
-  expandSectionTitle.innerText = 'EXPAND TO SEE MORE';
+  expandSectionTitle.innerText = 'EXPAND TO SEE X MORE';
   dCardExpandFooter.appendChild(expandSectionTitle);
 
   //fix this ahhh:
   const expandFooterNew = document.getElementById ('d-card-expand-footer-2');
-  expandFooterNew.addEventListener('click', expandDilemma);
+  //expandFooterNew.addEventListener('click', expandDilemma);
+
+  const debateSection = document.createElement('div');
+  debateSection.id = 'debate-section';   // -------------- change to not id
+  newDCardExpanded.appendChild(debateSection);
+
+  const colColYes = document.createElement('div');
+  colColYes.className = 'col col-yes';
+  debateSection.appendChild(colColYes);
+
+  const colTitle = document.createElement('div');
+  colTitle.className = 'col-title';
+  debateSection.appendChild(colColYes);
+
+  return newDilemma;
 }
+
+let testDomDilemma = dilemmaDOMObject (anonDilemmaJSON);
+let dilemmaDiv = document.getElementById('feed');
+dilemmaDiv.prepend(testDomDilemma);
+
+
 
 
 function commentDOMObject (commentJSON) {

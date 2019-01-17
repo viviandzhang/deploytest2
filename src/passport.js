@@ -17,11 +17,9 @@ passport.use(new GoogleStrategy({
 
     if (!user) { //redirect user to generate random llama page!!!
       user = new User({
-        name: profile.displayName,
+        name: profile.displayName,//should change to llama name-- get element by ID? 
         googleid: profile.id,
-        adjective: '',
-        color: ''
-
+        color: 'blue'
       });
 
       user.save(function (err) {
