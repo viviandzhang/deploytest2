@@ -2,10 +2,11 @@
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
-const session = require('express-session'); //for authentication- cookies
+//const session = require('express-session'); //for authentication- cookies
 
 // local dependencies
 const db = require('./db');
+const passport = require('./passport');
 const views = require('./routes/views');
 const api = require('./routes/api');
 
@@ -18,12 +19,13 @@ app.use(bodyParser.json());
 
 
 //AUTHENTICATION 
-// set up sessions
+/* set up sessions
 app.use(session({
   secret: 'session-secret',
   resave: 'false',
   saveUninitialized: 'true'
 }));
+*/
 // hook up passport
 app.use(passport.initialize());
 app.use(passport.session());

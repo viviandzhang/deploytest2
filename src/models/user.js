@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 //define a schema
-const UserModelSchema = new Mongoose.Schema({
+const UserModelSchema = new mongoose.Schema({
     name        : String,
     googleid    : String,
     adjective       : String, 
@@ -12,4 +12,4 @@ const UserModelSchema = new Mongoose.Schema({
 
 
 //compile a model from schema
-module.exports = mongoose.model('DilemmaModel', DilemmaModelSchema); 
+module.exports = mongoose.model('UserModel', UserModelSchema); 
