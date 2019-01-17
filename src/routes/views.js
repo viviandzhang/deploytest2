@@ -5,6 +5,10 @@ router.get('/', function (req, res) {
     res.sendFile('browse.html', { root: 'src/views' });
 });
 
+router.get('/your-activity', function (req, res) {
+    res.sendFile('profile.html', { root: 'src/views' });
+});
+
 router.get('/signin', function (req, res) {
     res.sendFile('signin.html', { root: 'src/views' });
 });

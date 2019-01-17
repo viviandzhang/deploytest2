@@ -38,9 +38,19 @@ nav {
     cursor: pointer;
 }
 
-.nav-item {
+.nav-item, .nav-item > a {
     color: white;
     margin-right: 20px;
+    width: max-content;
+    text-decoration: none;
+}
+
+.nav-item > a {
+    margin: 0;
+}
+
+.nav-item-selected, .nav-item-selected > a {
+    font-weight: 600;
 }
 
 .user-header {
@@ -176,6 +186,7 @@ nav {
 
 #debate-section {
     display: flex;
+    justify-content: flex-start;
     margin-bottom: 20px;
     display: none;
 }

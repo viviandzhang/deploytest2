@@ -209,7 +209,6 @@ function makeCategoriesSelectable() {
   let categories = document.getElementsByClassName('comp-categories');
 
   for(let i=0; i<categories.length; i++){
-    console.log(categories[i]);
     categories[i].addEventListener('click', function(){
       if (categories[i].className === "comp-categories comp-categories-selected"){
         categories[i].className = "comp-categories";
