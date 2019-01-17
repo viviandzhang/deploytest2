@@ -1,7 +1,7 @@
 let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
                     "categories":["Uncategorized"],
                     "creator_id":"anon_id",
-                    "creator_name":"Anon User",
+                    "creator_color":"pink",
                     "creator_alias":"Anonymous",
                     "timestamp":null,
                     "title":"Should I do X thing?",
@@ -88,7 +88,7 @@ function dilemmaDOMObject (dilemmaJSON){
   newDCardExpanded.appendChild(dCardBody);
 
   const topComments = document.createElement('div');
-  dCardCategories.id = 'top-comments';
+  topComments.className = 'top-comments';
   newDCardExpanded.appendChild(topComments);
 
   const sectionTitle = document.createElement('div');

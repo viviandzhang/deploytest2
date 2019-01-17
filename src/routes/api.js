@@ -41,7 +41,7 @@ router.get('/whoami', function(req, res) {
 router.post('/dilemma', function(req, res) {
     const newDilemma = new Dilemma({
         'creator_id'        : 'anon_id',
-        'creator_name'      : 'anon',
+        'creator_color'     : 'pink',
         'creator_alias'     : 'Anon',
         'timestamp'         : null,
         'categories'        : ['Uncategorized'],
