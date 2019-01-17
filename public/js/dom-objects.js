@@ -1,4 +1,4 @@
-let anonUserJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
+let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
                     "categories":["Uncategorized"],
                     "creator_id":"anon_id",
                     "creator_name":"Anon User",
