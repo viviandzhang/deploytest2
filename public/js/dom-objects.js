@@ -13,18 +13,13 @@ let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
 
 function dilemmaDOMObject (dilemmaJSON){
     // for timestamp
+    /*
     let d = new Date();
     let hourPost = d.getHours();
     let minutePost = d.getMinutes();
+    */
 
-  console.log('creating new dilemma');
-  const titleValue = document.getElementById ('comp-title').value;
 
-  console.log('title value ' + titleValue);
-
-  const bodyValue = document.getElementById ('comp-body').value;
-
-  console.log('body here: ' + bodyValue);
   //closeComposer();    // ------------------------ uncomment this later
 
   //const dilemmaDiv = document.getElementById('feed');
