@@ -26,6 +26,7 @@ router.get('/whoami', function(req, res) {
     res.send({
       _id: 'anonid',
       name: 'Anonymous',
+      adjetive: 'anon was here',
       color: 'Anon was here',
     });
   });
