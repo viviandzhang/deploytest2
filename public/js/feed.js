@@ -61,6 +61,26 @@ function renderStories() {
     for (let i = 0; i < dArray.length; i++) {
       const currentDilemma = dArray[i];
       dilemmaDiv.prepend(dilemmaDOMObject(currentDilemma));
+
+      dilemmaID = currentDilemma._id;
+
+      yesDiv = document.getElementById('comments-yes' + dilemmaID);
+      //noDiv = document.getElementById('comments-no' + dilemmaID);
+
+      console.log("dilemma id: " + dilemmaID);
+      //console.log(noDiv);
+
+      // render yes comments
+      get('/api/comments', {parent_id:dilemmaID, yes_or_no:"yes"}, function(cArray) {
+        for (let i = 0; i < cArray.length; i++) {
+          if (cArray[i] != null) {
+            yesDiv.appendChild(commentDOMObject(cArray[i]));
+          }
+        }
+      })
+
+      // render no comments
+      
     }
   });
 }

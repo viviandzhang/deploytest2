@@ -55,7 +55,6 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dTimestamp = document.createElement('div');
   dTimestamp.className = 'd-timestamp';
-  console.log(dilemmaJSON.timestamp);
   if (dilemmaJSON.timestamp != null) {
     dTimestamp.innerText = 'Posted ' + timeSince(new Date(dilemmaJSON.timestamp)) + " ago";
   }
@@ -130,10 +129,9 @@ function dilemmaDOMObject (dilemmaJSON){
   //console.log('expand-footer-' + dilemmaJSON._id);
   newDCardExpanded.appendChild(dCardExpandFooter);
 
-
   const expandSectionTitle = document.createElement('div');
   expandSectionTitle.className = 'section-title';
-  expandSectionTitle.innerText = "EXPAND TO SEE OTHER LLAMAS' OPINIONS";
+  expandSectionTitle.innerText = "EXPAND TO SEE OPINIONS";
   dCardExpandFooter.appendChild(expandSectionTitle);
 
   const debateSection = document.createElement('div');
@@ -197,7 +195,7 @@ function dilemmaDOMObject (dilemmaJSON){
   yesComments.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
   colColYes.appendChild(yesComments);
 
-  yesComments.appendChild(commentDOMObject(anonCommentJSON));
+  //yesComments.appendChild(commentDOMObject(anonCommentJSON));
 
   // -------------------- NO COLUMN BEGINS -----------------------------
   const colNo = document.createElement('div');
