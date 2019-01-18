@@ -269,6 +269,7 @@ form {
     font-size: 14px;
     border-radius: 3px 0px 0px 3px;
     border: 1px solid #CED9E0;
+    border-right: 0px;
     padding: 5px;
     width: 80%;
     float: left;
@@ -277,10 +278,10 @@ form {
 .comment-button {
     font-size: 14px;
     border-radius: 0px 3px 3px 0px;
-    background-color: #46D9E5;
-    color: white;
-    border: none;
-    padding: 6px 10px;
+    color: #46D9E5;
+    border: 1px solid white;
+    border-color: #46D9E5;
+    padding: 5px 10px;
     width: 16%;
     float: left;
     cursor: pointer;
