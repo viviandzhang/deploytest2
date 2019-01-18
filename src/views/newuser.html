@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="../..//public/css/signin-styles.css">
     
   </head>
-  <body>
+  <body onkeydown=randomize()>
 
      <!--navigation bar--> 
      <nav>
@@ -29,10 +29,10 @@
                 <div class=name-fixed> 
                     Welcome,
                 </div>
-                <div id= name-adj class=name-adjcolor>
+                <div id= name-adj class=name-adjcolor onkeypress=randomize()>
                     Happy 
                 </div>
-                <div id = name-color class=name-adjcolor>
+                <div id = name-color class=name-adjcolor onkeypress=randomize()>
                     Blue
                 </div>
                 <div class=name-fixed>
@@ -50,4 +50,5 @@
 
   
 </body>
+  <script src="../../public/js/llama-name.js"></script>
 </html>
