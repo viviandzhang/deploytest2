@@ -111,6 +111,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCardBody = document.createElement('div');
   dCardBody.className = 'd-card-body';
+  dCardBody.classList.add('truncated');
   dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
@@ -133,7 +134,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
 
   dCardExpandFooter.addEventListener('click', function () {
-    console.log('expanding');
+    dCardBody.classList.remove('truncated');
     let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
     debateSection.style.display = "flex";
 
