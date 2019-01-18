@@ -120,7 +120,10 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCardBody = document.createElement('div');
   dCardBody.className = 'd-card-body';
-  dCardBody.classList.add('truncated');
+  console.log(dCardBody.clientHeight);
+  if (dCardBody.clientHeight >= 76) {
+    dCardBody.classList.add('truncated');
+  }
   dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
@@ -150,19 +153,23 @@ function dilemmaDOMObject (dilemmaJSON){
     dCardExpandFooter.style.display = "none";
   });
 
+  // ------------------ Yes column begins -------------------
   const colColYes = document.createElement('div');
   colColYes.className = 'col col-yes';
   debateSection.appendChild(colColYes);
 
+  // div that contains title of yes column and #votes tag
   const colTitleYes = document.createElement('div');
   colTitleYes.className = 'col-title';
   colColYes.appendChild(colTitleYes);
 
+  // title of yes column: 'YES
   const boldSectionTitleYes = document.createElement('div');
   boldSectionTitleYes.className = 'bold-section-title';
   boldSectionTitleYes.innerText = 'YES';
   colTitleYes.appendChild(boldSectionTitleYes);
 
+  // #votes tag (yes column)
   const yesVoteTag = document.createElement('div');
   yesVoteTag.className = 'yes-vote-tag';
   yesVoteTag.innerText = (dilemmaJSON.votes_yes) + ' votes';
@@ -180,16 +187,16 @@ function dilemmaDOMObject (dilemmaJSON){
   // comment field for yes -- where you input comments
   const commentFieldYes = document.createElement('input');
   commentFieldYes.className = 'comment-field-yes comment-input'; // change to id and attach event listener
-  // add placeholder ??
   commentFieldYes.id = 'comment-field-yes' + dilemmaJSON._id;
   commentFormClassYes.appendChild(commentFieldYes);
 
   // 'Post' button for yes comments
   const submitCommentYes = document.createElement('input');
-  submitCommentYes.id = 'submit-comment-yes'; // change to id and add event listener
+  submitCommentYes.id = 'submit-comment-yes-' + dilemmaJSON._id; //  add event listener
   submitCommentYes.className = 'comment-button';
   submitCommentYes.value = 'Post';
   submitCommentYes.type = 'Button';
+  submitCommentYes.placeholder = 'Add your comment…';
   commentFormClassYes.appendChild(submitCommentYes);
 
   // this is where the comments will be added to the yes column -- the list
@@ -200,19 +207,22 @@ function dilemmaDOMObject (dilemmaJSON){
   yesComments.appendChild(commentDOMObject(anonCommentJSON));
 
   // -------------------- NO COLUMN BEGINS -----------------------------
-  const colNo = document.createElement('div');
-  colNo.className = 'col'; 
-  debateSection.appendChild(colNo);
+  const colColNo = document.createElement('div');
+  colColNo.className = 'col'; 
+  debateSection.appendChild(colColNo);
 
+  // div that contains title of no column and no #votes tag
   const colTitleNo = document.createElement('div');
   colTitleNo.className = 'col-title'; 
-  colNo.appendChild(colTitleNo);
+  colColNo.appendChild(colTitleNo);
 
+  // title of no column: NO
   const boldSectionTitleNo = document.createElement('div');
   boldSectionTitleNo.className = 'bold-section-title'; 
   boldSectionTitleNo.innerText = 'NO';
   colTitleNo.appendChild(boldSectionTitleNo);
 
+  // #votes tag (no column)
   const noVoteTag = document.createElement('div');
   noVoteTag.className = 'no-vote-tag'; 
   noVoteTag.innerText = (dilemmaJSON.votes_no) + ' votes';
@@ -220,7 +230,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   // overall form for NO
   const commentFormNo = document.createElement('form');
-  colNo.appendChild(commentFormNo);
+  colColNo.appendChild(commentFormNo);
 
   // the overall class for the no form
   const commentFormClassNo = document.createElement('div');
@@ -236,10 +246,17 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const submitCommentNo = document.createElement('input');
   submitCommentNo.className = 'comment-button'
+  submitCommentNo.id = 'submit-comment-no-' + dilemmaJSON._id; //  add event listener
   submitCommentNo.value = 'Post';
   submitCommentNo.type = 'Button';
-  // add placeholder ??
+  submitCommentNo.placeholder = 'Add your comment…';
   commentFormNo.appendChild(submitCommentNo);
+
+  // where the comments will be added to the no column -- no list
+  const noComments = document.createElement('div');
+  noComments.id = 'comments-no' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
+  colColNo.appendChild(noComments);
+
 
   return newDilemma;
 }
