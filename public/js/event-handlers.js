@@ -24,12 +24,18 @@ function submitDilemmaHandler() {
     closeComposer();
   }
 
-function getDilemmaByID(id){
-    get('/api/dilemma', {'_id':id}, function(d){
-            console.log(d);
-    });
-}
+function submitCommentHandler(dilemma_id, yes_or_no) {
+    let inputField = document.getElementById('comment-field-' + yes_or_no + dilemma_id);
+    let body = inputField.value;
+    let timestamp = new Date();
 
-function getCommentsByID(id){
-}
+    const data = {
+        timestamp: timestamp,
+        body: body,
+        yes_or_no: yes_or_no,
+        parent_id: dilemma_id,
+    }
 
+    post('/api/comment', data);
+    inputField.value="";
+}

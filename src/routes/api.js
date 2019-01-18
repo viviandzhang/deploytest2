@@ -57,10 +57,7 @@ router.post('/dilemma', function(req, res) {
 
 // COMMENTS
 router.get('/comments', function(req, res) {
-    Comment.find({ 
-        parent_id: req.query.parent_id,
-        yes_or_no: req.query.yes_or_no
-    }, function(err, comments) {
+    Comment.find({ parent_id: req.query.parent_id }, function(err, comments) {
         res.send(comments);
     })
 })
@@ -70,11 +67,11 @@ router.post('/comment', function(req, res) {
         'creator_id'      : 'anon id',
         'creator_alias'   : 'Anonymous',
         'creator_color'   : 'pink',
-        'timestamp'       : null,
-        'body'            : 'Yeppity yep yep yep agree 100% so valid',
-        'yes_or_no'       : 'yes',
+        'timestamp'       : req.body.timestamp,
+        'body'            : req.body.body,
+        'yes_or_no'       : req.body.yes_or_no,
         'votes'           : 0,
-        'parent_id'       : '5c410e27c407c885b68c23b9',
+        'parent_id'       : req.body.parent_id,
     });
     newComment.save(function(err, comment) {
         if (err) console.log(err);
