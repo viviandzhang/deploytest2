@@ -2,11 +2,7 @@
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
-<<<<<<< HEAD
 const session = require('express-session'); 
-=======
-//const session = require('express-session'); //for authentication- cookies
->>>>>>> eacfd0244b1903e6a97aee9848acf032727278dc
 
 // local dependencies
 const db = require('./db');
@@ -21,13 +17,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
-
-
-=======
 //AUTHENTICATION 
-/* set up sessions
->>>>>>> eacfd0244b1903e6a97aee9848acf032727278dc
 app.use(session({
   secret: 'session-secret',
   resave: 'false',
@@ -58,10 +48,6 @@ app.get('/logout', function(req, res) {
   res.redirect('/signin');
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> eacfd0244b1903e6a97aee9848acf032727278dc
 // set routes
 app.use('/', views);
 app.use('/api', api);

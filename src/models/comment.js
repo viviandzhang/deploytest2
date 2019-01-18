@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 // define a schema
 const CommentModelSchema = new mongoose.Schema ({
     creator_id      : String,
-    creator_name    : String,
+    creator_alias   : String,
     timestamp       : Date,
     body            : String,
     yes_or_no       : String,
     votes           : Number,
-    parent          : String,
+    parent_id       : String,
 });
 
 // compile model from schema
