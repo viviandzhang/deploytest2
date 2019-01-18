@@ -38,14 +38,37 @@ function dilemmaDOMObject (dilemmaJSON){
   const newDilemma = document.createElement('div');
   newDilemma.setAttribute('id', dilemmaJSON.creator_id);
   newDilemma.className = 'd-container';
-  //dilemmaDiv.prepend(newDilemma);
 
   const dMeta = document.createElement('div');
   dMeta.className = 'd-meta';
   newDilemma.appendChild(dMeta);
 
+  // --------------------- thumbnail mapping ----------------------------
   const dThumbnail = document.createElement('div');
   dThumbnail.className = 'd-thumbnail';
+  if (dilemmaJSON.creator_color === 'pink'){
+    dThumbnail.style.backgroundColor = '#F3ACE2';
+  }
+  if (dilemmaJSON.creator_color === 'green'){
+    dThumbnail.style.backgroundColor = '#95D74E';
+  }
+  if (dilemmaJSON.creator_color === 'purple'){
+    dThumbnail.style.backgroundColor = '#BA98E0';
+  }
+  if (dilemmaJSON.creator_color === 'blue'){
+    dThumbnail.style.backgroundColor = '#4ABCF3';
+  }
+  if (dilemmaJSON.creator_color === 'yellow'){
+    dThumbnail.style.backgroundColor = '#F2E741';
+  }
+  if (dilemmaJSON.creator_color === 'yellow'){
+    dThumbnail.style.backgroundColor = '#FFB200';
+  }
+  if (dilemmaJSON.creator_color === 'red'){
+    dThumbnail.style.backgroundColor = '#FB6B7B';
+  }
+  
+  
   dMeta.appendChild(dThumbnail);
 
   const dCreator = document.createElement('div');
@@ -53,6 +76,7 @@ function dilemmaDOMObject (dilemmaJSON){
   dCreator.innerText = dilemmaJSON.creator_alias + " Llama";
   dMeta.appendChild(dCreator);
 
+  // ---------------------------- Timestamp -------------------------------
   const dTimestamp = document.createElement('div');
   dTimestamp.className = 'd-timestamp';
   if (dilemmaJSON.timestamp != null) {
@@ -74,9 +98,6 @@ function dilemmaDOMObject (dilemmaJSON){
   statusBadge.className = 'status-badge';
   let statusBadgePercent;
   
-  //statusBadge.innerText = statusBadgePercent + '%';   
-  //dCardStatus.appendChild(statusBadge);
-
   const statusText = document.createElement('div');
   statusText.className = 'status-text';
 
@@ -85,7 +106,6 @@ function dilemmaDOMObject (dilemmaJSON){
     statusBadgePercent = dilemmaJSON.votes_yes / (dilemmaJSON.votes_yes + dilemmaJSON.votes_no);
     statusText.innerText = 'for yes';
     statusBadge.classList.add('status-badge-yes');
-
   }
   else{
     statusBadgePercent = dilemmaJSON.votes_no / (dilemmaJSON.votes_yes + dilemmaJSON.votes_no);
@@ -98,6 +118,7 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardStatus.appendChild(statusBadge);
   dCardStatus.appendChild(statusText);
   
+  // --------------------------- do categories --------------------------------
   const dCardCategories = document.createElement('div');
   dCardCategories.className = 'd-card-categories';
   let categoriesString = '';
@@ -109,7 +130,7 @@ function dilemmaDOMObject (dilemmaJSON){
       categoriesString += (dilemmaJSON.categories)[i] + ' · ';
     }
   }
-  dCardCategories.innerText = categoriesString;  // ------- fix
+  dCardCategories.innerText = categoriesString;  
   newDCardExpanded.appendChild(dCardCategories);
 
   const dCardTitle = document.createElement('div');
@@ -123,7 +144,7 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
-  console.log(dCardBody.clientHeight);
+  // ----------------------- truncation ---------------------------------
   if (dilemmaJSON.body.length >= 420) {
     dCardBody.classList.add('truncated');
   }
@@ -131,7 +152,6 @@ function dilemmaDOMObject (dilemmaJSON){
   let dCardExpandFooter = document.createElement('div');
   dCardExpandFooter.className = 'd-card-expand-footer';
   dCardExpandFooter.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
-  //console.log('expand-footer-' + dilemmaJSON._id);
   newDCardExpanded.appendChild(dCardExpandFooter);
 
   const expandSectionTitle = document.createElement('div');
@@ -140,11 +160,11 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardExpandFooter.appendChild(expandSectionTitle);
 
   const debateSection = document.createElement('div');
-  debateSection.className = 'debate-section';   // -------------- change to not id
+  debateSection.className = 'debate-section';   
   debateSection.setAttribute ('id','debate-section' + dilemmaJSON._id);
   newDCardExpanded.appendChild(debateSection);
 
-
+  // ---------------------- expand dilemma -------------------------
   dCardExpandFooter.addEventListener('click', function () {
     dCardBody.classList.remove('truncated');
     let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
