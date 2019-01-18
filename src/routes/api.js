@@ -1,6 +1,6 @@
 // dependencies
 const express = require('express');
-const connect = require('connect-ensure-login'); 
+//const connect = require('connect-ensure-login'); 
 
 // models
 const Dilemma = require('../models/dilemma');
