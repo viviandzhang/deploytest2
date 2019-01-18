@@ -119,7 +119,6 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCardBody = document.createElement('div');
   dCardBody.className = 'd-card-body';
-  console.log(dCardBody.clientHeight);
   if (dCardBody.clientHeight >= 76) {
     dCardBody.classList.add('truncated');
   }
@@ -196,6 +195,9 @@ function dilemmaDOMObject (dilemmaJSON){
   submitCommentYes.type = 'Button';
   submitCommentYes.placeholder = 'Add your comment…';
   commentFormClassYes.appendChild(submitCommentYes);
+  submitCommentYes.addEventListener('click', function(){
+    submitCommentHandler(dilemmaJSON._id, 'yes');
+  })
 
   // this is where the comments will be added to the yes column -- the list
   const yesComments = document.createElement('div');
@@ -249,6 +251,9 @@ function dilemmaDOMObject (dilemmaJSON){
   submitCommentNo.type = 'Button';
   submitCommentNo.placeholder = 'Add your comment…';
   commentFormNo.appendChild(submitCommentNo);
+  submitCommentNo.addEventListener('click', function(){
+    submitCommentHandler(dilemmaJSON._id, 'no');
+  })
 
   // where the comments will be added to the no column -- no list
   const noComments = document.createElement('div');
