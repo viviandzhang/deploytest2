@@ -98,8 +98,6 @@ function dilemmaDOMObject (dilemmaJSON){
 
   dCardStatus.appendChild(statusBadge);
   dCardStatus.appendChild(statusText);
-
-  
   
   const dCardCategories = document.createElement('div');
   dCardCategories.className = 'd-card-categories';
@@ -194,6 +192,8 @@ function dilemmaDOMObject (dilemmaJSON){
   commentYes.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
   colColYes.appendChild(commentYes);
 
+  commentYes.appendChild(commentDOMObject(anonCommentJSON));
+
   const col = document.createElement('div');
   col.className = 'col'; 
   debateSection.appendChild(col);
@@ -235,25 +235,27 @@ function dilemmaDOMObject (dilemmaJSON){
   return newDilemma;
 }
 
+let anonCommentJSON = {"_id":"5c423d9146a65c910fc60418",
+                        "creator_id":"anon id",
+                        "creator_alias":"Anonymous",
+                        "creator_color":"pink",
+                        "timestamp":null,
+                        "body":"Yeppity yep yep yep agree 100% so valid",
+                        "yes_or_no":"yes",
+                        "votes": 0,
+                        "parent_id":"5c410e27c407c885b68c23b9",
+                        "__v":{"$numberInt":"0"}};
+
 function commentDOMObject (commentJSON) {
-  
-    // gets the comment from the comment composer:
-    const commentValue = document.getElementById('comment-field-yes').value;
-    document.getElementById('comment-field-yes').value = '';
-  
-    // gets overall comment div
-    // const commentsDiv = document.getElementById('comment-yes');
-  
-    // switched to CREATE commentDiv
     commentDiv = document.createElement('div');
     commentDiv.setAttribute('id', commentJSON._id);
   
     const newComment = document.createElement('div');
     newComment.className = 'comment-wrapper';
-    commentsDiv.prepend(newComment);
+    commentDiv.prepend(newComment);
   
     const commentText = document.createElement('div');
-    commentText.innerText = commentValue;
+    commentText.innerText = commentJSON.body;
     commentText.className = 'comment-body';
     newComment.appendChild(commentText);
   
@@ -280,7 +282,9 @@ function commentDOMObject (commentJSON) {
   
     const commentAuthor = document.createElement('span');
     commentAuthor.className = 'comment-author';
-    commentAuthor.innerText = 'Quirky Lllama posted at ' + hourPost + ":" + minutePost;
+    commentAuthor.innerText = commentJSON.creator_alias + ' posted ' + timeSince(new Date(commentJSON.timestamp));
     commentMeta.appendChild(commentAuthor);
+
+    return commentDiv;
   
   }

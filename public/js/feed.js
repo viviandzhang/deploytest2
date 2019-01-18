@@ -61,8 +61,6 @@ function renderStories() {
     for (let i = 0; i < dArray.length; i++) {
       const currentDilemma = dArray[i];
       dilemmaDiv.prepend(dilemmaDOMObject(currentDilemma));
-
-
     }
   });
 }
