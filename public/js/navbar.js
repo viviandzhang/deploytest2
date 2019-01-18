@@ -22,7 +22,7 @@ function newNavbarItem(text, url) {
       }
     });
   }
-  renderNavbar(user); 
+
   
 /*
   <nav>
