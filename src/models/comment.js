@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const CommentModelSchema = new mongoose.Schema ({
     creator_id      : String,
     creator_alias   : String,
+    creator_color   : String,
     timestamp       : Date,
     body            : String,
     yes_or_no       : String,

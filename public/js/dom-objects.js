@@ -92,21 +92,6 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
-  /*
-  const topComments = document.createElement('div');
-  topComments.className = 'top-comments';
-  newDCardExpanded.appendChild(topComments);
-
-  const sectionTitle = document.createElement('div');
-  sectionTitle.className = 'section-title';
-  sectionTitle.innerText = 'TOP COMMENTS'; 
-  topComments.appendChild(sectionTitle);
-
-  const dCardCommentCompact = document.createElement('div'); // might need to add id here
-  dCardCommentCompact.className = 'section-title';
-  topComments.appendChild(dCardCommentCompact);
-  */
-
   let dCardExpandFooter = document.createElement('div');
   dCardExpandFooter.className = 'd-card-expand-footer';
   dCardExpandFooter.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
@@ -119,31 +104,20 @@ function dilemmaDOMObject (dilemmaJSON){
   expandSectionTitle.innerText = "EXPAND TO SEE OTHER LLAMAS' OPINIONS";
   dCardExpandFooter.appendChild(expandSectionTitle);
 
-  //fix this ahhh:
-  //const expandFooterNew = document.getElementById ('d-card-expand-footer-2');
-  //expandFooterNew.addEventListener('click', expandDilemma);
-
   const debateSection = document.createElement('div');
   debateSection.className = 'debate-section';   // -------------- change to not id
   debateSection.setAttribute ('id','debate-section' + dilemmaJSON._id);
   newDCardExpanded.appendChild(debateSection);
 
-  /*
-  // ---------------- listener for expanding footer ---------------------------------------
 
-  const expandFooterNew = document.getElementById ('expand-footer' + dilemmaJSON._id);
-  expandFooterNew.addEventListener('click', function () {
+  dCardExpandFooter.addEventListener('click', function () {
     console.log('expanding');
     let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
     debateSection.style.display = "flex";
 
-    let dCardExpandFooter = document.getElementById ('expand-footer' + dilemmaJSON._id);
     dCardExpandFooter.style.display = "none";
-
-    //let topComments = document.getElementById ('top-comments');
-    //topComments.style.display = "none";
   });
-  */
+
   
 
   const colColYes = document.createElement('div');

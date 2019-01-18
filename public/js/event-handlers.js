@@ -17,11 +17,16 @@ function submitDilemmaHandler() {
     }
 
     post('/api/dilemma', data);
-    console.log(data);
+
+    closeComposer();
   }
 
 function getDilemmaByID(id){
     get('/api/dilemma', {'_id':id}, function(d){
             console.log(d);
     });
+}
+
+function getCommentsByID(id){
+    
 }
