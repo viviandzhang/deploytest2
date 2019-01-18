@@ -49,8 +49,21 @@ const cancelNewDilemma = document.getElementById('cancel-button');
 cancelNewDilemma.addEventListener('click', closeComposer)
 // Post dilemma                       -------------------- uncomment later
 const postDilemma = document.getElementById('post-button');
-//postDilemma.addEventListener('click', createNewDilemma);
+postDilemma.addEventListener('click', submitDilemmaHandler);
 
+// ------- Render feed ------
+
+function renderStories() {
+  let dilemmaDiv = document.getElementById('feed');
+
+  get('/api/dilemmas', {}, function(dArray) {
+    for (let i = 0; i < dArray.length; i++) {
+      const currentDilemma = dArray[i];
+      dilemmaDiv.prepend(dilemmaDOMObject(currentDilemma));
+    }
+  });
+}
+renderStories();
 // -------- Expanding a dilemma ---------
 function expandDilemma(dilemma_id){
   let debateSection = document.getElementById('debate-section');

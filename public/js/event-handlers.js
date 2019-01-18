@@ -1,8 +1,27 @@
 function submitDilemmaHandler() {
-    const data = {
-      title: "Should I do X thing?",
-      body: "Hello world, this is a fake new dilemma"
+    let title = document.getElementById('comp-title').value;
+    let body = document.getElementById('comp-body').value;
+    let selectedCategories = document.getElementsByClassName('comp-categories comp-categories-selected');
+
+    let selectedCategoriesArray = [];
+
+    for (let i=0; i<selectedCategories.length; i++) {
+        categoryName = selectedCategories[i].innerHTML;
+        selectedCategoriesArray.push(categoryName);
     }
+
+    const data = {
+      title: title,
+      body: body,
+      categories: selectedCategoriesArray,
+    }
+
     post('/api/dilemma', data);
-    console.log('this is working')
+    console.log(data);
   }
+
+function getDilemmaByID(id){
+    get('/api/dilemma', {'_id':id}, function(d){
+            console.log(d);
+    });
+}
