@@ -40,7 +40,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCreator = document.createElement('div');
   dCreator.className = 'd-creator';
-  dCreator.innerText = dilemmaJSON.creator_alias + " Llamma";
+  dCreator.innerText = dilemmaJSON.creator_alias + " Llama";
   dMeta.appendChild(dCreator);
 
   const dTimestamp = document.createElement('div');
@@ -92,6 +92,7 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
+  /*
   const topComments = document.createElement('div');
   topComments.className = 'top-comments';
   newDCardExpanded.appendChild(topComments);
@@ -104,6 +105,7 @@ function dilemmaDOMObject (dilemmaJSON){
   const dCardCommentCompact = document.createElement('div'); // might need to add id here
   dCardCommentCompact.className = 'section-title';
   topComments.appendChild(dCardCommentCompact);
+  */
 
   let dCardExpandFooter = document.createElement('div');
   dCardExpandFooter.className = 'd-card-expand-footer';
@@ -114,7 +116,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const expandSectionTitle = document.createElement('div');
   expandSectionTitle.className = 'section-title';
-  expandSectionTitle.innerText = 'EXPAND TO SEE X MORE';
+  expandSectionTitle.innerText = "EXPAND TO SEE OTHER LLAMAS' OPINIONS";
   dCardExpandFooter.appendChild(expandSectionTitle);
 
   //fix this ahhh:

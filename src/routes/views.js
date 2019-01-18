@@ -13,4 +13,8 @@ router.get('/signin', function (req, res) {
     res.sendFile('signin.html', { root: 'src/views' });
 });
 
+router.get('/static-feed', function (req, res) {
+    res.sendFile('staticFeed.html', { root: 'src/views' });
+});
+
 module.exports = router;
