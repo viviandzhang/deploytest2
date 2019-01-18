@@ -1,6 +1,6 @@
 // dependencies
 const express = require('express');
-//const connect = require('connect-ensure-login'); }authentication??
+const connect = require('connect-ensure-login'); 
 
 // models
 const Dilemma = require('../models/dilemma');
@@ -21,15 +21,7 @@ router.get('/whoami', function(req, res) {
     }
   });
 
-  
- router.get('/user', function(req, res) {
-    res.send({
-      _id: 'anonid',
-      name: 'Anonymous',
-      adjetive: 'anon was here',
-      color: 'Anon was here',
-    });
-  });
+
 
 // Dilemmas:
 router.get('/dilemmas', function(req, res) {
