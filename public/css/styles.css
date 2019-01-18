@@ -90,7 +90,7 @@ nav {
 .d-container {
     display: flex;
     flex-direction: row;
-    margin-right: 20px;
+    margin: 20px;
     justify-content: flex-end;
 }
 
@@ -124,14 +124,15 @@ nav {
     clear: right;
 }
 
+
 .d-card-expanded {
     width: 650px;
     height: max-content;
     background-color: white;
     border-radius: 3px;
     border: 1px solid #CED9E0;
-    margin: 20px;
     /*margin-left: 130px;*/
+    margin-left: 20px;
     padding: 20px;
     padding-bottom: 0px;
     float: right;

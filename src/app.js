@@ -2,7 +2,10 @@
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 96bc6305347fd662bbcabc90929a76647c1408ea
 //const session = require('express-session'); //for authentication- cookies
 
 
@@ -19,6 +22,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 96bc6305347fd662bbcabc90929a76647c1408ea
 //AUTHENTICATION 
 /* set up sessions
 app.use(session({
@@ -51,6 +58,10 @@ app.get('/logout', function(req, res) {
   res.redirect('/signin');
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 96bc6305347fd662bbcabc90929a76647c1408ea
 // set routes
 app.use('/', views);
 app.use('/api', api);
