@@ -2,10 +2,7 @@
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
-<<<<<<< HEAD
-//const session = require('express-session'); //for authentication- cookies
-=======
->>>>>>> dc0faf6efe0a4d93e451aa0391c132180b57a214
+const session = require('express-session'); 
 
 // local dependencies
 const db = require('./db');
@@ -20,16 +17,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
 
-//AUTHENTICATION 
-/* set up sessions
+
 app.use(session({
   secret: 'session-secret',
   resave: 'false',
   saveUninitialized: 'true'
 }));
-*/
+
 // hook up passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -55,8 +50,6 @@ app.get('/logout', function(req, res) {
 });
 
 
-=======
->>>>>>> dc0faf6efe0a4d93e451aa0391c132180b57a214
 // set routes
 app.use('/', views);
 app.use('/api', api);

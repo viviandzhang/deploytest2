@@ -3,6 +3,7 @@ function main() {
       console.log(user);
       renderNavbar(user);
       renderStories(user);
+
     });
   }
   
