@@ -120,6 +120,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCardBody = document.createElement('div');
   dCardBody.className = 'd-card-body';
+  dCardBody.classList.add('truncated');
   dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
 
@@ -142,7 +143,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
 
   dCardExpandFooter.addEventListener('click', function () {
-    console.log('expanding');
+    dCardBody.classList.remove('truncated');
     let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
     debateSection.style.display = "flex";
 
@@ -153,54 +154,59 @@ function dilemmaDOMObject (dilemmaJSON){
   colColYes.className = 'col col-yes';
   debateSection.appendChild(colColYes);
 
-  const colTitle = document.createElement('div');
-  colTitle.className = 'col-title';
-  colColYes.appendChild(colTitle);
+  const colTitleYes = document.createElement('div');
+  colTitleYes.className = 'col-title';
+  colColYes.appendChild(colTitleYes);
 
-  const boldSectionTitle = document.createElement('div');
-  boldSectionTitle.className = 'bold-section-title';
-  boldSectionTitle.innerText = 'YES';
-  colTitle.appendChild(boldSectionTitle);
+  const boldSectionTitleYes = document.createElement('div');
+  boldSectionTitleYes.className = 'bold-section-title';
+  boldSectionTitleYes.innerText = 'YES';
+  colTitleYes.appendChild(boldSectionTitleYes);
 
   const yesVoteTag = document.createElement('div');
   yesVoteTag.className = 'yes-vote-tag';
   yesVoteTag.innerText = (dilemmaJSON.votes_yes) + ' votes';
-  colTitle.appendChild(yesVoteTag);
+  colTitleYes.appendChild(yesVoteTag);
 
-  const commentForm = document.createElement('form');
-  colColYes.appendChild(commentForm);
+  // the form for yes
+  const commentFormYes = document.createElement('form');
+  colColYes.appendChild(commentFormYes);
 
-  const commentFormClass = document.createElement('div');
-  commentFormClass.className = 'comment-form';
-  commentForm.appendChild(commentFormClass);
+  // overall class for the form
+  const commentFormClassYes = document.createElement('div');
+  commentFormClassYes.className = 'comment-form';
+  commentFormYes.appendChild(commentFormClassYes);
 
+  // comment field for yes -- where you input comments
   const commentFieldYes = document.createElement('input');
   commentFieldYes.className = 'comment-field-yes comment-input'; // change to id and attach event listener
   // add placeholder ??
   commentFieldYes.id = 'comment-field-yes' + dilemmaJSON._id;
-  commentFormClass.appendChild(commentFieldYes);
+  commentFormClassYes.appendChild(commentFieldYes);
 
+  // 'Post' button for yes comments
   const submitCommentYes = document.createElement('input');
   submitCommentYes.id = 'submit-comment-yes'; // change to id and add event listener
   submitCommentYes.className = 'comment-button';
   submitCommentYes.value = 'Post';
   submitCommentYes.type = 'Button';
-  // add placeholder ??
-  commentFormClass.appendChild(submitCommentYes);
+  commentFormClassYes.appendChild(submitCommentYes);
 
-  const commentYes = document.createElement('div');
-  commentYes.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
-  colColYes.appendChild(commentYes);
+  // this is where the comments will be added to the yes column -- the list
+  const yesComments = document.createElement('div');
+  yesComments.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
+  colColYes.appendChild(yesComments);
 
   commentYes.appendChild(commentDOMObject(anonCommentJSON));
 
-  const col = document.createElement('div');
-  col.className = 'col'; 
-  debateSection.appendChild(col);
+  // -------------------- NO COLUMN BEGINS -----------------------------
+  const colNo = document.createElement('div');
+  colNo.className = 'col'; 
+  debateSection.appendChild(colNo);
 
   const colTitleNo = document.createElement('div');
   colTitleNo.className = 'col-title'; 
-  col.appendChild(colTitleNo);
+  colNo.appendChild(colTitleNo);
 
   const boldSectionTitleNo = document.createElement('div');
   boldSectionTitleNo.className = 'bold-section-title'; 
@@ -212,18 +218,21 @@ function dilemmaDOMObject (dilemmaJSON){
   noVoteTag.innerText = (dilemmaJSON.votes_no) + ' votes';
   colTitleNo.appendChild(noVoteTag);
 
-  const formNo = document.createElement('form');
-  col.appendChild(formNo);
+  // overall form for NO
+  const commentFormNo = document.createElement('form');
+  colNo.appendChild(commentFormNo);
 
-  const commentFormNo = document.createElement('div');
-  commentFormNo.className = 'comment-form'; 
-  formNo.appendChild(commentFormNo);
+  // the overall class for the no form
+  const commentFormClassNo = document.createElement('div');
+  commentFormClassNo.className = 'comment-form'; 
+  commentFormNo.appendChild(commentFormClassNo);
 
+  // the input field for no
   const commentFieldNo = document.createElement('input');
   commentFieldNo.className = 'comment-field-no comment-input'; // change to id and attach event listener
   commentFieldNo.id = 'comment-field-no' + dilemmaJSON._id;
   // add placeholder ??
-  commentFormNo.appendChild(commentFieldNo);
+  commentFormClassNo.appendChild(commentFieldNo);
 
   const submitCommentNo = document.createElement('input');
   submitCommentNo.className = 'comment-button'

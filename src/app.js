@@ -3,6 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 const session = require('express-session'); 
+//const session = require('express-session'); //for authentication- cookies
 
 // local dependencies
 const db = require('./db');
@@ -16,6 +17,8 @@ const app = express();
 // set POST request body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
 
 //AUTHENTICATION 
 app.use(session({
@@ -47,6 +50,7 @@ app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/signin');
 });
+
 
 // set routes
 app.use('/', views);

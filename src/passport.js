@@ -19,7 +19,8 @@ passport.use(new GoogleStrategy({
       user = new User({
         name: profile.displayName,//should change to llama name-- get element by ID? 
         googleid: profile.id,
-        color: 'blue'
+        adjective: null,
+        color: null
       });
 
       user.save(function (err) {
