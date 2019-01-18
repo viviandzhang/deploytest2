@@ -8,13 +8,6 @@ const Dilemma = require('../models/dilemma');
 
 const router = express.Router();
 
-// get Dilemmas:
-router.get('/dilemmas', function(req, res) {
-    Dilemma.find({}, function(err, dilemmas) {
-        res.send(dilemmas);
-    });
-});
-
 
 // user/authentication stuff- don't completely understand
 //make/whoam i route return get user 
@@ -27,7 +20,7 @@ router.get('/whoami', function(req, res) {
       res.send({});
     }
   });
-  
+
   
  router.get('/user', function(req, res) {
     res.send({
@@ -37,6 +30,18 @@ router.get('/whoami', function(req, res) {
     });
   });
 
+// Dilemmas:
+router.get('/dilemmas', function(req, res) {
+    Dilemma.find({}, function(err, dilemmas) {
+        res.send(dilemmas);
+    });
+});
+
+router.get('/dilemma', function(req, res) {
+    Dilemma.findOne({_id: req.query._id}, function(err, dilemma) {
+        res.send(dilemma);
+    })
+})
 
 router.post('/dilemma', function(req, res) {
     const newDilemma = new Dilemma({
@@ -44,7 +49,7 @@ router.post('/dilemma', function(req, res) {
         'creator_color'     : 'pink',
         'creator_alias'     : 'Anon',
         'timestamp'         : null,
-        'categories'        : ['Uncategorized'],
+        'categories'        : req.body.categories,
         'title'             : req.body.title,
         'body'              : req.body.body,
         'active'            : true,

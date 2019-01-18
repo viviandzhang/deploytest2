@@ -87,9 +87,17 @@ nav {
     margin-top: 40px;
 }
 
-.d-meta {
-    float: left;
+.d-container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: flex-end;
 }
+
+.d-meta {
+
+}
+
 
 .d-thumbnail {
     width: 40px;
@@ -116,16 +124,18 @@ nav {
     clear: right;
 }
 
-.d-card, .d-card-expanded {
+
+.d-card-expanded {
     width: 650px;
     height: max-content;
     background-color: white;
     border-radius: 3px;
     border: 1px solid #CED9E0;
-    margin: 20px;
-    margin-left: 110px;
+    /*margin-left: 130px;*/
+    margin-left: 20px;
     padding: 20px;
     padding-bottom: 0px;
+    float: right;
 }
 
 .d-card-status {
@@ -184,11 +194,11 @@ nav {
     font-weight: 600;
 }
 
-#debate-section {
+.debate-section {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 20px;
-    /*display: none; change this later ????? */
+    display: none; /* change this later ????? */
 }
 
 .col {

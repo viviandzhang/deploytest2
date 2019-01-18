@@ -40,7 +40,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCreator = document.createElement('div');
   dCreator.className = 'd-creator';
-  dCreator.innerText = dilemmaJSON.creator_alias;
+  dCreator.innerText = dilemmaJSON.creator_alias + " Llamma";
   dMeta.appendChild(dCreator);
 
   const dTimestamp = document.createElement('div');
@@ -72,7 +72,12 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardCategories.className = 'd-card-categories';
   let categoriesString = '';
   for (let i = 0; i < (dilemmaJSON.categories).length; i++){
-    categoriesString += (dilemmaJSON.categories)[i];
+    if (i === (dilemmaJSON.categories).length - 1){
+      categoriesString += (dilemmaJSON.categories)[i];
+    }
+    else{
+      categoriesString += (dilemmaJSON.categories)[i] + ' · ';
+    }
   }
   dCardCategories.innerText = categoriesString;  // ------- fix
   newDCardExpanded.appendChild(dCardCategories);
@@ -100,9 +105,12 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardCommentCompact.className = 'section-title';
   topComments.appendChild(dCardCommentCompact);
 
-  const dCardExpandFooter = document.createElement('div');
+  let dCardExpandFooter = document.createElement('div');
   dCardExpandFooter.className = 'd-card-expand-footer';
+  dCardExpandFooter.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
+  //console.log('expand-footer-' + dilemmaJSON._id);
   newDCardExpanded.appendChild(dCardExpandFooter);
+
 
   const expandSectionTitle = document.createElement('div');
   expandSectionTitle.className = 'section-title';
@@ -110,12 +118,31 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardExpandFooter.appendChild(expandSectionTitle);
 
   //fix this ahhh:
-  const expandFooterNew = document.getElementById ('d-card-expand-footer-2');
+  //const expandFooterNew = document.getElementById ('d-card-expand-footer-2');
   //expandFooterNew.addEventListener('click', expandDilemma);
 
   const debateSection = document.createElement('div');
-  debateSection.id = 'debate-section';   // -------------- change to not id
+  debateSection.className = 'debate-section';   // -------------- change to not id
+  debateSection.setAttribute ('id','debate-section' + dilemmaJSON._id);
   newDCardExpanded.appendChild(debateSection);
+
+  /*
+  // ---------------- listener for expanding footer ---------------------------------------
+
+  const expandFooterNew = document.getElementById ('expand-footer' + dilemmaJSON._id);
+  expandFooterNew.addEventListener('click', function () {
+    console.log('expanding');
+    let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
+    debateSection.style.display = "flex";
+
+    let dCardExpandFooter = document.getElementById ('expand-footer' + dilemmaJSON._id);
+    dCardExpandFooter.style.display = "none";
+
+    //let topComments = document.getElementById ('top-comments');
+    //topComments.style.display = "none";
+  });
+  */
+  
 
   const colColYes = document.createElement('div');
   colColYes.className = 'col col-yes';
@@ -123,7 +150,78 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const colTitle = document.createElement('div');
   colTitle.className = 'col-title';
-  debateSection.appendChild(colColYes);
+  colColYes.appendChild(colTitle);
+
+  const boldSectionTitle = document.createElement('div');
+  boldSectionTitle.className = 'bold-section-title';
+  boldSectionTitle.innerText = 'YES';
+  colTitle.appendChild(boldSectionTitle);
+
+  const yesVoteTag = document.createElement('div');
+  yesVoteTag.className = 'yes-vote-tag';
+  yesVoteTag.innerText = (dilemmaJSON.votes_yes) + ' votes';
+  colTitle.appendChild(yesVoteTag);
+
+  const commentForm = document.createElement('form');
+  colColYes.appendChild(commentForm);
+
+  const commentFormClass = document.createElement('div');
+  commentFormClass.className = 'comment-form';
+  commentForm.appendChild(commentFormClass);
+
+  const commentFieldYes = document.createElement('input');
+  commentFieldYes.className = 'comment-field-yes comment-input'; // change to id and attach event listener
+  // add placeholder ??
+  commentFormClass.appendChild(commentFieldYes);
+
+  const submitCommentYes = document.createElement('input');
+  submitCommentYes.id = 'submit-comment-yes'; // change to id and add event listener
+  submitCommentYes.className = 'comment-button';
+  submitCommentYes.value = 'Post';
+  submitCommentYes.type = 'Button';
+  // add placeholder ??
+  commentFormClass.appendChild(submitCommentYes);
+
+  const commentYes = document.createElement('div');
+  commentYes.id = 'commentYes'; // change this ahhhh -- might not need to be here
+  colColYes.appendChild(commentYes);
+
+  const col = document.createElement('div');
+  col.className = 'col'; 
+  debateSection.appendChild(col);
+
+  const colTitleNo = document.createElement('div');
+  colTitleNo.className = 'col-title'; 
+  col.appendChild(colTitleNo);
+
+  const boldSectionTitleNo = document.createElement('div');
+  boldSectionTitleNo.className = 'bold-section-title'; 
+  boldSectionTitleNo.innerText = 'NO';
+  colTitleNo.appendChild(boldSectionTitleNo);
+
+  const noVoteTag = document.createElement('div');
+  noVoteTag.className = 'no-vote-tag'; 
+  noVoteTag.innerText = (dilemmaJSON.votes_no) + ' votes';
+  colTitleNo.appendChild(noVoteTag);
+
+  const formNo = document.createElement('form');
+  col.appendChild(formNo);
+
+  const commentFormNo = document.createElement('div');
+  commentFormNo.className = 'comment-form'; 
+  formNo.appendChild(commentFormNo);
+
+  const commentInputNo = document.createElement('input');
+  commentInputNo.className = 'comment-input'; // change to id and attach event listener
+  // add placeholder ??
+  commentFormNo.appendChild(commentInputNo);
+
+  const submitCommentNo = document.createElement('input');
+  submitCommentNo.className = 'comment-button'
+  submitCommentNo.value = 'Post';
+  submitCommentNo.type = 'Button';
+  // add placeholder ??
+  commentFormNo.appendChild(submitCommentNo);
 
   return newDilemma;
 }
