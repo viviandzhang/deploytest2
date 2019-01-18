@@ -60,11 +60,14 @@ function renderStories() {
     for (let i = 0; i < dArray.length; i++) {
       const currentDilemma = dArray[i];
       dilemmaDiv.prepend(dilemmaDOMObject(currentDilemma));
+
+
     }
   });
 }
 renderStories();
 // -------- Expanding a dilemma ---------
+/*
 function expandDilemma(dilemma_id){
   let debateSection = document.getElementById('debate-section');
   debateSection.style.display = "flex";
@@ -78,4 +81,5 @@ function expandDilemma(dilemma_id){
 
 const expandFooter = document.getElementById ('d-card-expand-footer');
 expandFooter.addEventListener('click', expandDilemma);
+*/
 

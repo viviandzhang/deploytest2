@@ -194,11 +194,11 @@ nav {
     font-weight: 600;
 }
 
-#debate-section {
+.debate-section {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 20px;
-    /*display: none; change this later ????? */
+    display: none; /* change this later ????? */
 }
 
 .col {
