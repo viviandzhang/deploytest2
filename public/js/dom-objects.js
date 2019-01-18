@@ -197,7 +197,7 @@ function dilemmaDOMObject (dilemmaJSON){
   yesComments.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
   colColYes.appendChild(yesComments);
 
-  commentYes.appendChild(commentDOMObject(anonCommentJSON));
+  yesComments.appendChild(commentDOMObject(anonCommentJSON));
 
   // -------------------- NO COLUMN BEGINS -----------------------------
   const colNo = document.createElement('div');
