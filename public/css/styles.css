@@ -143,7 +143,6 @@ nav {
 }
 
 .status-badge {
-    background-color: #49E4A9;
     border-radius: 3px;
     width: 60px;
     height: max-content;
@@ -152,6 +151,14 @@ nav {
     font-size: 18px;
     font-weight: 600;
     text-align: center;
+}
+
+.status-badge-yes{
+    background-color: #49E4A9;
+}
+
+.status-badge-no {
+    background-color: #FB6B7B;
 }
 
 .status-text {

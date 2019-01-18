@@ -60,13 +60,35 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const statusBadge = document.createElement('div');
   statusBadge.className = 'status-badge';
-  statusBadge.innerText = '50%';   // -----------------fix
-  dCardStatus.appendChild(statusBadge);
+  let statusBadgePercent;
+  
+  //statusBadge.innerText = statusBadgePercent + '%';   
+  //dCardStatus.appendChild(statusBadge);
 
   const statusText = document.createElement('div');
   statusText.className = 'status-text';
-  statusText.innerText = 'for pro'; // -----------------fix
+
+  // ----------------------------- do status badge ----------------------------
+  if (dilemmaJSON.votes_yes > dilemmaJSON.votes_no) {
+    statusBadgePercent = dilemmaJSON.votes_yes / (dilemmaJSON.votes_yes + dilemmaJSON.votes_no);
+    statusText.innerText = 'for yes';
+    statusBadge.classList.add('status-badge-yes');
+
+  }
+  else{
+    statusBadgePercent = dilemmaJSON.votes_no / (dilemmaJSON.votes_yes + dilemmaJSON.votes_no);
+    statusText.innerText = 'for no';
+    statusBadge.classList.add('status-badge-no');
+  }
+  statusBadgePercent = Math.floor(statusBadgePercent * 100);
+  statusBadge.innerText = statusBadgePercent + '%'; 
+
+  dCardStatus.appendChild(statusBadge);
   dCardStatus.appendChild(statusText);
+
+  
+  
+
 
   const dCardCategories = document.createElement('div');
   dCardCategories.className = 'd-card-categories';
