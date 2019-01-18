@@ -48,7 +48,7 @@ router.post('/dilemma', function(req, res) {
         'creator_id'        : 'anon_id',
         'creator_color'     : 'pink',
         'creator_alias'     : 'Anon',
-        'timestamp'         : null,
+        'timestamp'         : req.body.timestamp,
         'categories'        : req.body.categories,
         'title'             : req.body.title,
         'body'              : req.body.body,
@@ -74,21 +74,19 @@ router.get('/comments', function(req, res) {
 
 router.post('/comment', function(req, res) {
     const newComment = new Comment({
-        creator_id      : 'anon id',
-        creator_alias   : 'Anonymous',
-        creator_color   : 'pink',
-        timestamp       : null,
-        body            : 'Definitely sacrilegious',
-        yes_or_no       : 'yes',
-        votes           : 0,
-        parent_id       : '5c410e27c407c885b68c23b9',
+        'creator_id'      : 'anon id',
+        'creator_alias'   : 'Anonymous',
+        'creator_color'   : 'pink',
+        'timestamp'       : null,
+        'body'            : 'Yeppity yep yep yep agree 100% so valid',
+        'yes_or_no'       : 'yes',
+        'votes'           : 0,
+        'parent_id'       : '5c410e27c407c885b68c23b9',
     });
-
     newComment.save(function(err, comment) {
         if (err) console.log(err);
     });
-
-    res.sendStatus({});
+    res.send({});
 });
 
 module.exports = router;

@@ -11,19 +11,29 @@ let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
                     "votes_no":{"$numberInt":"4"},
                     "__v":{"$numberInt":"0"}};
 
+// RELATIVE TIMESTAMP
+function timeSince(timeStamp) {
+  var now = new Date(),
+    secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
+  if(secondsPast < 60){
+    return parseInt(secondsPast) + 's';
+  }
+  if(secondsPast < 3600){
+    return parseInt(secondsPast/60) + 'm';
+  }
+  if(secondsPast <= 86400){
+    return parseInt(secondsPast/3600) + 'h';
+  }
+  if(secondsPast > 86400){
+      day = timeStamp.getDate();
+      month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ","");
+      year = timeStamp.getFullYear() == now.getFullYear() ? "" :  " "+timeStamp.getFullYear();
+      return day + " " + month + year;
+  }
+}
+
+// DILEMMA
 function dilemmaDOMObject (dilemmaJSON){
-    // for timestamp
-    /*
-    let d = new Date();
-    let hourPost = d.getHours();
-    let minutePost = d.getMinutes();
-    */
-
-
-  //closeComposer();    // ------------------------ uncomment this later
-
-  //const dilemmaDiv = document.getElementById('feed');
-
   // d-container 
   const newDilemma = document.createElement('div');
   newDilemma.setAttribute('id', dilemmaJSON.creator_id);
@@ -45,8 +55,11 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dTimestamp = document.createElement('div');
   dTimestamp.className = 'd-timestamp';
-  //dTimestamp.innerText = 'Posted at ' + hourPost + ':' + minutePost; ---- date notation
-  dTimestamp.innerText = 'Posted at ' + dilemmaJSON.timestamp;
+  console.log(dilemmaJSON.timestamp);
+  if (dilemmaJSON.timestamp != null) {
+    dTimestamp.innerText = 'Posted ' + timeSince(new Date(dilemmaJSON.timestamp)) + " ago";
+  }
+  
   dMeta.appendChild(dTimestamp);
 
   // d-card-expanded -- within d-container
@@ -88,8 +101,6 @@ function dilemmaDOMObject (dilemmaJSON){
 
   
   
-
-
   const dCardCategories = document.createElement('div');
   dCardCategories.className = 'd-card-categories';
   let categoriesString = '';
@@ -140,8 +151,6 @@ function dilemmaDOMObject (dilemmaJSON){
     dCardExpandFooter.style.display = "none";
   });
 
-  
-
   const colColYes = document.createElement('div');
   colColYes.className = 'col col-yes';
   debateSection.appendChild(colColYes);
@@ -170,6 +179,7 @@ function dilemmaDOMObject (dilemmaJSON){
   const commentFieldYes = document.createElement('input');
   commentFieldYes.className = 'comment-field-yes comment-input'; // change to id and attach event listener
   // add placeholder ??
+  commentFieldYes.id = 'comment-field-yes' + dilemmaJSON._id;
   commentFormClass.appendChild(commentFieldYes);
 
   const submitCommentYes = document.createElement('input');
@@ -181,7 +191,7 @@ function dilemmaDOMObject (dilemmaJSON){
   commentFormClass.appendChild(submitCommentYes);
 
   const commentYes = document.createElement('div');
-  commentYes.id = 'commentYes'; // change this ahhhh -- might not need to be here
+  commentYes.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
   colColYes.appendChild(commentYes);
 
   const col = document.createElement('div');
@@ -209,10 +219,11 @@ function dilemmaDOMObject (dilemmaJSON){
   commentFormNo.className = 'comment-form'; 
   formNo.appendChild(commentFormNo);
 
-  const commentInputNo = document.createElement('input');
-  commentInputNo.className = 'comment-input'; // change to id and attach event listener
+  const commentFieldNo = document.createElement('input');
+  commentFieldNo.className = 'comment-field-no comment-input'; // change to id and attach event listener
+  commentFieldNo.id = 'comment-field-no' + dilemmaJSON._id;
   // add placeholder ??
-  commentFormNo.appendChild(commentInputNo);
+  commentFormNo.appendChild(commentFieldNo);
 
   const submitCommentNo = document.createElement('input');
   submitCommentNo.className = 'comment-button'
@@ -224,18 +235,7 @@ function dilemmaDOMObject (dilemmaJSON){
   return newDilemma;
 }
 
-let testDomDilemma = dilemmaDOMObject (anonDilemmaJSON);
-let dilemmaDiv = document.getElementById('feed');
-dilemmaDiv.prepend(testDomDilemma);
-
-
-
-
 function commentDOMObject (commentJSON) {
-    // for timestamp
-    let d = new Date();
-    let hourPost = d.getHours();
-    let minutePost = d.getMinutes();
   
     // gets the comment from the comment composer:
     const commentValue = document.getElementById('comment-field-yes').value;

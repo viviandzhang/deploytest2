@@ -10,10 +10,13 @@ function submitDilemmaHandler() {
         selectedCategoriesArray.push(categoryName);
     }
 
+    let timestamp = new Date();
+
     const data = {
       title: title,
       body: body,
       categories: selectedCategoriesArray,
+      timestamp: timestamp,
     }
 
     post('/api/dilemma', data);
@@ -28,5 +31,5 @@ function getDilemmaByID(id){
 }
 
 function getCommentsByID(id){
-    
 }
+
