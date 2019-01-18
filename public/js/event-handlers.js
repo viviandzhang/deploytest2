@@ -10,14 +10,18 @@ function submitDilemmaHandler() {
         selectedCategoriesArray.push(categoryName);
     }
 
+    let timestamp = new Date();
+
     const data = {
       title: title,
       body: body,
       categories: selectedCategoriesArray,
+      timestamp: timestamp,
     }
 
     post('/api/dilemma', data);
-    console.log(data);
+
+    closeComposer();
   }
 
 function getDilemmaByID(id){
@@ -25,3 +29,7 @@ function getDilemmaByID(id){
             console.log(d);
     });
 }
+
+function getCommentsByID(id){
+}
+

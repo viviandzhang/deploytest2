@@ -55,6 +55,7 @@ postDilemma.addEventListener('click', submitDilemmaHandler);
 
 function renderStories() {
   let dilemmaDiv = document.getElementById('feed');
+  let currentTime = new Date();
 
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
@@ -66,20 +67,3 @@ function renderStories() {
   });
 }
 renderStories();
-// -------- Expanding a dilemma ---------
-/*
-function expandDilemma(dilemma_id){
-  let debateSection = document.getElementById('debate-section');
-  debateSection.style.display = "flex";
-
-  let dCardExpandFooter = document.getElementById ('d-card-expand-footer');
-  dCardExpandFooter.style.display = "none";
-
-  let topComments = document.getElementById ('top-comments');
-  topComments.style.display = "none";
-}
-
-const expandFooter = document.getElementById ('d-card-expand-footer');
-expandFooter.addEventListener('click', expandDilemma);
-*/
-

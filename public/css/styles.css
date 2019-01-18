@@ -143,7 +143,6 @@ nav {
 }
 
 .status-badge {
-    background-color: #49E4A9;
     border-radius: 3px;
     width: 60px;
     height: max-content;
@@ -152,6 +151,14 @@ nav {
     font-size: 18px;
     font-weight: 600;
     text-align: center;
+}
+
+.status-badge-yes{
+    background-color: #49E4A9;
+}
+
+.status-badge-no {
+    background-color: #FB6B7B;
 }
 
 .status-text {
@@ -177,6 +184,25 @@ nav {
 .d-card-body {
     color: #5C7080;
     margin-bottom: 20px;
+}
+
+
+/* Source: https://css-tricks.com/line-clampin/ */
+.truncated {
+    overflow: hidden;
+    position: relative;
+    height: 76px;
+}
+
+.truncated::after {
+    content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 }
 
 .section-title {

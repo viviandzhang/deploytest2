@@ -4,7 +4,7 @@ const express = require('express');
 
 // models
 const Dilemma = require('../models/dilemma');
-//const Comment = require('../models/comment');
+const Comment = require('../models/comment');
 
 const router = express.Router();
 
@@ -49,7 +49,7 @@ router.post('/dilemma', function(req, res) {
         'creator_id'        : 'anon_id',
         'creator_color'     : 'pink',
         'creator_alias'     : 'Anon',
-        'timestamp'         : null,
+        'timestamp'         : req.body.timestamp,
         'categories'        : req.body.categories,
         'title'             : req.body.title,
         'body'              : req.body.body,
@@ -58,6 +58,33 @@ router.post('/dilemma', function(req, res) {
         'votes_no'          : 4
     });
     newDilemma.save(function(err, dilemma) {
+        if (err) console.log(err);
+    });
+    res.send({});
+});
+
+// COMMENTS
+router.get('/comments', function(req, res) {
+    Comment.find({ 
+        parent_id: req.query.parent_id,
+        yes_or_no: req.query.yes_or_no
+    }, function(err, comments) {
+        res.send(comments);
+    })
+})
+
+router.post('/comment', function(req, res) {
+    const newComment = new Comment({
+        'creator_id'      : 'anon id',
+        'creator_alias'   : 'Anonymous',
+        'creator_color'   : 'pink',
+        'timestamp'       : null,
+        'body'            : 'Yeppity yep yep yep agree 100% so valid',
+        'yes_or_no'       : 'yes',
+        'votes'           : 0,
+        'parent_id'       : '5c410e27c407c885b68c23b9',
+    });
+    newComment.save(function(err, comment) {
         if (err) console.log(err);
     });
     res.send({});
