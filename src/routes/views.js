@@ -17,4 +17,8 @@ router.get('/static-feed', function (req, res) {
     res.sendFile('staticFeed.html', { root: 'src/views' });
 });
 
+router.get('/newuser', function (req, res) {
+    res.sendFile('newuser.html', { root: 'src/views' });
+});
+
 module.exports = router;

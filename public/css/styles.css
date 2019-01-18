@@ -14,6 +14,7 @@ nav {
     top: 0;
     display: flex;
     align-items: baseline;
+    z-index: 3;
 }
 
 #nav-wrapper {
@@ -192,6 +193,7 @@ nav {
     overflow: hidden;
     position: relative;
     height: 76px;
+    z-index: 1;
 }
 
 .truncated::after {
@@ -203,6 +205,7 @@ nav {
   width: 30%;
   height: 1.2em;
   background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 80%);
+
 }
 
 .section-title {
@@ -399,7 +402,7 @@ form {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 4; /* Specify a stack order in case you're using a different order for other elements */
     /*cursor: pointer; /* Add a pointer on hover */
   }
 
@@ -421,7 +424,7 @@ form {
     transform: translateX(-50%);
     width: 540px;
     top: 155px;
-    z-index: 3;
+    z-index: 5;
 }
 
 #comp-form{

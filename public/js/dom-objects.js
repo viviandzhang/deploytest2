@@ -119,11 +119,14 @@ function dilemmaDOMObject (dilemmaJSON){
 
   const dCardBody = document.createElement('div');
   dCardBody.className = 'd-card-body';
-  if (dCardBody.clientHeight >= 76) {
-    dCardBody.classList.add('truncated');
-  }
+  
   dCardBody.innerText = dilemmaJSON.body; 
   newDCardExpanded.appendChild(dCardBody);
+
+  console.log(dCardBody.clientHeight);
+  if (dilemmaJSON.body.length >= 420) {
+    dCardBody.classList.add('truncated');
+  }
 
   let dCardExpandFooter = document.createElement('div');
   dCardExpandFooter.className = 'd-card-expand-footer';
