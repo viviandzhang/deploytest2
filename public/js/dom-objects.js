@@ -79,7 +79,6 @@ function dilemmaDOMObject (dilemmaJSON){
   // ---------------------------- Timestamp -------------------------------
   const dTimestamp = document.createElement('div');
   dTimestamp.className = 'd-timestamp';
-  console.log(dilemmaJSON.timestamp);
   if (dilemmaJSON.timestamp != null) {
     dTimestamp.innerText = 'Posted ' + timeSince(new Date(dilemmaJSON.timestamp)) + " ago";
   }
@@ -155,10 +154,9 @@ function dilemmaDOMObject (dilemmaJSON){
   dCardExpandFooter.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
   newDCardExpanded.appendChild(dCardExpandFooter);
 
-
   const expandSectionTitle = document.createElement('div');
   expandSectionTitle.className = 'section-title';
-  expandSectionTitle.innerText = "EXPAND TO SEE OTHER LLAMAS' OPINIONS";
+  expandSectionTitle.innerText = "EXPAND TO SEE OPINIONS";
   dCardExpandFooter.appendChild(expandSectionTitle);
 
   const debateSection = document.createElement('div');
@@ -220,13 +218,16 @@ function dilemmaDOMObject (dilemmaJSON){
   submitCommentYes.type = 'Button';
   submitCommentYes.placeholder = 'Add your comment…';
   commentFormClassYes.appendChild(submitCommentYes);
+  submitCommentYes.addEventListener('click', function(){
+    submitCommentHandler(dilemmaJSON._id, 'yes');
+  })
 
   // this is where the comments will be added to the yes column -- the list
   const yesComments = document.createElement('div');
   yesComments.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
   colColYes.appendChild(yesComments);
 
-  yesComments.appendChild(commentDOMObject(anonCommentJSON));
+  //yesComments.appendChild(commentDOMObject(anonCommentJSON));
 
   // -------------------- NO COLUMN BEGINS -----------------------------
   const colColNo = document.createElement('div');
@@ -273,6 +274,9 @@ function dilemmaDOMObject (dilemmaJSON){
   submitCommentNo.type = 'Button';
   submitCommentNo.placeholder = 'Add your comment…';
   commentFormNo.appendChild(submitCommentNo);
+  submitCommentNo.addEventListener('click', function(){
+    submitCommentHandler(dilemmaJSON._id, 'no');
+  })
 
   // where the comments will be added to the no column -- no list
   const noComments = document.createElement('div');
