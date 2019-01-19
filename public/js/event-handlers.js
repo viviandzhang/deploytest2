@@ -75,7 +75,32 @@ function submitCommentHandler(dilemma_id, yes_or_no) {
             post('/api/comment', data);
         })
     }
-    
-    
     inputField.value="";
+}
+
+function commentVoteHandler(comment_id) {
+    console.log("vote handler for: " + comment_id);
+    alreadyLiked = false;
+
+    get('/api/whoami', {}, function(user) {
+        if (user.googleid!=undefined) {
+            get('/api/userById', {_id:user._id}, function(userDBItem){
+                likedComments = userDBItem.liked_comments;
+                for (let i=0; i<likedComments.length; i++){
+                    if (comment_id === likedComments[i]){
+                        alreadyLiked = true;
+                    }
+                }
+                if (alreadyLiked===false){
+                     post('/api/addVoteToComment', {_id:comment_id}, function(c){
+                         post('/api/addCommentToUser', {_id:userDBItem._id, comment_id:comment_id}, function(d){
+                         console.log("you just liked this " + comment_id);
+                         });
+                     });
+                } else {
+                     console.log("already liked, sorry")
+                }
+            });
+        }
+    });
 }
