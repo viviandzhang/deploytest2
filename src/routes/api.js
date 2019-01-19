@@ -76,4 +76,15 @@ router.post('/comment', function(req, res) {
     res.send({});
 });
 
+router.post('/addVoteToComment', function(req, res) {
+    Comment.findById({_id: req.body._id}, function(err, currentComment){
+        if (err) console.log(err);
+        currentComment.votes = currentComment.votes + 1;
+        currentComment.save(function(err, updatedComment) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+});
+
 module.exports = router;
