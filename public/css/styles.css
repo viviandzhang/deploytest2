@@ -352,10 +352,6 @@ form {
     float: left;
 }
 
-.add-new-button{
-    background-image: url('add.png');
-    color: #ffffff;
-}
 
 .comment-wrapper > .comment-vote {
     top: 0;
