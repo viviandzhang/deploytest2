@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>New User</title>
-    <link rel="stylesheet" href="../..//public/css/signin-styles.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/signin-styles.css">
     
   </head>
   <body>
@@ -10,18 +11,46 @@
      <!--navigation bar--> 
      <nav>
         <div id="nav-wrapper">
-            <div class="nav-item user-header">
-                <div> Dilemma </div>
-                <img src="../../public/css/lama.png" alt="Lama" height="35" width="35">
-                <div> Llama </div>
-            </div>
-            <button id="login-google" class="nav-item">
-                Login with Google
+            <div class="nav-item user-header">Hello, <span class="username">username123!</span></div>
+            
+            <div class="nav-item nav-item-selected"><a href="/">Browse</a></div>
+            <div class="nav-item"><a href="/activity">Your Activity</a></div>
+            <button id="new-dilemma" class="nav-item">
+                Add New Dilemma
               </button>
             
         </div>
       </nav>
 
+      <div id="basic-profile">
+        <img src="../../public/css/lama.png" alt="Lama" height="35" width="35">
+
+        <div id="basic-info">
+          <div id="llama-name"> 
+          <!-- llama name goes here-->
+          </div>
+          <div id="real-name">
+          <!-- real goes here, italics or smth-->
+          </div>
+        </div>
+
+        <div id="num-dilemmas"> </div>
+        <div> Dilemmas </div>
+
+      </div>
+
+      <div id="add-new-button">
+        +
+      </div>
+
   
 </body>
+
+<script src="static/js/dom-objects.js"></script>
+<script src="static/js/event-handlers.js"></script>
+<script src="static/js/api.js"></script>
+<script src="static/js/feed.js"></script>
+<script src="static/js/navbar.js"></script>
+
+
 </html>

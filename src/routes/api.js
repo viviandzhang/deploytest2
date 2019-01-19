@@ -5,6 +5,7 @@ const express = require('express');
 // models
 const Dilemma = require('../models/dilemma');
 const Comment = require('../models/comment');
+const User = require('../models/user');
 
 const router = express.Router();
 
@@ -19,6 +20,22 @@ router.get('/whoami', function(req, res) {
     }
   });
 
+
+router.post('/updateUserName', function(req, res) {
+    User.findById({_id: req.body._id,
+                    adjective: req.body.adjective,
+                    color: req.body.color}, 
+                    function(err, currentUser){
+        if (err) console.log(err);
+        currentUser.adjective = adjective;
+        currentUser.color = color;
+        currentUser.save(function(err, updatedUser) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+
+});
 
 // Dilemmas:
 router.get('/dilemmas', function(req, res) {
