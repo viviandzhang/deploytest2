@@ -8,8 +8,6 @@ const Comment = require('../models/comment');
 
 const router = express.Router();
 
-
-// user/authentication stuff- don't completely understand
 //make/whoam i route return get user 
 router.get('/whoami', function(req, res) {
   
@@ -20,7 +18,6 @@ router.get('/whoami', function(req, res) {
       res.send({});
     }
   });
-
 
 
 // Dilemmas:
@@ -38,16 +35,16 @@ router.get('/dilemma', function(req, res) {
 
 router.post('/dilemma', function(req, res) {
     const newDilemma = new Dilemma({
-        'creator_id'        : 'anon_id',
-        'creator_color'     : 'pink',
-        'creator_alias'     : 'Anon',
+        'creator_id'        : req.body.creator_id,
+        'creator_color'     : req.body.creator_color,
+        'creator_alias'     : req.body.creator_alias,
         'timestamp'         : req.body.timestamp,
         'categories'        : req.body.categories,
         'title'             : req.body.title,
         'body'              : req.body.body,
         'active'            : true,
-        'votes_yes'         : 3,
-        'votes_no'          : 4
+        'votes_yes'         : 0,
+        'votes_no'          : 0
     });
     newDilemma.save(function(err, dilemma) {
         if (err) console.log(err);

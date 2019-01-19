@@ -13,15 +13,18 @@ function newNavbarItem(text, url) {
 
   //CHANGE THESE LINKS TO MATCH WHAT WE HAVE //figure this out...
   //logout button is NOT in navbar, but likely in profile. 
-  function renderNavbar(user) {
+  function renderNavbar() {
 
     get('/api/whoami', {}, function(user) {
-      const navbarDiv = document.getElementsByClassName('username');
+      console.log(user);
+      const navbarDiv = document.getElementById("username");
       if (user.googleid!=undefined) {
         navbarDiv.innerHTML = user.name; 
       }
     });
   }
+
+  renderNavbar();
 
   
 /*

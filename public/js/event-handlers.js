@@ -11,16 +11,39 @@ function submitDilemmaHandler() {
     }
 
     let timestamp = new Date();
+    let creator_alias;
+    let creator_id;
+    let creator_color;
 
-    const data = {
-      title: title,
-      body: body,
-      categories: selectedCategoriesArray,
-      timestamp: timestamp,
-    }
-
-    post('/api/dilemma', data);
-
+    console.log('starting whoami');
+    get('/api/whoami', {}, function(user) {
+        console.log('finishing whoami');
+        if (user.googleid!=undefined) {
+          creator_alias = user.adjective;
+          console.log(creator_alias);
+          creator_id = user._id;
+          creator_color = user.color;
+          console.log(creator_color);
+        } else {
+          creator_alias = "Anon";
+          creator_id = "anon id";
+          creator_color = "pink";
+        }
+        const data = {
+            title: title,
+            body: body,
+            categories: selectedCategoriesArray,
+            timestamp: timestamp,
+            creator_id: creator_id,
+            creator_color: creator_color,
+            creator_alias: creator_alias
+          }
+          console.log(data);
+          console.log("starting post dilemma");
+          post('/api/dilemma', data);
+          console.log("finishing post dilemma");
+      });
+    
     closeComposer();
   }
 
