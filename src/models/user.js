@@ -6,7 +6,10 @@ const mongoose = require('mongoose');
 const UserModelSchema = new mongoose.Schema({
     name        : String,
     googleid    : String,
+    adjective   : String, 
     color       : String, 
+    //add String array of Strings of "liked comments"
+
 }); 
 
 
