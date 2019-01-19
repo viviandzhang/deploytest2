@@ -40,10 +40,9 @@ nav {
 }
 
 #new-dilemma:hover {
-    border-width: 1.5px;
-    text-align: center;
+    background-color: #F1FCFD;
+    color: #46D9E5;
     font-weight: 500;
-    padding: 0 19px;
 }
 
 .nav-item, .nav-item > a {
@@ -309,12 +308,10 @@ form {
 }
 
 .comment-button:hover{
-    /*background-color: #F2FCFD;*/
+    background-color: #46D9E5;
+    color: #ffffff;
     /*border-color: #17C3D1;
     color: #17C3D1;*/
-    border-width: 1.5px;
-    padding: 4.5px 0px;
-    font-weight: 450;
 
 }
 
