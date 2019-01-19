@@ -7,6 +7,8 @@ const UserModelSchema = new mongoose.Schema({
     name        : String,
     googleid    : String,
     color       : String, 
+    adjective   : String,
+    liked_comments : Array,
 }); 
 
 

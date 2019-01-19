@@ -61,9 +61,9 @@ router.get('/comments', function(req, res) {
 
 router.post('/comment', function(req, res) {
     const newComment = new Comment({
-        'creator_id'      : 'anon id',
-        'creator_alias'   : 'Anonymous',
-        'creator_color'   : 'pink',
+        'creator_id'      : req.body.creator_id,
+        'creator_alias'   : req.body.creator_alias,
+        'creator_color'   : req.body.creator_color,
         'timestamp'       : req.body.timestamp,
         'body'            : req.body.body,
         'yes_or_no'       : req.body.yes_or_no,
