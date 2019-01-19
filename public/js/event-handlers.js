@@ -106,17 +106,18 @@ function commentVoteHandler(comment_id) {
 }
 
 function chooseNameHandler () {
-    let chosenColor = document.getElementById('name-color'); 
-    let chosenAdj = document.getElementById('name-adj'); 
+    let chosenColor = document.getElementById('name-color').innerText.toLowerCase(); 
+    console.log(chosenColor);
+    let chosenAdj = document.getElementById('name-adj').innerText; 
+    console.log(chosenAdj);
 
-    //get current user and safe data to user's model/schema
     get('/api/whoami', {}, function(user) {
         if (user.googleid!=undefined){
-            let myID = user._id;
-            post('/api/updateUserName',
-                {_id:myID, adjective:chosenAdj, color:chosenColor} ); 
+            post('/api/updateUserName', {_id:user._id,
+                                        adjective: chosenAdj,
+                                        color: chosenColor});
         }
-    });
+      });
     
     console.log("name change sucess"); 
 }

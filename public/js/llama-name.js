@@ -58,3 +58,4 @@ var colors = [
     document.getElementById('name-adj').onkeydown= function() {randomize()};
 
     
+document.getElementById('choose-name').addEventListener('click', chooseNameHandler);

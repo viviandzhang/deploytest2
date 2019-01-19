@@ -20,6 +20,25 @@ router.get('/whoami', function(req, res) {
     }
   });
 
+router.get('/userById', function(req, res) {
+    User.findById({_id: req.query._id}, function(err, user){
+        res.send(user);
+    })
+});
+
+router.post('/updateUserName', function(req, res) {
+    User.findById({_id: req.body._id}, function(err, currentUser){
+        if (err) console.log(err);
+        currentUser.adjective = req.body.adjective;
+        currentUser.color = req.body.color;
+
+        currentUser.save(function(err, updatedUser) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+})
+
 // Dilemmas:
 router.get('/dilemmas', function(req, res) {
     Dilemma.find({}, function(err, dilemmas) {
@@ -111,12 +130,5 @@ router.post('/addCommentToUser', function(req, res) {
     })
     res.send({});
 });
-
-router.get('/userById', function(req, res) {
-    User.findById({_id: req.query._id}, function(err, user){
-        res.send(user);
-    })
-});
-
 
 module.exports = router;
