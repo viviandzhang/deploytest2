@@ -121,7 +121,7 @@ function dilemmaDOMObject (dilemmaJSON){
   }
   if (dilemmaJSON.votes_yes === 0 & dilemmaJSON.votes_no === 0){
     statusBadgePercent = 0;
-    statusText.innerText = 'no activity yet!';
+    statusText.innerText = 'no votes yet!';
   }
   statusBadgePercent = Math.floor(statusBadgePercent * 100);
   statusBadge.innerText = statusBadgePercent + '%'; 
@@ -169,16 +169,20 @@ function dilemmaDOMObject (dilemmaJSON){
   newDCardExpanded.addEventListener('click', function () {
     if (expanded === false){
       dCardBody.classList.remove('truncated');
-    let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
-    debateSection.style.display = "flex";
-    expanded = true;
+      let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
+      debateSection.style.display = "flex";
+      dCardBody.style.cursor = 'default';
+      //expanded = true;
     }
+    /*
     else{
-      dCardBody.classList.add('truncated');
+      if (dilemmaJSON.body.length >= 420) {
+        dCardBody.classList.add('truncated');
+      }
       let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
       debateSection.style.display = "none";
       expanded = false;
-    }
+    }*/
 
     /* dCardExpandFooter.style.display = "none"; */
   });
