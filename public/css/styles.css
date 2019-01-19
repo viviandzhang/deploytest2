@@ -58,7 +58,7 @@ nav {
     margin-right: auto;
 }
 
-.user-header > .username {
+.user-header > #username {
     font-weight: 600;
 }
 
