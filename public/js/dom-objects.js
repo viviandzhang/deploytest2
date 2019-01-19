@@ -334,7 +334,7 @@ function commentDOMObject (commentJSON) {
     commentVote.appendChild(voteButton);
   
     const voteCount = document.createElement('div');
-    voteCount.innerText = '0';
+    voteCount.innerText = commentJSON.votes;
     voteCount.className = 'vote-count';
     commentVote.appendChild(voteCount);
   
