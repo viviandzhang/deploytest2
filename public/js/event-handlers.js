@@ -75,7 +75,72 @@ function submitCommentHandler(dilemma_id, yes_or_no) {
             post('/api/comment', data);
         })
     }
+    inputField.value="";
+}
+
+function commentVoteHandler(comment_id) {
+    console.log("vote handler for: " + comment_id);
+    alreadyLiked = false;
+
+    get('/api/whoami', {}, function(user) {
+        if (user.googleid!=undefined) {
+            get('/api/userById', {_id:user._id}, function(userDBItem){
+                likedComments = userDBItem.liked_comments;
+                for (let i=0; i<likedComments.length; i++){
+                    if (comment_id === likedComments[i]){
+                        alreadyLiked = true;
+                    }
+                }
+                if (alreadyLiked===false){
+                     post('/api/addVoteToComment', {_id:comment_id}, function(c){
+                         post('/api/addCommentToUser', {_id:userDBItem._id, comment_id:comment_id}, function(d){
+                         console.log("you just liked this " + comment_id);
+                         });
+                     });
+                } else {
+                     console.log("already liked, sorry")
+                }
+            });
+        }
+<<<<<<< HEAD
+        console.log(data);
     
+        post('/api/comment', data);
+    });
     
     inputField.value="";
 }
+
+function chooseNameHandler () {
+    let chosenColor = document.getElementById('name-color'); 
+    let chosenAdj = document.getElementById('name-adj'); 
+
+    //get current user and safe data to user's model/schema
+    get('/api/whoami', {}, function(user) {
+        if (user.googleid!=undefined){
+            let myID = user._id;
+            post('/api/updateUserName',
+                {_id:myID, adjective:chosenAdj, color:chosenColor} ); 
+        }
+    });
+    
+    console.log("name change sucess"); 
+}
+
+
+function renderLlamaProfile () {
+    let llamaName = document.getElementById('llama-name');
+    let realName = document.getElementById('real-name'); 
+
+    get('/api/whoami', {}, function(user) {
+            llamaName.innerHTML=user.adjective + " " + user.color; 
+            realName.innerHTML=user.name; 
+            console.log(user.adjective);
+        
+    });
+}
+renderLlamaProfile(); 
+=======
+    });
+}
+>>>>>>> c6a45d15c74990933ba1cdf032e21e89539348e9

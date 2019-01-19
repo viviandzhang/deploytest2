@@ -315,6 +315,9 @@ function commentDOMObject (commentJSON) {
     voteButton.className = 'vote-button';
     voteButton.setAttribute('id', 'comment-vote'+commentJSON._id);
     commentVote.appendChild(voteButton);
+    voteButton.addEventListener('click', function(){
+      commentVoteHandler(commentJSON._id);
+    });
   
     const voteCount = document.createElement('div');
     voteCount.innerText = commentJSON.votes;

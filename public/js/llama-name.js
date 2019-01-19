@@ -44,10 +44,10 @@ var colors = [
     
     
     function randomize (){
-        var randomColor = Math.floor(Math.random()*colors.length); 
-        var randomAdj = Math.floor(Math.random()*adjetives.length); 
-        var userColor = document.getElementById('name-color'); 
-        var userAdj = document.getElementById('name-adj'); 
+        let randomColor = Math.floor(Math.random()*colors.length); 
+        let randomAdj = Math.floor(Math.random()*adjetives.length); 
+        let userColor = document.getElementById('name-color'); 
+        let userAdj = document.getElementById('name-adj'); 
     
     
         userColor.innerHTML=colors[randomColor];
@@ -57,29 +57,4 @@ var colors = [
     document.getElementById('name-color').onkeypdown= function() {randomize()};
     document.getElementById('name-adj').onkeydown= function() {randomize()};
 
-    function saveUser (user) {
-        var chosenColor = document.getElementById('name-color'); 
-        var chosenAdj = document.getElementById('name-adj'); 
-
-        //get current user and safe data to user's model/schema
-        get('/api/whoami', {}, function(user) {
-            console.log(user);
-            const navbarDiv = document.getElementById("username");
-            if (user.googleid!=undefined) {
-              navbarDiv.innerHTML = user.name; 
-            }
-            if (user.adjetive===undefined) {
-                user.findOne({googleid: user.googleid}, function (err, user) {
-                    user.adjetive = chosenAdj;
-                    user.color = chosenColor; 
-                    console.log(chosenAdj); 
-                    user.save(function (err) {
-                        if(err) {
-                            console.error('ERROR!');
-                        }
-                    });
-                });
-            }
-
-        });
-    }
+    

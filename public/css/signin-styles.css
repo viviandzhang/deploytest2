@@ -132,3 +132,9 @@ nav {
     margin-right: 0px;
 }
 
+#basic-profile{
+    font-size: 60px; 
+    margin: auto; 
+    width: max-content; 
+    margin-top: 200px; 
+}
