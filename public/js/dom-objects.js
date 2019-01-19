@@ -84,9 +84,13 @@ function dilemmaDOMObject (dilemmaJSON){
   dMeta.appendChild(dTimestamp);
 
   // d-card-expanded -- within d-container
-  const newDCardExpanded = document.createElement('div');
+  let newDCardExpanded = document.createElement('div');
   newDCardExpanded.className = 'd-card-expanded';
+  let expanded = false;
   newDilemma.appendChild(newDCardExpanded);
+  
+  newDCardExpanded.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
+
 
   const dCardStatus = document.createElement('div');
   dCardStatus.className = 'd-card-status';
@@ -105,10 +109,19 @@ function dilemmaDOMObject (dilemmaJSON){
     statusText.innerText = 'for yes';
     statusBadge.classList.add('status-badge-yes');
   }
+  else if (dilemmaJSON.votes_yes === dilemmaJSON.votes_no) {
+    statusBadgePercent = .50;
+    statusText.innerText = 'tied';
+    statusBadge.classList.add('status-badge-tied');
+  }
   else{
     statusBadgePercent = dilemmaJSON.votes_no / (dilemmaJSON.votes_yes + dilemmaJSON.votes_no);
     statusText.innerText = 'for no';
     statusBadge.classList.add('status-badge-no');
+  }
+  if (dilemmaJSON.votes_yes === 0 & dilemmaJSON.votes_no === 0){
+    statusBadgePercent = 0;
+    statusText.innerText = 'no activity yet!';
   }
   statusBadgePercent = Math.floor(statusBadgePercent * 100);
   statusBadge.innerText = statusBadgePercent + '%'; 
@@ -146,29 +159,28 @@ function dilemmaDOMObject (dilemmaJSON){
   if (dilemmaJSON.body.length >= 420) {
     dCardBody.classList.add('truncated');
   }
-
-  let dCardExpandFooter = document.createElement('div');
-  dCardExpandFooter.className = 'd-card-expand-footer';
-  dCardExpandFooter.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
-  newDCardExpanded.appendChild(dCardExpandFooter);
-
-  const expandSectionTitle = document.createElement('div');
-  expandSectionTitle.className = 'section-title';
-  expandSectionTitle.innerText = "EXPAND TO SEE OPINIONS";
-  dCardExpandFooter.appendChild(expandSectionTitle);
-
+  
   const debateSection = document.createElement('div');
   debateSection.className = 'debate-section';   
   debateSection.setAttribute ('id','debate-section' + dilemmaJSON._id);
   newDCardExpanded.appendChild(debateSection);
 
-  // ---------------------- expand dilemma -------------------------
-  dCardExpandFooter.addEventListener('click', function () {
-    dCardBody.classList.remove('truncated');
+  // ---------------------- expand/collapse dilemma -------------------------
+  newDCardExpanded.addEventListener('click', function () {
+    if (expanded === false){
+      dCardBody.classList.remove('truncated');
     let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
     debateSection.style.display = "flex";
+    expanded = true;
+    }
+    else{
+      dCardBody.classList.add('truncated');
+      let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
+      debateSection.style.display = "none";
+      expanded = false;
+    }
 
-    dCardExpandFooter.style.display = "none";
+    /* dCardExpandFooter.style.display = "none"; */
   });
 
   // ------------------ Yes column begins -------------------
@@ -318,7 +330,7 @@ function commentDOMObject (commentJSON) {
     commentVote.appendChild(voteButton);
   
     const voteCount = document.createElement('div');
-    voteCount.innerText = '0';
+    voteCount.innerText = commentJSON.votes;
     voteCount.className = 'vote-count';
     commentVote.appendChild(voteCount);
   
@@ -328,11 +340,31 @@ function commentDOMObject (commentJSON) {
   
     const commentThumb = document.createElement('div');
     commentThumb.className = 'comment-thumb';
+
+    if (commentJSON.creator_color === 'pink'){
+      commentThumb.style.backgroundColor = '#F3ACE2';
+    }
+    if (commentJSON.creator_color === 'green'){
+      commentThumb.style.backgroundColor = '#95D74E';
+    }
+    if (commentJSON.creator_color === 'purple'){
+      commentThumb.style.backgroundColor = '#BA98E0';
+    }
+    if (commentJSON.creator_color === 'blue'){
+      commentThumb.style.backgroundColor = '#4ABCF3';
+    }
+    if (commentJSON.creator_color === 'yellow'){
+      commentThumb.style.backgroundColor = '#F2E741';
+    }
+    if (commentJSON.creator_color === 'yellow'){
+      commentThumb.style.backgroundColor = '#FFB200';
+    }
+
     commentMeta.appendChild(commentThumb);
   
     const commentAuthor = document.createElement('span');
     commentAuthor.className = 'comment-author';
-    commentAuthor.innerText = commentJSON.creator_alias + ' posted ' + timeSince(new Date(commentJSON.timestamp));
+    commentAuthor.innerText = commentJSON.creator_alias + ' posted ' + timeSince(new Date(commentJSON.timestamp)) + ' ago';
     commentMeta.appendChild(commentAuthor);
 
     return commentDiv;
