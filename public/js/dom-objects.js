@@ -1,16 +1,3 @@
-let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
-                    "categories":["Uncategorized"],
-                    "creator_id":"anon_id",
-                    "creator_color":"pink",
-                    "creator_alias":"Anonymous",
-                    "timestamp":null,
-                    "title":"Should I do X thing?",
-                    "body":"Hello world, this is a fake new dilemma",
-                    "active":true,
-                    "votes_yes":{"$numberInt":"3"},
-                    "votes_no":{"$numberInt":"4"},
-                    "__v":{"$numberInt":"0"}};
-
 // RELATIVE TIMESTAMP
 function timeSince(timeStamp) {
   var now = new Date(),
@@ -301,20 +288,10 @@ function dilemmaDOMObject (dilemmaJSON){
   return newDilemma;
 }
 
-let anonCommentJSON = {"_id":"5c423d9146a65c910fc60418",
-                        "creator_id":"anon id",
-                        "creator_alias":"Anonymous",
-                        "creator_color":"pink",
-                        "timestamp":null,
-                        "body":"Yeppity yep yep yep agree 100% so valid",
-                        "yes_or_no":"yes",
-                        "votes": 0,
-                        "parent_id":"5c410e27c407c885b68c23b9",
-                        "__v":{"$numberInt":"0"}};
-
+// COMMENT
 function commentDOMObject (commentJSON) {
     commentDiv = document.createElement('div');
-    commentDiv.setAttribute('id', commentJSON._id);
+    commentDiv.setAttribute('id', 'comment'+commentJSON._id);
   
     const newComment = document.createElement('div');
     newComment.className = 'comment-wrapper';
@@ -331,6 +308,7 @@ function commentDOMObject (commentJSON) {
   
     const voteButton = document.createElement('div');
     voteButton.className = 'vote-button';
+    voteButton.setAttribute('id', 'comment-vote'+commentJSON._id);
     commentVote.appendChild(voteButton);
   
     const voteCount = document.createElement('div');
