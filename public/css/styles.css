@@ -168,6 +168,10 @@ nav {
     background-color: #FB6B7B;
 }
 
+.status-badge-tied {
+    background-color: #46D9E5;
+}
+
 .status-text {
     color: #A7B6C2;
     font-size: 12px;
