@@ -11,6 +11,5 @@ const UserModelSchema = new mongoose.Schema({
     liked_comments : Array,
 }); 
 
-
 //compile a model from schema
 module.exports = mongoose.model('UserModel', UserModelSchema); 

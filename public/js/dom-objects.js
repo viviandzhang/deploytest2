@@ -1,16 +1,3 @@
-let anonDilemmaJSON = {"_id": {"$oid":"5c3fda93157dee71bd03e260"},
-                    "categories":["Uncategorized"],
-                    "creator_id":"anon_id",
-                    "creator_color":"pink",
-                    "creator_alias":"Anonymous",
-                    "timestamp":null,
-                    "title":"Should I do X thing?",
-                    "body":"Hello world, this is a fake new dilemma",
-                    "active":true,
-                    "votes_yes":{"$numberInt":"3"},
-                    "votes_no":{"$numberInt":"4"},
-                    "__v":{"$numberInt":"0"}};
-
 // RELATIVE TIMESTAMP
 function timeSince(timeStamp) {
   var now = new Date(),
@@ -121,7 +108,7 @@ function dilemmaDOMObject (dilemmaJSON){
   }
   if (dilemmaJSON.votes_yes === 0 & dilemmaJSON.votes_no === 0){
     statusBadgePercent = 0;
-    statusText.innerText = 'no activity yet!';
+    statusText.innerText = 'no votes yet!';
   }
   statusBadgePercent = Math.floor(statusBadgePercent * 100);
   statusBadge.innerText = statusBadgePercent + '%'; 
@@ -169,16 +156,20 @@ function dilemmaDOMObject (dilemmaJSON){
   newDCardExpanded.addEventListener('click', function () {
     if (expanded === false){
       dCardBody.classList.remove('truncated');
-    let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
-    debateSection.style.display = "flex";
-    expanded = true;
+      let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
+      debateSection.style.display = "flex";
+      newDCardExpanded.style.cursor = 'default';
+      //expanded = true;
     }
+    /*
     else{
-      dCardBody.classList.add('truncated');
+      if (dilemmaJSON.body.length >= 420) {
+        dCardBody.classList.add('truncated');
+      }
       let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
       debateSection.style.display = "none";
       expanded = false;
-    }
+    }*/
 
     /* dCardExpandFooter.style.display = "none"; */
   });
@@ -218,6 +209,7 @@ function dilemmaDOMObject (dilemmaJSON){
   const commentFieldYes = document.createElement('input');
   commentFieldYes.className = 'comment-field-yes comment-input'; // change to id and attach event listener
   commentFieldYes.id = 'comment-field-yes' + dilemmaJSON._id;
+  commentFieldYes.placeholder = 'Add your comment…';
   commentFormClassYes.appendChild(commentFieldYes);
 
   // 'Post' button for yes comments
@@ -226,7 +218,6 @@ function dilemmaDOMObject (dilemmaJSON){
   submitCommentYes.className = 'comment-button';
   submitCommentYes.value = 'Post';
   submitCommentYes.type = 'Button';
-  submitCommentYes.placeholder = 'Add your comment…';
   commentFormClassYes.appendChild(submitCommentYes);
   submitCommentYes.addEventListener('click', function(){
     submitCommentHandler(dilemmaJSON._id, 'yes');
@@ -274,7 +265,7 @@ function dilemmaDOMObject (dilemmaJSON){
   const commentFieldNo = document.createElement('input');
   commentFieldNo.className = 'comment-field-no comment-input'; // change to id and attach event listener
   commentFieldNo.id = 'comment-field-no' + dilemmaJSON._id;
-  // add placeholder ??
+  commentFieldNo.placeholder = 'Add your comment…';
   commentFormClassNo.appendChild(commentFieldNo);
 
   const submitCommentNo = document.createElement('input');
@@ -282,11 +273,16 @@ function dilemmaDOMObject (dilemmaJSON){
   submitCommentNo.id = 'submit-comment-no-' + dilemmaJSON._id; //  add event listener
   submitCommentNo.value = 'Post';
   submitCommentNo.type = 'Button';
-  submitCommentNo.placeholder = 'Add your comment…';
   commentFormNo.appendChild(submitCommentNo);
-  submitCommentNo.addEventListener('click', function(){
-    submitCommentHandler(dilemmaJSON._id, 'no');
-  })
+
+  //let body = inputField.value;
+
+  
+    submitCommentNo.addEventListener('click', function(){
+      submitCommentHandler(dilemmaJSON._id, 'no');
+    })
+  
+  
 
   // where the comments will be added to the no column -- no list
   const noComments = document.createElement('div');
@@ -297,20 +293,10 @@ function dilemmaDOMObject (dilemmaJSON){
   return newDilemma;
 }
 
-let anonCommentJSON = {"_id":"5c423d9146a65c910fc60418",
-                        "creator_id":"anon id",
-                        "creator_alias":"Anonymous",
-                        "creator_color":"pink",
-                        "timestamp":null,
-                        "body":"Yeppity yep yep yep agree 100% so valid",
-                        "yes_or_no":"yes",
-                        "votes": 0,
-                        "parent_id":"5c410e27c407c885b68c23b9",
-                        "__v":{"$numberInt":"0"}};
-
+// COMMENT
 function commentDOMObject (commentJSON) {
     commentDiv = document.createElement('div');
-    commentDiv.setAttribute('id', commentJSON._id);
+    commentDiv.setAttribute('id', 'comment'+commentJSON._id);
   
     const newComment = document.createElement('div');
     newComment.className = 'comment-wrapper';
@@ -327,7 +313,11 @@ function commentDOMObject (commentJSON) {
   
     const voteButton = document.createElement('div');
     voteButton.className = 'vote-button';
+    voteButton.setAttribute('id', 'comment-vote'+commentJSON._id);
     commentVote.appendChild(voteButton);
+    voteButton.addEventListener('click', function(){
+      commentVoteHandler(commentJSON._id);
+    });
   
     const voteCount = document.createElement('div');
     voteCount.innerText = commentJSON.votes;

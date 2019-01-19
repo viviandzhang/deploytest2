@@ -20,23 +20,6 @@ router.get('/whoami', function(req, res) {
     }
   });
 
-
-router.post('/updateUserName', function(req, res) {
-    User.findById({_id: req.body._id,
-                    adjective: req.body.adjective,
-                    color: req.body.color}, 
-                    function(err, currentUser){
-        if (err) console.log(err);
-        currentUser.adjective = adjective;
-        currentUser.color = color;
-        currentUser.save(function(err, updatedUser) {
-            if (err) console.log(err);
-        })
-    })
-    res.send({});
-
-});
-
 // Dilemmas:
 router.get('/dilemmas', function(req, res) {
     Dilemma.find({}, function(err, dilemmas) {
@@ -103,5 +86,37 @@ router.post('/addVoteToComment', function(req, res) {
     })
     res.send({});
 });
+
+router.post('/subtractVoteFromComment', function(req, res) {
+    Comment.findById({_id: req.body._id}, function(err, currentComment){
+        if (err) console.log(err);
+        currentComment.votes = currentComment.votes - 1;
+        currentComment.save(function(err, updatedComment) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+});
+
+router.post('/addCommentToUser', function(req, res) {
+    User.findById({_id: req.body._id}, function(err, currentUser){
+        if (err) console.log(err);
+        let newArray = currentUser.liked_comments;
+        newArray.push(req.body.comment_id);
+        currentUser.liked_comments = newArray;
+
+        currentUser.save(function(err, updatedUser) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+});
+
+router.get('/userById', function(req, res) {
+    User.findById({_id: req.query._id}, function(err, user){
+        res.send(user);
+    })
+});
+
 
 module.exports = router;
