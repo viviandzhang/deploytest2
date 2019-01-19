@@ -84,9 +84,12 @@ function dilemmaDOMObject (dilemmaJSON){
   dMeta.appendChild(dTimestamp);
 
   // d-card-expanded -- within d-container
-  const newDCardExpanded = document.createElement('div');
+  let newDCardExpanded = document.createElement('div');
   newDCardExpanded.className = 'd-card-expanded';
   newDilemma.appendChild(newDCardExpanded);
+  
+  newDCardExpanded.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
+
 
   const dCardStatus = document.createElement('div');
   dCardStatus.className = 'd-card-status';
@@ -146,7 +149,7 @@ function dilemmaDOMObject (dilemmaJSON){
   if (dilemmaJSON.body.length >= 420) {
     dCardBody.classList.add('truncated');
   }
-
+  /*
   let dCardExpandFooter = document.createElement('div');
   dCardExpandFooter.className = 'd-card-expand-footer';
   dCardExpandFooter.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
@@ -156,6 +159,7 @@ function dilemmaDOMObject (dilemmaJSON){
   expandSectionTitle.className = 'section-title';
   expandSectionTitle.innerText = "EXPAND TO SEE OPINIONS";
   dCardExpandFooter.appendChild(expandSectionTitle);
+  */
 
   const debateSection = document.createElement('div');
   debateSection.className = 'debate-section';   
@@ -163,12 +167,12 @@ function dilemmaDOMObject (dilemmaJSON){
   newDCardExpanded.appendChild(debateSection);
 
   // ---------------------- expand dilemma -------------------------
-  dCardExpandFooter.addEventListener('click', function () {
+  newDCardExpanded.addEventListener('click', function () {
     dCardBody.classList.remove('truncated');
     let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
     debateSection.style.display = "flex";
 
-    dCardExpandFooter.style.display = "none";
+    /* dCardExpandFooter.style.display = "none"; */
   });
 
   // ------------------ Yes column begins -------------------

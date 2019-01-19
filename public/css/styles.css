@@ -137,7 +137,13 @@ nav {
     padding: 20px;
     padding-bottom: 0px;
     float: right;
+    cursor: pointer;
 }
+
+.d-card-expanded:hover {
+    border: 1px solid #BFCCD6;
+}
+
 
 .d-card-status {
     float: right;
@@ -384,16 +390,33 @@ form {
     float: right;
 }
 
+/*
 .d-card-expand-footer {
-    padding: 10px 0px;
-    border-top: 1px solid #D8E1E8;
+    //border-top: 1px solid #D8E1E8;
     cursor: pointer;
+    background-color: #F5F8FA;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    color: #A7B6C2;
+
 }
+
+.d-card-expand-footer:hover {
+    background-color: #EEF3F7;
+}
+
+
 
 .d-card-expand-footer > .section-title {
     text-align: center;
     margin-bottom: 0;
+    padding: 10px;
 }
+
+.d-card-expand-footer > .section-title:hover {
+    color: #A7B6C2;
+}
+*/
 
 #overlay {
     /* Source: https://www.w3schools.com/howto/howto_css_overlay.asp*/
