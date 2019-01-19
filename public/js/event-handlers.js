@@ -102,7 +102,6 @@ function commentVoteHandler(comment_id) {
                 }
             });
         }
-<<<<<<< HEAD
         console.log(data);
     
         post('/api/comment', data);
@@ -140,7 +139,3 @@ function renderLlamaProfile () {
     });
 }
 renderLlamaProfile(); 
-=======
-    });
-}
->>>>>>> c6a45d15c74990933ba1cdf032e21e89539348e9

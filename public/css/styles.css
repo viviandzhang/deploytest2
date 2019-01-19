@@ -353,7 +353,8 @@ form {
 }
 
 .add-new-button{
-    background-image: url('add.svg');
+    background-image: url('add.png');
+    color: #ffffff;
 }
 
 .comment-wrapper > .comment-vote {
