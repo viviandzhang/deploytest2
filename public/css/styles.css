@@ -39,6 +39,13 @@ nav {
     cursor: pointer;
 }
 
+#new-dilemma:hover {
+    border-width: 1.5px;
+    text-align: center;
+    font-weight: 500;
+    padding: 0 19px;
+}
+
 .nav-item, .nav-item > a {
     color: white;
     margin-right: 20px;
@@ -298,6 +305,17 @@ form {
     width: 16%;
     float: left;
     cursor: pointer;
+    text-align: center;
+}
+
+.comment-button:hover{
+    /*background-color: #F2FCFD;*/
+    /*border-color: #17C3D1;
+    color: #17C3D1;*/
+    border-width: 1.5px;
+    padding: 4.5px 0px;
+    font-weight: 450;
+
 }
 
 .comment-wrapper {
@@ -332,6 +350,10 @@ form {
     background-color: #4ABCF3;
     margin-right: 5px;
     float: left;
+}
+
+.add-new-button{
+    background-image: url('add.svg');
 }
 
 .comment-wrapper > .comment-vote {
@@ -540,6 +562,12 @@ form {
      color: #ffffff;
  }
 
+ #post-button:hover{
+    background-color: #3BD0DD;
+    font-weight: 500;
+    color: rgb(244, 251, 255);
+ }
+
  #cancel-button{
     background-color: #ffffff;
     color: #a7b6c2;
@@ -547,6 +575,12 @@ form {
     font-family: Avenir, Helvetica, sans-serif;
     font-size: 14px;
     border-color: #a7b6c2;
+}
+
+#cancel-button:hover{
+    border-width: 1.5px;
+    font-weight: 500;
+    background-color: rgb(251, 254, 255);
 }
 
  #post-button-container{
@@ -559,9 +593,10 @@ form {
      top: 0;
      right: 0;
      position: absolute;
-     margin-top: 20px;
-     margin-right: 20px;
-     /*cursor: pointer;*/
+     /*margin-top: 20px;
+     margin-right: 20px;*/
+     padding: 20px;
+     cursor: pointer;
  }
 
  #composer{
