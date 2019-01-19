@@ -38,7 +38,7 @@ function submitDilemmaHandler() {
       });
     
     closeComposer();
-  }
+}
 
 function submitCommentHandler(dilemma_id, yes_or_no) {
     let inputField = document.getElementById('comment-field-' + yes_or_no + dilemma_id);
@@ -102,12 +102,7 @@ function commentVoteHandler(comment_id) {
                 }
             });
         }
-        console.log(data);
-    
-        post('/api/comment', data);
-    });
-    
-    inputField.value="";
+    })
 }
 
 function chooseNameHandler () {
@@ -138,4 +133,3 @@ function renderLlamaProfile () {
         
     });
 }
-renderLlamaProfile(); 
