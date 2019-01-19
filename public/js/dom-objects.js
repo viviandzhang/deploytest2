@@ -171,7 +171,7 @@ function dilemmaDOMObject (dilemmaJSON){
       dCardBody.classList.remove('truncated');
       let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
       debateSection.style.display = "flex";
-      dCardBody.style.cursor = 'default';
+      newDCardExpanded.style.cursor = 'default';
       //expanded = true;
     }
     /*
