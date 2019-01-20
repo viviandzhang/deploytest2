@@ -62,7 +62,7 @@ router.post('/removeCommentFromUser', function(req, res) {
         for (let i=0; i<newArray.length; i++){
             if (newArray[i]===req.body.comment_id){
                 console.log("found: "+newArray[i]);
-                newArray.slice(i, 1);
+                newArray.splice(i, 1);
                 console.log("removed, now array is:");
                 console.log(newArray);
             }

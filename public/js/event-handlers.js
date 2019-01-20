@@ -85,7 +85,8 @@ function checkIfVoted(comment_id, user){
 
 function commentVoteHandler(comment_id, user) {
     console.log("vote handler for: " + comment_id);
-    alreadyLiked = false;
+    let heartButton = document.getElementById('comment-vote'+comment_id);
+    let heartCount = document.getElementById('vote-count'+comment_id);
 
     if (user!==undefined) {
         get('/api/userById', {_id:user._id}, function(userObj){
@@ -94,20 +95,22 @@ function commentVoteHandler(comment_id, user) {
             if (alreadyLiked===false){
                 post('/api/addVoteToComment', {_id:comment_id}, function(c){
                     post('/api/addCommentToUser', {_id:userObj._id, comment_id:comment_id}, function(d){
-                    console.log("you just liked this " + comment_id);
-                    console.log(userObj);
+                        console.log("you just liked this " + comment_id);
+                        heartButton.className = "vote-button voted";
+                        heartCount.innerText = parseInt(heartCount.innerText)+1;
+                        });
                     });
-                });
             } else {
                 console.log("already liked, sorry")
                 post('/api/subtractVoteFromComment', {_id:comment_id}, function(c){
                     post('/api/removeCommentFromUser', {_id:userObj._id, comment_id:comment_id}, function(d){
                         console.log("you just unliked this " + comment_id);
+                        heartButton.className = "vote-button";
+                        heartCount.innerText = parseInt(heartCount.innerText)-1;
                     });
                 });
         }
         })
-        
     }
 }
 

@@ -23,7 +23,7 @@ function timeSince(timeStamp) {
 function dilemmaDOMObject (dilemmaJSON, user){
   // d-container 
   const newDilemma = document.createElement('div');
-  newDilemma.setAttribute('id', dilemmaJSON.creator_id);
+  newDilemma.setAttribute('id', dilemmaJSON._id);
   newDilemma.className = 'd-container';
 
   const dMeta = document.createElement('div');
@@ -224,7 +224,6 @@ function dilemmaDOMObject (dilemmaJSON, user){
   yesComments.id = 'comments-yes' + dilemmaJSON._id; // change this ahhhh -- might not need to be here
   colColYes.appendChild(yesComments);
 
-  //yesComments.appendChild(commentDOMObject(anonCommentJSON));
 
   // -------------------- NO COLUMN BEGINS -----------------------------
   const colColNo = document.createElement('div');
@@ -313,6 +312,7 @@ function commentDOMObject (commentJSON, user) {
     commentVote.appendChild(voteButton);
 
     let isVoted = checkIfVoted(commentJSON._id, user);
+    console.log("is voted is: " + isVoted);
     if (isVoted) {
       voteButton.className = 'vote-button voted';}
 
@@ -323,6 +323,7 @@ function commentDOMObject (commentJSON, user) {
     const voteCount = document.createElement('div');
     voteCount.innerText = commentJSON.votes;
     voteCount.className = 'vote-count';
+    voteCount.id = 'vote-count'+commentJSON._id;
     commentVote.appendChild(voteCount);
   
     const commentMeta = document.createElement('div');
