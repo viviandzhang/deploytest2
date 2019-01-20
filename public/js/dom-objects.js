@@ -78,6 +78,10 @@ function dilemmaDOMObject (dilemmaJSON){
   
   newDCardExpanded.setAttribute ('id',('expand-footer-' + dilemmaJSON._id));
 
+  let expandTextFooter = document.createElement('div');
+  expandTextFooter.className = 'expand-text-footer';
+  expandTextFooter.innerText = '53 votes, 7 comments';
+  newDCardExpanded.appendChild(expandTextFooter);
 
   const dCardStatus = document.createElement('div');
   dCardStatus.className = 'd-card-status';
@@ -159,6 +163,8 @@ function dilemmaDOMObject (dilemmaJSON){
       let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
       debateSection.style.display = "flex";
       newDCardExpanded.style.cursor = 'default';
+      expandTextFooter.style.display = 'none';
+      dCardBody.style.marginBottom = '20px';
       //expanded = true;
     }
     /*
