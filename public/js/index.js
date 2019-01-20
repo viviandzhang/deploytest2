@@ -1,6 +1,6 @@
 function renderLoggedInFeed(user) {
   const body = document.getElementsByTagName('body');
-  body[0].addEventListener('keydown', function(){});
+  body[0].removeEventListener('keydown', randomize);
   const appDiv = document.getElementById('app');
   appDiv.innerHTML =
       '<ul id="categories">' + 
@@ -29,19 +29,18 @@ function renderLlamaNamePicker() {
                 '<div class=name-fixed>'+
                     'Welcome,'+
                 '</div>'+
-                '<div class = "name-container">'+
+                '<div id = "name-container">'+
+                    '<div id = "llama-thumbnail" onkeypress=randomize()>' +
+                    '</div>' +
                     '<div id= name-adj class=name-adjcolor onkeypress=randomize()>'+
                       'Happy'+ 
                     '</div>'+
-                  '<div id = name-color class=name-adjcolor onkeypress=randomize()>'+
-                     'Blue'+
-                    '</div>'+
+                    '<div class=name-fixed>'+
+                      'Llama'+
                 '</div>' +
-                '<div class=name-fixed>'+
-                    'Llama'+
-                '</div>'+
+              '</div>'+
             '</div>'+
-            '<div class = "press-key-title">Press any key to create your llama identity</div>'+
+            '<div id = "press-key-title">Press any key to create your llama identity</div>'+
             '<button id="choose-name" class = "sign-in-button">'+
                    'I choose this name'+
             '</button>'+
@@ -70,9 +69,17 @@ function renderSignIn() {
 }
 
 function renderNextButton(user_id){
+  let chooseName = document.getElementById('choose-name');
+  let pressKeyTitle = document.getElementById('press-key-title');
+  let nameContainer = document.getElementById('name-container');
+  /*chooseName.style.backgroundColor = '#46D9E5';
+  chooseName.style.color = '#ffffff';*/
+  chooseName.style.display = 'none';
+  pressKeyTitle.style.display = 'none';
+  nameContainer.style.backgroundColor = '#ffffff';
   const nextButton = document.createElement('div');
   nextButton.id = "next-button";
-  nextButton.innerHTML="next";
+  nextButton.innerHTML="Begin your Llama life";
 
   nextButton.addEventListener('click', function(){
     get('/api/userById', {_id:user_id}, function(user){
