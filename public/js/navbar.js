@@ -1,3 +1,52 @@
+// COMPOSER ----------------------
+function openComposer() {
+  let overlayComposer = document.getElementById('composer');
+  overlayComposer.style.display = "flex";
+}
+
+function closeComposer() {
+  let overlayComposer = document.getElementById('composer');
+
+  let title = document.getElementById('comp-title');
+  let body = document.getElementById('comp-body');
+
+  let categories = document.getElementsByClassName('comp-categories');
+
+  for(let i=0; i<categories.length; i++){
+    categories[i].className = "comp-categories";
+  }
+  title.value="";
+  body.value="";
+  overlayComposer.style.display = "none";
+}
+
+function makeCategoriesSelectable() {
+  let categories = document.getElementsByClassName('comp-categories');
+
+  for(let i=0; i<categories.length; i++){
+    categories[i].addEventListener('click', function(){
+      if (categories[i].className === "comp-categories comp-categories-selected"){
+        categories[i].className = "comp-categories";
+      } else {
+        categories[i].className = "comp-categories comp-categories-selected";
+      }
+    })
+  }
+}
+makeCategoriesSelectable();
+
+const closeNewDilemma = document.getElementById('close');
+const overlay = document.getElementById('overlay');
+closeNewDilemma.addEventListener('click', closeComposer)
+overlay.addEventListener('click', closeComposer)
+const cancelNewDilemma = document.getElementById('cancel-button');
+cancelNewDilemma.addEventListener('click', closeComposer)
+// Post dilemma
+const postDilemma = document.getElementById('post-button');
+postDilemma.addEventListener('click', submitDilemmaHandler);
+
+
+// NAVBAR ----------------------
 function newNavbarItem(text, url) {
     const item = document.createElement('div');
     item.className = "nav-item";
@@ -38,7 +87,7 @@ function renderNavbar(user) {
       signInButton.className = 'nav-item nav-button';
       signInButton.innerHTML = '<div>Login With Google</div>';
       linkToGoogle.appendChild(signInButton);
-      
+
       navBarDiv.appendChild(linkToGoogle);
       console.log();
     }

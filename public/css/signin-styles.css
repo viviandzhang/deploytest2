@@ -8,55 +8,6 @@ body {
     margin: 0;
 }
 
-nav {
-    background-color: #46D9E5;
-    height: 50px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    display: flex;
-    align-items: baseline;
-}
-
-#nav-wrapper {
-    width: 1000px;
-    margin: auto;
-    padding: auto;
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-end;
-}
-
-#login-google {
-    font-family: Avenir, Helvetica, sans-serif;
-    height: 30px;
-    width: max-content;
-    padding: 0 20px;
-    border: 1px solid white;
-    border-radius: 3px;
-    background-color: transparent;
-    margin-right: 0px;
-    font-size: 14px;
-}
-
-.nav-item {
-    color: white;
-    margin-right: 20px;
-    float: left; 
-    /*align-items: baseline;*/
-    display: flex; 
-}
-
-.user-header {
-    margin-right: auto;
-    float: left; 
-    align-items: baseline;
-}
-
-.user-header > .username {
-    font-weight: 600;
-}
-
 #signin-description {
     font-family: Avenir, Helvetica, sans-serif;
     color: #394B59;
