@@ -54,8 +54,20 @@ var colors = [
         userAdj.innerHTML=adjetives[randomAdj]; 
     }
     
-    document.getElementById('name-color').onkeypdown= function() {randomize()};
-    document.getElementById('name-adj').onkeydown= function() {randomize()};
+    // document.getElementById('name-color').onkeypdown= function() {randomize()};
+    // document.getElementById('name-adj').onkeydown= function() {randomize()};
 
+function chooseNameHandler (user) {
+    let chosenColor = document.getElementById('name-color').innerText.toLowerCase(); 
+    console.log(chosenColor);
+    let chosenAdj = document.getElementById('name-adj').innerText; 
+    console.log(chosenAdj);
+
+    if (user!==undefined){
+        post('/api/updateUserName', {_id:user._id,
+                                        adjective: chosenAdj,
+                                        color: chosenColor} 
+                                        );
+    }
     
-document.getElementById('choose-name').addEventListener('click', chooseNameHandler);
+}

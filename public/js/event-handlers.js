@@ -1,4 +1,4 @@
-function submitDilemmaHandler() {
+function submitDilemmaHandler(user) {
     let title = document.getElementById('comp-title').value;
     let body = document.getElementById('comp-body').value;
     let selectedCategories = document.getElementsByClassName('comp-categories comp-categories-selected');
@@ -15,12 +15,11 @@ function submitDilemmaHandler() {
     let creator_id;
     let creator_color;
 
-    get('/api/whoami', {}, function(user) {
-        if (user.googleid!=undefined) {
+    if (user._id!==undefined) {
           creator_alias = user.adjective;
           creator_id = user._id;
           creator_color = user.color;
-        } else {
+    } else {
           creator_alias = "Anon";
           creator_id = "anon id";
           creator_color = "pink";
@@ -34,13 +33,12 @@ function submitDilemmaHandler() {
             creator_color: creator_color,
             creator_alias: creator_alias
           }
-          post('/api/dilemma', data);
-      });
-    
+
+    post('/api/dilemma', data);
     closeComposer();
 }
 
-function submitCommentHandler(dilemma_id, yes_or_no) {
+function submitCommentHandler(dilemma_id, yes_or_no, user) {
     let inputField = document.getElementById('comment-field-' + yes_or_no + dilemma_id);
     let body = inputField.value;
     if (body.length > 0){
@@ -48,11 +46,10 @@ function submitCommentHandler(dilemma_id, yes_or_no) {
 
         let timestamp = new Date();
         let creator_alias;
-         let creator_id;
+        let creator_id;
         let creator_color;
 
-        get('/api/whoami', {}, function(user) {
-            if (user.googleid!=undefined) {
+            if (user._id!==undefined) {
                 creator_alias = user.adjective;
                 creator_id = user._id;
                 creator_color = user.color;
@@ -73,7 +70,6 @@ function submitCommentHandler(dilemma_id, yes_or_no) {
             console.log(data);
         
             post('/api/comment', data);
-        })
     }
     inputField.value="";
 }
@@ -105,22 +101,22 @@ function commentVoteHandler(comment_id) {
     })
 }
 
-function chooseNameHandler () {
-    let chosenColor = document.getElementById('name-color').innerText.toLowerCase(); 
-    console.log(chosenColor);
-    let chosenAdj = document.getElementById('name-adj').innerText; 
-    console.log(chosenAdj);
+// function chooseNameHandler () {
+//     let chosenColor = document.getElementById('name-color').innerText.toLowerCase(); 
+//     console.log(chosenColor);
+//     let chosenAdj = document.getElementById('name-adj').innerText; 
+//     console.log(chosenAdj);
 
-    get('/api/whoami', {}, function(user) {
-        if (user.googleid!=undefined){
-            post('/api/updateUserName', {_id:user._id,
-                                        adjective: chosenAdj,
-                                        color: chosenColor});
-        }
-      });
-    
-    console.log("name change sucess"); 
-}
+//     get('/api/whoami', {}, function(user) {
+//         if (user.googleid!=undefined){
+//             get('/api/userById', {_id:user._id}, function(userDBItem){
+//                 post('/api/updateUserName', {_id:userDBItem._id,
+//                                             adjective: chosenAdj,
+//                                             color: chosenColor})
+//             })
+//         }
+//       });
+// }
 
 
 function renderLlamaProfile () {

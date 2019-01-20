@@ -20,7 +20,7 @@ function timeSince(timeStamp) {
 }
 
 // DILEMMA
-function dilemmaDOMObject (dilemmaJSON){
+function dilemmaDOMObject (dilemmaJSON, user){
   // d-container 
   const newDilemma = document.createElement('div');
   newDilemma.setAttribute('id', dilemmaJSON.creator_id);
@@ -161,17 +161,6 @@ function dilemmaDOMObject (dilemmaJSON){
       newDCardExpanded.style.cursor = 'default';
       //expanded = true;
     }
-    /*
-    else{
-      if (dilemmaJSON.body.length >= 420) {
-        dCardBody.classList.add('truncated');
-      }
-      let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
-      debateSection.style.display = "none";
-      expanded = false;
-    }*/
-
-    /* dCardExpandFooter.style.display = "none"; */
   });
 
   // ------------------ Yes column begins -------------------
@@ -220,7 +209,7 @@ function dilemmaDOMObject (dilemmaJSON){
   submitCommentYes.type = 'Button';
   commentFormClassYes.appendChild(submitCommentYes);
   submitCommentYes.addEventListener('click', function(){
-    submitCommentHandler(dilemmaJSON._id, 'yes');
+    submitCommentHandler(dilemmaJSON._id, 'yes', user);
   })
 
   // this is where the comments will be added to the yes column -- the list
@@ -279,7 +268,7 @@ function dilemmaDOMObject (dilemmaJSON){
 
   
     submitCommentNo.addEventListener('click', function(){
-      submitCommentHandler(dilemmaJSON._id, 'no');
+      submitCommentHandler(dilemmaJSON._id, 'no', user);
     })
   
   
@@ -294,7 +283,7 @@ function dilemmaDOMObject (dilemmaJSON){
 }
 
 // COMMENT
-function commentDOMObject (commentJSON) {
+function commentDOMObject (commentJSON, user) {
     commentDiv = document.createElement('div');
     commentDiv.setAttribute('id', 'comment'+commentJSON._id);
   

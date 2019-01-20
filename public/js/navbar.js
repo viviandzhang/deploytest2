@@ -41,9 +41,9 @@ closeNewDilemma.addEventListener('click', closeComposer)
 overlay.addEventListener('click', closeComposer)
 const cancelNewDilemma = document.getElementById('cancel-button');
 cancelNewDilemma.addEventListener('click', closeComposer)
-// Post dilemma
-const postDilemma = document.getElementById('post-button');
-postDilemma.addEventListener('click', submitDilemmaHandler);
+// // Post dilemma
+// const postDilemma = document.getElementById('post-button');
+// postDilemma.addEventListener('click', submitDilemmaHandler);
 
 
 // NAVBAR ----------------------
@@ -61,6 +61,7 @@ function newNavbarItem(text, url) {
 
 function renderNavbar(user) {
     const navBarDiv = document.getElementById('nav-wrapper');
+    navBarDiv.innerHTML="";
 
     const navBarMsg = document.createElement('div');
     navBarMsg.className = "nav-item";
@@ -68,15 +69,19 @@ function renderNavbar(user) {
     navBarDiv.append(navBarMsg);
 
     if(user._id !== undefined) {
-      navBarMsg.innerHTML = 'Hello, <span id="username">'+user.name+' ('+user.adjective+' '+user.color+' Llama)!</span>';
-      navBarDiv.appendChild(newNavbarItem('Browse', '/'));
-      navBarDiv.appendChild(newNavbarItem('Your Activity', '/'));
-      const newDilemmaButton = document.createElement('button');
-      newDilemmaButton.id = 'new-dilemma';
-      newDilemmaButton.className = 'nav-item nav-button';
-      newDilemmaButton.innerHTML = '<div>Add New Dilemma</div>';
-      navBarDiv.appendChild(newDilemmaButton);
-      newDilemmaButton.addEventListener('click', openComposer);
+      if(user.color !== null || user.adjective !== null) {
+        navBarMsg.innerHTML = 'Hello, <span id="username">'+user.name+' ('+user.adjective+' '+user.color+' Llama)!</span>';
+        navBarDiv.appendChild(newNavbarItem('Browse', '/'));
+        navBarDiv.appendChild(newNavbarItem('Your Activity', '/'));
+        const newDilemmaButton = document.createElement('button');
+        newDilemmaButton.id = 'new-dilemma';
+        newDilemmaButton.className = 'nav-item nav-button';
+        newDilemmaButton.innerHTML = '<div>Add New Dilemma</div>';
+        navBarDiv.appendChild(newDilemmaButton);
+        newDilemmaButton.addEventListener('click', openComposer);
+      } else {
+        navBarMsg.innerHTML = 'Hello, <span id="username">'+user.name+'! Please choose your llama name'+'</span>';
+      }
     } else {
       navBarMsg.innerHTML = 'Hello, <span id="username">and welcome to Dilemma Llama!</span>';
       const linkToGoogle = document.createElement('a');

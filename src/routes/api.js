@@ -39,6 +39,20 @@ router.post('/updateUserName', function(req, res) {
     res.send({});
 })
 
+router.post('/addCommentToUser', function(req, res) {
+    User.findById({_id: req.body._id}, function(err, currentUser){
+        if (err) console.log(err);
+        let newArray = currentUser.liked_comments;
+        newArray.push(req.body.comment_id);
+        currentUser.liked_comments = newArray;
+
+        currentUser.save(function(err, updatedUser) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+});
+
 // Dilemmas:
 router.get('/dilemmas', function(req, res) {
     Dilemma.find({}, function(err, dilemmas) {
@@ -117,18 +131,5 @@ router.post('/subtractVoteFromComment', function(req, res) {
     res.send({});
 });
 
-router.post('/addCommentToUser', function(req, res) {
-    User.findById({_id: req.body._id}, function(err, currentUser){
-        if (err) console.log(err);
-        let newArray = currentUser.liked_comments;
-        newArray.push(req.body.comment_id);
-        currentUser.liked_comments = newArray;
-
-        currentUser.save(function(err, updatedUser) {
-            if (err) console.log(err);
-        })
-    })
-    res.send({});
-});
 
 module.exports = router;

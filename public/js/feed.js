@@ -3,13 +3,13 @@
 // --------- Composer ---------
 // ------- Render feed ------
 
-function renderFeed() {
+function renderFeed(user) {
   let dilemmaDiv = document.getElementById('feed');
 
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
       const currentDilemma = dArray[i];
-      dilemmaDiv.prepend(dilemmaDOMObject(currentDilemma));
+      dilemmaDiv.prepend(dilemmaDOMObject(currentDilemma, user));
 
       // render comments
       get('/api/comments', { 'parent_id' : currentDilemma._id }, function(cArray) {
@@ -17,10 +17,10 @@ function renderFeed() {
           let currentComment = cArray[i];
           if (currentComment.yes_or_no === "yes") {
             yesDiv = document.getElementById('comments-yes' + currentComment.parent_id)
-            yesDiv.append(commentDOMObject(currentComment));
+            yesDiv.append(commentDOMObject(currentComment, user));
           } else {
             noDiv = document.getElementById('comments-no' + currentComment.parent_id)
-            noDiv.append(commentDOMObject(currentComment));
+            noDiv.append(commentDOMObject(currentComment, user));
           }
         }
       })
