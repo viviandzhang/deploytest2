@@ -33,7 +33,7 @@ body {
     color: #8A9BA8;
 }
 
-#become-llama {
+.sign-in-button {
     font-family: Avenir, Helvetica, sans-serif;
     color: #46D9E5;  
     height: 40px;
@@ -53,31 +53,30 @@ body {
     padding: 10px 15px;
 }
 
-#become-llama:hover{
+.sign-in-button:hover{
     background-color: #46D9E5;
+    color: #ffffff;
 }
 .become-llama-text:hover{
     color: #ffffff;
 }
 
 #name-generator{
-    font-family: Avenir, Helvetica, sans-serif;
-    font-size: 20px;
-    color:  #46D9E5; 
-    margin:auto;
-    position: absolute;
-    top: 40%;
-    width: 40%;
-    text-align: center; 
-    vertical-align: middle; 
-    border: 3px solid green;
+    display: flex;
+    justify-content: center;
+    /*vertical-align: middle; 
+    border: 3px solid green;*/
 }
 
 #greeting {
     display: flex;
     align-items: baseline; 
-    padding: 40px; 
+    padding: 20px; 
+    padding-bottom: 0px;
     justify-content: space-evenly; 
+    color: #394B59;
+    font-size: 40px;
+
 }
 
 
@@ -98,4 +97,48 @@ body {
     margin: auto; 
     width: max-content; 
     margin-top: 200px; 
+}
+
+.generator-container{
+    width: max-content;
+    font-family: Avenir, Helvetica, sans-serif;
+    margin:auto;
+    position: absolute;
+    top: 35%;
+    width: 75%;
+    text-align: center; 
+    /*background-color: #EBF1F5;
+    border-radius: 5px;*/
+    padding: 20px;
+}
+
+.press-key-title{
+    font-size: 18px;
+    color: #8A9BA8;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+#choose-name{
+    width: max-content;
+    padding: 5px 15px;
+    margin-top: 20px;
+}
+
+.name-container {
+    background-color:#EBF1F5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    justify-content: center;
+    margin: 20px;
+}
+
+#name-adj {
+    padding-right: 10px;
+}
+
+#name-color {
+    padding-left: 10px;
 }

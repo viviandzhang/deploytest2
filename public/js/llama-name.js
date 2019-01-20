@@ -1,10 +1,10 @@
 var colors = [
-    "pink",
-    "green",
-    "purple",
-    "blue",
-    "yellow",
-    "orange"
+    "Pink",
+    "Green",
+    "Purple",
+    "Blue",
+    "Yellow",
+    "Orange"
     ];
     
     

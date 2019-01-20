@@ -24,26 +24,29 @@ function renderLlamaNamePicker() {
   body[0].addEventListener('keydown', randomize);
   appDiv.innerHTML = 
       '<div id="name-generator">'+
-            '<div>Press any key to create your llama identity</div>'+
+        '<div class = "generator-container">' +
             '<div id="greeting">' +
                 '<div class=name-fixed>'+
                     'Welcome,'+
                 '</div>'+
-                '<div id= name-adj class=name-adjcolor onkeypress=randomize()>'+
-                    'Happy'+ 
-                '</div>'+
-                '<div id = name-color class=name-adjcolor onkeypress=randomize()>'+
-                  'Blue'+
-                '</div>'+
+                '<div class = "name-container">'+
+                    '<div id= name-adj class=name-adjcolor onkeypress=randomize()>'+
+                      'Happy'+ 
+                    '</div>'+
+                  '<div id = name-color class=name-adjcolor onkeypress=randomize()>'+
+                     'Blue'+
+                    '</div>'+
+                '</div>' +
                 '<div class=name-fixed>'+
                     'Llama'+
                 '</div>'+
             '</div>'+
-
-            '<button id="choose-name">'+
+            '<div class = "press-key-title">Press any key to create your llama identity</div>'+
+            '<button id="choose-name" class = "sign-in-button">'+
                    'I choose this name'+
             '</button>'+
-        '</div>'
+        '</div>' +
+      '</div>'
   randomize();
 }
 
@@ -60,7 +63,7 @@ function renderSignIn() {
                 ' point you in the right direction.'+
         '</div>'+
       
-        '<button id=become-llama>'+
+        '<button id=become-llama class="sign-in-button">'+
         '    <a class = "become-llama-text" href="/auth/google">Login with Google</a>'+
         '</button>'+
     '</div>'
