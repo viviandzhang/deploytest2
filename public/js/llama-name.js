@@ -1,15 +1,14 @@
 var colors = [
-    "Yellow",
-    "Blue",
-    "Crimson",
-    "Pink",
-    "Purple",
-    "Teal",
-    "Orange",
+    "pink",
+    "green",
+    "purple",
+    "blue",
+    "yellow",
+    "orange"
     ];
     
     
-    var adjetives = [
+    var adjectives = [
     "Quirky",
     "Happy",
     "Fluffy",
@@ -43,19 +42,15 @@ var colors = [
     ]; 
     
     
-    function randomize (){
-        let randomColor = Math.floor(Math.random()*colors.length); 
-        let randomAdj = Math.floor(Math.random()*adjetives.length); 
-        let userColor = document.getElementById('name-color'); 
-        let userAdj = document.getElementById('name-adj'); 
+function randomize (){
+    let randomColor = Math.floor(Math.random()*colors.length); 
+    let randomAdj = Math.floor(Math.random()*adjectives.length); 
+    let userColor = document.getElementById('name-color'); 
+    let userAdj = document.getElementById('name-adj'); 
     
-    
-        userColor.innerHTML=colors[randomColor];
-        userAdj.innerHTML=adjetives[randomAdj]; 
-    }
-    
-    // document.getElementById('name-color').onkeypdown= function() {randomize()};
-    // document.getElementById('name-adj').onkeydown= function() {randomize()};
+    userColor.innerHTML=colors[randomColor];
+    userAdj.innerHTML=adjectives[randomAdj]; 
+}
 
 function chooseNameHandler (user) {
     let chosenColor = document.getElementById('name-color').innerText.toLowerCase(); 
