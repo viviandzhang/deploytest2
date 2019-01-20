@@ -370,6 +370,17 @@ form {
     background-image: url('heart.png');
     background-size: 20px;
     background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.vote-button:hover {
+    cursor: pointer;
+    background-position: center -20px;
+}
+
+.voted, .voted:hover {
+    background-image: url('heart.png');
+    background-position: center -40px;
 }
 
 .dot-no {

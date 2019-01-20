@@ -42,8 +42,6 @@ function submitCommentHandler(dilemma_id, yes_or_no, user) {
     let inputField = document.getElementById('comment-field-' + yes_or_no + dilemma_id);
     let body = inputField.value;
     if (body.length > 0){
-        let commentButton = document.getElementById('comment-button-' + yes_or_no + dilemma_id);
-
         let timestamp = new Date();
         let creator_alias;
         let creator_id;
@@ -74,31 +72,43 @@ function submitCommentHandler(dilemma_id, yes_or_no, user) {
     inputField.value="";
 }
 
-function commentVoteHandler(comment_id) {
+function checkIfVoted(comment_id, user){
+    let alreadyLiked = false;
+    let likedComments = user.liked_comments;
+    for (let i=0; i<likedComments.length; i++){
+        if (comment_id === likedComments[i]){
+            alreadyLiked = true;
+        }
+    }
+    return alreadyLiked
+}
+
+function commentVoteHandler(comment_id, user) {
     console.log("vote handler for: " + comment_id);
     alreadyLiked = false;
 
-    get('/api/whoami', {}, function(user) {
-        if (user.googleid!=undefined) {
-            get('/api/userById', {_id:user._id}, function(userDBItem){
-                likedComments = userDBItem.liked_comments;
-                for (let i=0; i<likedComments.length; i++){
-                    if (comment_id === likedComments[i]){
-                        alreadyLiked = true;
-                    }
-                }
-                if (alreadyLiked===false){
-                     post('/api/addVoteToComment', {_id:comment_id}, function(c){
-                         post('/api/addCommentToUser', {_id:userDBItem._id, comment_id:comment_id}, function(d){
-                         console.log("you just liked this " + comment_id);
-                         });
-                     });
-                } else {
-                     console.log("already liked, sorry")
-                }
-            });
+    if (user!==undefined) {
+        get('/api/userById', {_id:user._id}, function(userObj){
+            let alreadyLiked = checkIfVoted(comment_id, userObj)
+
+            if (alreadyLiked===false){
+                post('/api/addVoteToComment', {_id:comment_id}, function(c){
+                    post('/api/addCommentToUser', {_id:userObj._id, comment_id:comment_id}, function(d){
+                    console.log("you just liked this " + comment_id);
+                    console.log(userObj);
+                    });
+                });
+            } else {
+                console.log("already liked, sorry")
+                post('/api/subtractVoteFromComment', {_id:comment_id}, function(c){
+                    post('/api/removeCommentFromUser', {_id:userObj._id, comment_id:comment_id}, function(d){
+                        console.log("you just unliked this " + comment_id);
+                    });
+                });
         }
-    })
+        })
+        
+    }
 }
 
 function renderLlamaProfile () {

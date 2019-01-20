@@ -53,6 +53,29 @@ router.post('/addCommentToUser', function(req, res) {
     res.send({});
 });
 
+router.post('/removeCommentFromUser', function(req, res) {
+    console.log("removing");
+    User.findById({_id: req.body._id}, function(err, currentUser){
+        if (err) console.log(err);
+        let newArray = currentUser.liked_comments;
+        console.log("liked comments: ");
+        for (let i=0; i<newArray.length; i++){
+            if (newArray[i]===req.body.comment_id){
+                console.log("found: "+newArray[i]);
+                newArray.slice(i, 1);
+                console.log("removed, now array is:");
+                console.log(newArray);
+            }
+        }
+        currentUser.liked_comments = newArray;
+
+        currentUser.save(function(err, updatedUser) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+});
+
 // Dilemmas:
 router.get('/dilemmas', function(req, res) {
     Dilemma.find({}, function(err, dilemmas) {

@@ -24,7 +24,7 @@ function renderLlamaNamePicker() {
   body[0].addEventListener('keydown', randomize);
   appDiv.innerHTML = 
       '<div id="name-generator">'+
-        '<div class = "generator-container">' +
+        '<div id="generator-container" class = "generator-container">' +
             '<div id="greeting">' +
                 '<div class=name-fixed>'+
                     'Welcome,'+
@@ -97,7 +97,7 @@ function renderApp(user) {
       renderLlamaNamePicker();
       document.getElementById('choose-name').addEventListener('click', function(){
         chooseNameHandler(user);
-        document.getElementById('name-generator').appendChild(renderNextButton(user._id));
+      document.getElementById('generator-container').appendChild(renderNextButton(user._id));
       });
     }
   } else {

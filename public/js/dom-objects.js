@@ -311,8 +311,13 @@ function commentDOMObject (commentJSON, user) {
     voteButton.className = 'vote-button';
     voteButton.setAttribute('id', 'comment-vote'+commentJSON._id);
     commentVote.appendChild(voteButton);
+
+    let isVoted = checkIfVoted(commentJSON._id, user);
+    if (isVoted) {
+      voteButton.className = 'vote-button voted';}
+
     voteButton.addEventListener('click', function(){
-      commentVoteHandler(commentJSON._id);
+      commentVoteHandler(commentJSON._id, user);
     });
   
     const voteCount = document.createElement('div');
