@@ -1,4 +1,6 @@
 function renderLoggedInFeed(user) {
+  const body = document.getElementsByTagName('body');
+  body[0].addEventListener('keydown', function(){});
   const appDiv = document.getElementById('app');
   appDiv.innerHTML =
       '<ul id="categories">' + 
@@ -18,6 +20,8 @@ function renderLoggedInFeed(user) {
 
 function renderLlamaNamePicker() {
   const appDiv = document.getElementById('app');
+  const body = document.getElementsByTagName('body');
+  body[0].addEventListener('keydown', randomize);
   appDiv.innerHTML = 
       '<div id="name-generator">'+
             '<div>Press any key to create your llama identity</div>'+
@@ -40,6 +44,7 @@ function renderLlamaNamePicker() {
                    'I choose this name'+
             '</button>'+
         '</div>'
+  randomize();
 }
 
 function renderSignIn() {

@@ -101,24 +101,6 @@ function commentVoteHandler(comment_id) {
     })
 }
 
-// function chooseNameHandler () {
-//     let chosenColor = document.getElementById('name-color').innerText.toLowerCase(); 
-//     console.log(chosenColor);
-//     let chosenAdj = document.getElementById('name-adj').innerText; 
-//     console.log(chosenAdj);
-
-//     get('/api/whoami', {}, function(user) {
-//         if (user.googleid!=undefined){
-//             get('/api/userById', {_id:user._id}, function(userDBItem){
-//                 post('/api/updateUserName', {_id:userDBItem._id,
-//                                             adjective: chosenAdj,
-//                                             color: chosenColor})
-//             })
-//         }
-//       });
-// }
-
-
 function renderLlamaProfile () {
     let llamaName = document.getElementById('llama-name');
     let realName = document.getElementById('real-name'); 

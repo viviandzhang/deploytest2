@@ -41,9 +41,6 @@ closeNewDilemma.addEventListener('click', closeComposer)
 overlay.addEventListener('click', closeComposer)
 const cancelNewDilemma = document.getElementById('cancel-button');
 cancelNewDilemma.addEventListener('click', closeComposer)
-// // Post dilemma
-// const postDilemma = document.getElementById('post-button');
-// postDilemma.addEventListener('click', submitDilemmaHandler);
 
 
 // NAVBAR ----------------------
@@ -98,7 +95,3 @@ function renderNavbar(user) {
     }
 
   }
-
-  
-
-  

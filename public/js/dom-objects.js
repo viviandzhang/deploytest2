@@ -48,7 +48,7 @@ function dilemmaDOMObject (dilemmaJSON, user){
   if (dilemmaJSON.creator_color === 'yellow'){
     dThumbnail.style.backgroundColor = '#F2E741';
   }
-  if (dilemmaJSON.creator_color === 'yellow'){
+  if (dilemmaJSON.creator_color === 'orange'){
     dThumbnail.style.backgroundColor = '#FFB200';
   }
   
