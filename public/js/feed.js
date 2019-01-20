@@ -38,8 +38,8 @@ function makeCategoriesSelectable() {
 makeCategoriesSelectable();
 
 // Open composer
-const newDilemma = document.getElementById('new-dilemma');
-newDilemma.addEventListener('click', openComposer);
+//const newDilemma = document.getElementById('new-dilemma');
+//newDilemma.addEventListener('click', openComposer);
 // Close composer
 const closeNewDilemma = document.getElementById('close');
 const overlay = document.getElementById('overlay');
