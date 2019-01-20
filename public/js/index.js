@@ -50,13 +50,13 @@ function renderSignIn() {
             'Llamas helping llamas solve dilemmas.'+
         '</div>'+
         '<div id="signin-2">'+
-                "If you're a llama with a dilemma, you're in the right place." +
+                "If you're a llama with a dilemma, you're in the right place. " +
                 'Ask a yes or no question to our community of llamas, who will'+
-                'point you in the right direction.'+
+                ' point you in the right direction.'+
         '</div>'+
       
         '<button id=become-llama>'+
-        '    <a href="/auth/google">Become a Llama</a>'+
+        '    <a class = "become-llama-text" href="/auth/google">Login with Google</a>'+
         '</button>'+
     '</div>'
 }

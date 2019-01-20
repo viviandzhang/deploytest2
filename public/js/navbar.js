@@ -90,7 +90,7 @@ function renderNavbar(user) {
       const signInButton = document.createElement('button');
       signInButton.id = 'login-google';
       signInButton.className = 'nav-item nav-button';
-      signInButton.innerHTML = '<div>Login With Google</div>';
+      signInButton.innerHTML = '<div>Login with Google</div>';
       linkToGoogle.appendChild(signInButton);
 
       navBarDiv.appendChild(linkToGoogle);
