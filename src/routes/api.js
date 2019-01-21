@@ -104,8 +104,8 @@ router.post('/dilemma', function(req, res) {
     });
     newDilemma.save(function(err, dilemma) {
         if (err) console.log(err);
+        res.send(newDilemma);
     });
-    res.send({});
 });
 
 // COMMENTS
@@ -128,8 +128,8 @@ router.post('/comment', function(req, res) {
     });
     newComment.save(function(err, comment) {
         if (err) console.log(err);
+        res.send(newComment);
     });
-    res.send({});
 });
 
 router.post('/addVoteToComment', function(req, res) {

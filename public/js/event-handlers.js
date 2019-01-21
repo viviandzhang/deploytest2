@@ -31,11 +31,26 @@ function submitDilemmaHandler(user) {
             timestamp: timestamp,
             creator_id: creator_id,
             creator_color: creator_color,
-            creator_alias: creator_alias
+            creator_alias: creator_alias,
+            votes: 0
           }
 
-    post('/api/dilemma', data);
+    post('/api/dilemma', data, function(dilemmaObj){
+        let dilemmaDiv = document.getElementById('feed');
+        dilemmaDiv.prepend(dilemmaDOMObject(dilemmaObj, user));
+    });
     closeComposer();
+}
+
+function checkIfVoted(comment_id, user){
+    let alreadyLiked = false;
+    let likedComments = user.liked_comments;
+    for (let i=0; i<likedComments.length; i++){
+        if (comment_id === likedComments[i]){
+            alreadyLiked = true;
+        }
+    }
+    return alreadyLiked
 }
 
 function submitCommentHandler(dilemma_id, yes_or_no, user) {
@@ -63,24 +78,21 @@ function submitCommentHandler(dilemma_id, yes_or_no, user) {
                 parent_id: dilemma_id,
                 creator_id: creator_id,
                 creator_color: creator_color,
-                creator_alias: creator_alias
+                creator_alias: creator_alias,
+                votes: 0
             }
-            console.log(data);
-        
-            post('/api/comment', data);
-    }
-    inputField.value="";
-}
-
-function checkIfVoted(comment_id, user){
-    let alreadyLiked = false;
-    let likedComments = user.liked_comments;
-    for (let i=0; i<likedComments.length; i++){
-        if (comment_id === likedComments[i]){
-            alreadyLiked = true;
+            inputField.value="";
+            post('/api/comment', data, function(newComment){
+                if (yes_or_no === "yes") {
+                    yesDiv = document.getElementById('comments-yes' + dilemma_id)
+                    yesDiv.prepend(commentDOMObject(newComment, user));
+                } else {
+                    noDiv = document.getElementById('comments-no' + dilemma_id)
+                    noDiv.prepend(commentDOMObject(newComment, user));
+                }
+            }
+            );
         }
-    }
-    return alreadyLiked
 }
 
 function commentVoteHandler(comment_id, user) {

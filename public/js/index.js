@@ -4,15 +4,15 @@ function renderLoggedInFeed(user) {
   const appDiv = document.getElementById('app');
   appDiv.innerHTML =
       '<ul id="categories">' + 
-        '<li class="category-selected">All</li>'+
-        '<li>Education</li>'+
-        '<li>Personal Finance</li>'+
-        '<li>Life Issues</li>'+
-        '<li>Career</li>' +
-        '<li>Fashion</li>' +
-        '<li>Relationships</li>' +
-        '<li>Spirituality</li>' +
-        '<li>Random</li>' +
+        '<li class="feed-cat category-selected">All</li>'+
+        '<li class="feed-cat">Education</li>'+
+        '<li class="feed-cat">Personal Finance</li>'+
+        '<li class="feed-cat">Life Issues</li>'+
+        '<li class="feed-cat">Career</li>' +
+        '<li class="feed-cat">Fashion</li>' +
+        '<li class="feed-cat">Relationships</li>' +
+        '<li class="feed-cat">Spirituality</li>' +
+        '<li class="feed-cat">Random</li>' +
       '</ul>' +
       '<div id="feed"></div>';
   renderFeed(user);
