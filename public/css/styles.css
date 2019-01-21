@@ -147,7 +147,7 @@ nav {
 }
 
 .d-card-expanded:hover {
-    border: 1px solid #BFCCD6;
+    border: 1px solid #A7B6C2;
 }
 
 
@@ -603,15 +603,26 @@ form {
     margin-top: 20px;
  }
 
- #close{
+ #close {
+     padding: 20px;
      top: 0;
      right: 0;
      position: absolute;
-     /*margin-top: 20px;
-     margin-right: 20px;*/
-     padding: 20px;
      cursor: pointer;
  }
+ #close-icon{
+     background-image: url('close.png');
+     width: 20px;
+     height: 20px;
+     background-size: 20px;
+     background-repeat: no-repeat;
+     background-position: center top;
+ }
+
+#close:hover > #close-icon{
+    background-position: center -20px;
+}
+
 
  #composer{
      display: none;
@@ -621,8 +632,15 @@ form {
     position: absolute;
     left: 20px;
     bottom: 20px;
-    color: #A7B6C2;
+    color: #BFCCD6;
     font-size: 12px;
     z-index: 2;
  }
+
+ .d-card-expanded:hover > .expand-text-footer{
+     color: #8A9BA8;
+ }
+ 
+
+
 
