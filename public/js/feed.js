@@ -4,6 +4,7 @@
 
 function renderFeed(user) {
   let dilemmaDiv = document.getElementById('feed');
+  dilemmaDiv.innerHTML = "";
 
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
@@ -36,6 +37,7 @@ function renderFeed(user) {
 
 function renderFeedByCategory(user, category) {
   let dilemmaDiv = document.getElementById('feed');
+  dilemmaDiv.innerHTML = "";
 
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
