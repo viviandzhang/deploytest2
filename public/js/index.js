@@ -23,9 +23,24 @@ function renderLlamaNamePicker() {
   const body = document.getElementsByTagName('body');
   body[0].addEventListener('keydown', randomize);
   appDiv.innerHTML = 
+    '<div id=clouds>' + 
+      '<div id=cloud1>' +
+      '</div'+
+      '<div id=cloud2>' +
+      '</div'+
+      '<div id=cloud3>' +
+      '</div'+
+      '<div id=cloud4>' +
+      '</div'+
+      '<div id=cloud5>' +
+      '</div'+
+      '<div id=cloud6>' +
+      '</div'+ 
+    '</div>'+ 
+    
       '<div id="name-generator">'+
         '<div id="generator-container" class = "generator-container">' +
-           '<div id = "press-key-title">Welcome, Google User! Press any key to create your llama identity</div>'+
+           '<div id = "press-key-title">Welcome! Press any key to create your unique llama identity</div>'+
             '<div id="greeting">' +
                 '<div id=name-fixed>'+
                     ''+
@@ -45,6 +60,9 @@ function renderLlamaNamePicker() {
                    'I choose this name'+
             '</button>'+
         '</div>' +
+      '</div>' + 
+
+      '<div id=llama-landscape-name>' + 
       '</div>'
   randomize();
 }
@@ -52,6 +70,22 @@ function renderLlamaNamePicker() {
 function renderSignIn() {
   const appDiv = document.getElementById('app');
   appDiv.innerHTML =
+    '<div id=clouds>' +
+      '<div id=cloud1>' +
+      '</div'+
+      '<div id=cloud2>' +
+      '</div'+
+      '<div id=cloud3>' +
+      '</div'+
+      '<div id=cloud4>' +
+      '</div'+
+      '<div id=cloud5>' +
+      '</div'+
+      '<div id=cloud6>' +
+      '</div'+ 
+    '</div>' + 
+
+    '</div>' + 
       '<div id="signin-description">'+
         '<div id="signin-1">'+
             'Llamas helping llamas solve dilemmas.'+
@@ -65,7 +99,14 @@ function renderSignIn() {
         '<button id=become-llama class="sign-in-button">'+
         '    <a class = "become-llama-text" href="/auth/google">Login with Google</a>'+
         '</button>'+
-    '</div>'
+
+
+        '<div id= llama-landscape>' + 
+        '</div>'+
+      '</div>'
+
+   
+  
 }
 
 function renderNextButton(user_id){

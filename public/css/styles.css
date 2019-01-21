@@ -627,3 +627,26 @@ form {
     z-index: 2;
  }
 
+
+#llama-landscape {
+    height: 500px; 
+    background-image: url("images-signin/bottomhilllayer2.png"), url("images-signin/tophilllayer2.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: sticky; 
+    margin-top: -4em; 
+    object-fit: fill; 
+    z-index: -1; 
+}
+
+
+#llama-landscape-name {
+    height: 500px; 
+    background-image: url("images-signin/newuser-hill.png"), url("images-signin/newuser-bgd-hills.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: sticky; 
+    margin-top: -4em; 
+    object-fit: fill; 
+    z-index: -1; 
+}
