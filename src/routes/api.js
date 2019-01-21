@@ -108,6 +108,18 @@ router.post('/dilemma', function(req, res) {
     });
 });
 
+router.post('/updateDilemmaVotes', function(req, res) {
+    Dilemma.findById({_id: req.body._id}, function(err, currentDilemma){
+        currentDilemma.votes_no = req.body.votes_no;
+        currentDilemma.votes_yes = req.body.votes_yes;
+
+        currentDilemma.save(function(err, updatedDilemma) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+})
+
 // COMMENTS
 router.get('/comments', function(req, res) {
     Comment.find({ parent_id: req.query.parent_id }, function(err, comments) {
