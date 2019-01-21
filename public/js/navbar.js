@@ -51,8 +51,6 @@ function newNavbarItem(text, url) {
     link.href = url;
     link.innerHTML = text;
     item.appendChild(link);
-
-    console.log(item);
     return item;
   }
 

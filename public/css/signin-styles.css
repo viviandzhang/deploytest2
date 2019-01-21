@@ -42,9 +42,9 @@ body {
     border-radius: 5px;
     background-color: transparent;
     margin: auto; 
+    margin-top: 20px; 
     font-size: 16px; 
     padding: 0px;
-    margin-top: 10px;
 }
 
 .become-llama-text {
@@ -71,8 +71,9 @@ body {
 #greeting {
     display: flex;
     align-items: baseline; 
+    padding: 20px; 
     padding-bottom: 0px;
-    justify-content: center; 
+    justify-content: flex-start; 
     color: #394B59;
     font-size: 40px;
 
@@ -113,8 +114,8 @@ body {
 
 #press-key-title{
     font-size: 18px;
-    /*color: #8A9BA8;*/
-    color: #394B59;
+    color: #8A9BA8;
+    padding: 20px;
     padding-bottom: 0px;
 }
 
@@ -132,6 +133,7 @@ body {
     width: 350px;
     justify-content: center;
     margin: 20px;
+    margin-right: 0px;
     height: max-content;
 }
 
@@ -172,9 +174,4 @@ body {
 #next-button:hover{
     background-color: #46D9E5;
     color: #ffffff;
-}
-
-#welcome-google-user {
-    font-size: 40px;
-    font-weight: 500; 
 }

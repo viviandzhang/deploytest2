@@ -147,7 +147,7 @@ nav {
 }
 
 .d-card-expanded:hover {
-    border: 1px solid #A7B6C2;
+    border: 1px solid #BFCCD6;
 }
 
 
@@ -312,7 +312,6 @@ form {
     color: #ffffff;
     /*border-color: #17C3D1;
     color: #17C3D1;*/
-
 }
 
 .comment-wrapper {
