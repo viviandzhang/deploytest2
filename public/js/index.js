@@ -55,10 +55,7 @@ function renderLlamaNamePicker() {
     
       '<div id="name-generator">'+
         '<div id="generator-container" class = "generator-container">' +
-<<<<<<< HEAD
            '<div id = "press-key-title">Welcome! Press any key to create your unique llama identity</div>'+
-=======
->>>>>>> 4942f0127bd1521b096716057b5876bdae7fe10a
             '<div id="greeting">' +
                 '<div class=name-fixed>'+
                     'Welcome,'+

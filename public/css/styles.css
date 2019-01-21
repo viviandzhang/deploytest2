@@ -645,7 +645,6 @@ form {
     z-index: 2;
  }
 
-<<<<<<< HEAD
 
 #llama-landscape {
     height: 500px; 
@@ -669,12 +668,8 @@ form {
     object-fit: fill; 
     z-index: -1; 
 }
-=======
+
  .d-card-expanded:hover > .expand-text-footer{
      color: #8A9BA8;
  }
  
-
-
-
->>>>>>> 4942f0127bd1521b096716057b5876bdae7fe10a
