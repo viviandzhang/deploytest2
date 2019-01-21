@@ -86,6 +86,7 @@ function dilemmaDOMObject (dilemmaJSON, user){
 
   const dCardStatus = document.createElement('div');
   dCardStatus.className = 'd-card-status';
+  dCardStatus.id = 'd-card-status' + dilemmaJSON._id;
   newDCardExpanded.appendChild(dCardStatus);
 
   const statusBadge = document.createElement('div');
@@ -189,7 +190,8 @@ function dilemmaDOMObject (dilemmaJSON, user){
   // #votes tag (yes column)
   const yesVoteTag = document.createElement('div');
   yesVoteTag.className = 'yes-vote-tag';
-  yesVoteTag.innerText = (dilemmaJSON.votes_yes) + ' votes';
+  yesVoteTag.innerHTML = '<span id=votes-yes'+dilemmaJSON._id+'>'
+                          +(dilemmaJSON.votes_yes) + '</span> votes';
   colTitleYes.appendChild(yesVoteTag);
 
   // the form for yes
@@ -244,7 +246,8 @@ function dilemmaDOMObject (dilemmaJSON, user){
   // #votes tag (no column)
   const noVoteTag = document.createElement('div');
   noVoteTag.className = 'no-vote-tag'; 
-  noVoteTag.innerText = (dilemmaJSON.votes_no) + ' votes';
+  noVoteTag.innerHTML = '<span id=votes-no'+dilemmaJSON._id+'>'
+                          +(dilemmaJSON.votes_no) + '</span> votes';
   colTitleNo.appendChild(noVoteTag);
 
   // overall form for NO
@@ -312,12 +315,11 @@ function commentDOMObject (commentJSON, user) {
     commentVote.appendChild(voteButton);
 
     let isVoted = checkIfVoted(commentJSON._id, user);
-    console.log("is voted is: " + isVoted);
     if (isVoted) {
       voteButton.className = 'vote-button voted';}
 
     voteButton.addEventListener('click', function(){
-      commentVoteHandler(commentJSON._id, user);
+      commentVoteHandler(commentJSON._id, commentJSON.parent_id, commentJSON.yes_or_no, user);
     });
   
     const voteCount = document.createElement('div');

@@ -75,6 +75,14 @@ nav {
     padding: 20px;
 }
 
+.feed-cat {
+    cursor: pointer;
+}
+
+.feed-cat:hover {
+    color:#46D9E5;
+}
+
 #categories > li {
     display: block;
     margin-right: 20px;
@@ -312,7 +320,6 @@ form {
     color: #ffffff;
     /*border-color: #17C3D1;
     color: #17C3D1;*/
-
 }
 
 .comment-wrapper {
@@ -604,15 +611,26 @@ form {
     margin-top: 20px;
  }
 
- #close{
+ #close {
+     padding: 20px;
      top: 0;
      right: 0;
      position: absolute;
-     /*margin-top: 20px;
-     margin-right: 20px;*/
-     padding: 20px;
      cursor: pointer;
  }
+ #close-icon{
+     background-image: url('close.png');
+     width: 20px;
+     height: 20px;
+     background-size: 20px;
+     background-repeat: no-repeat;
+     background-position: center top;
+ }
+
+#close:hover > #close-icon{
+    background-position: center -20px;
+}
+
 
  #composer{
      display: none;
@@ -622,11 +640,12 @@ form {
     position: absolute;
     left: 20px;
     bottom: 20px;
-    color: #A7B6C2;
+    color: #BFCCD6;
     font-size: 12px;
     z-index: 2;
  }
 
+<<<<<<< HEAD
 
 #llama-landscape {
     height: 500px; 
@@ -650,3 +669,12 @@ form {
     object-fit: fill; 
     z-index: -1; 
 }
+=======
+ .d-card-expanded:hover > .expand-text-footer{
+     color: #8A9BA8;
+ }
+ 
+
+
+
+>>>>>>> 4942f0127bd1521b096716057b5876bdae7fe10a

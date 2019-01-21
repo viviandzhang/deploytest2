@@ -4,18 +4,33 @@ function renderLoggedInFeed(user) {
   const appDiv = document.getElementById('app');
   appDiv.innerHTML =
       '<ul id="categories">' + 
-        '<li class="category-selected">All</li>'+
-        '<li>Education</li>'+
-        '<li>Personal Finance</li>'+
-        '<li>Life Issues</li>'+
-        '<li>Career</li>' +
-        '<li>Fashion</li>' +
-        '<li>Relationships</li>' +
-        '<li>Spirituality</li>' +
-        '<li>Random</li>' +
+        '<li class="feed-cat category-selected">All</li>'+
+        '<li class="feed-cat">Education</li>'+
+        '<li class="feed-cat">Personal Finance</li>'+
+        '<li class="feed-cat">Life Issues</li>'+
+        '<li class="feed-cat">Career</li>' +
+        '<li class="feed-cat">Fashion</li>' +
+        '<li class="feed-cat">Relationships</li>' +
+        '<li class="feed-cat">Spirituality</li>' +
+        '<li class="feed-cat">Random</li>' +
       '</ul>' +
       '<div id="feed"></div>';
   renderFeed(user);
+
+  let categoriesArr = document.getElementsByClassName("feed-cat");
+  for (let i=0; i<categoriesArr.length; i++){
+    categoriesArr[i].addEventListener('click', function(){
+      if (this.innerText==="All"){
+        renderFeed(user)
+      } else {
+        renderFeedByCategory(user, this.innerText);
+      }
+      for (let j=0; j<categoriesArr.length; j++) {
+        categoriesArr[j].className = "feed-cat";
+      }
+      categoriesArr[i].className = "feed-cat category-selected";
+   })
+  }
 }
 
 function renderLlamaNamePicker() {
@@ -40,10 +55,13 @@ function renderLlamaNamePicker() {
     
       '<div id="name-generator">'+
         '<div id="generator-container" class = "generator-container">' +
+<<<<<<< HEAD
            '<div id = "press-key-title">Welcome! Press any key to create your unique llama identity</div>'+
+=======
+>>>>>>> 4942f0127bd1521b096716057b5876bdae7fe10a
             '<div id="greeting">' +
-                '<div id=name-fixed>'+
-                    ''+
+                '<div class=name-fixed>'+
+                    'Welcome,'+
                 '</div>'+
                 '<div id = "name-container">'+
                     '<div id = "llama-thumbnail" onkeypress=randomize()>' +
@@ -56,6 +74,7 @@ function renderLlamaNamePicker() {
                 '</div>' +
               '</div>'+
             '</div>'+
+            '<div id = "press-key-title">Press any key to create your llama identity</div>'+
             '<button id="choose-name" class = "sign-in-button">'+
                    'I choose this name'+
             '</button>'+
@@ -113,14 +132,12 @@ function renderNextButton(user_id){
   let chooseName = document.getElementById('choose-name');
   let pressKeyTitle = document.getElementById('press-key-title');
   let nameContainer = document.getElementById('name-container');
-  let nameFixed = document.getElementById('name-fixed');
   /*chooseName.style.backgroundColor = '#46D9E5';
   chooseName.style.color = '#ffffff';*/
   chooseName.style.display = 'none';
   pressKeyTitle.style.display = 'none';
   nameContainer.style.backgroundColor = '#ffffff';
   nameContainer.style.width = 'max-content';
-  nameFixed.innerText = 'Welcome, ';
   const nextButton = document.createElement('div');
   nextButton.id = "next-button";
   nextButton.innerHTML="Begin your Llama life";

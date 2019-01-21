@@ -104,9 +104,21 @@ router.post('/dilemma', function(req, res) {
     });
     newDilemma.save(function(err, dilemma) {
         if (err) console.log(err);
+        res.send(newDilemma);
     });
-    res.send({});
 });
+
+router.post('/updateDilemmaVotes', function(req, res) {
+    Dilemma.findById({_id: req.body._id}, function(err, currentDilemma){
+        currentDilemma.votes_no = req.body.votes_no;
+        currentDilemma.votes_yes = req.body.votes_yes;
+
+        currentDilemma.save(function(err, updatedDilemma) {
+            if (err) console.log(err);
+        })
+    })
+    res.send({});
+})
 
 // COMMENTS
 router.get('/comments', function(req, res) {
@@ -128,8 +140,8 @@ router.post('/comment', function(req, res) {
     });
     newComment.save(function(err, comment) {
         if (err) console.log(err);
+        res.send(newComment);
     });
-    res.send({});
 });
 
 router.post('/addVoteToComment', function(req, res) {
