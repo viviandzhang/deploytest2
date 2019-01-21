@@ -95,7 +95,7 @@ function submitCommentHandler(dilemma_id, yes_or_no, user) {
         }
 }
 
-function commentVoteHandler(comment_id, user) {
+function commentVoteHandler(comment_id, dilemma_id, yes_or_no, user) {
     console.log("vote handler for: " + comment_id);
     let heartButton = document.getElementById('comment-vote'+comment_id);
     let heartCount = document.getElementById('vote-count'+comment_id);
@@ -110,8 +110,13 @@ function commentVoteHandler(comment_id, user) {
                         console.log("you just liked this " + comment_id);
                         heartButton.className = "vote-button voted";
                         heartCount.innerText = parseInt(heartCount.innerText)+1;
-                        });
+                        if (yes_or_no==="yes"){
+                            updateDilemmaVotesYes(dilemma_id, "add")
+                        } else {
+                            updateDilemmaVotesNo(dilemma_id, "add")
+                        }
                     });
+                });
             } else {
                 console.log("already liked, sorry")
                 post('/api/subtractVoteFromComment', {_id:comment_id}, function(c){
@@ -119,6 +124,11 @@ function commentVoteHandler(comment_id, user) {
                         console.log("you just unliked this " + comment_id);
                         heartButton.className = "vote-button";
                         heartCount.innerText = parseInt(heartCount.innerText)-1;
+                        if (yes_or_no==="yes"){
+                            updateDilemmaVotesYes(dilemma_id, "subtract")
+                        } else {
+                            updateDilemmaVotesNo(dilemma_id, "subtract")
+                        }
                     });
                 });
         }

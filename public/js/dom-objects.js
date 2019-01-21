@@ -86,6 +86,7 @@ function dilemmaDOMObject (dilemmaJSON, user){
 
   const dCardStatus = document.createElement('div');
   dCardStatus.className = 'd-card-status';
+  dCardStatus.id = 'd-card-status' + dilemmaJSON._id;
   newDCardExpanded.appendChild(dCardStatus);
 
   const statusBadge = document.createElement('div');
@@ -318,7 +319,7 @@ function commentDOMObject (commentJSON, user) {
       voteButton.className = 'vote-button voted';}
 
     voteButton.addEventListener('click', function(){
-      commentVoteHandler(commentJSON._id, user);
+      commentVoteHandler(commentJSON._id, commentJSON.parent_id, commentJSON.yes_or_no, user);
     });
   
     const voteCount = document.createElement('div');
