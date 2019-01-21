@@ -75,6 +75,14 @@ nav {
     padding: 20px;
 }
 
+.feed-cat {
+    cursor: pointer;
+}
+
+.feed-cat:hover {
+    color:#46D9E5;
+}
+
 #categories > li {
     display: block;
     margin-right: 20px;

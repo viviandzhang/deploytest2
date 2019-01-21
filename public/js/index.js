@@ -16,6 +16,21 @@ function renderLoggedInFeed(user) {
       '</ul>' +
       '<div id="feed"></div>';
   renderFeed(user);
+
+  let categoriesArr = document.getElementsByClassName("feed-cat");
+  for (let i=0; i<categoriesArr.length; i++){
+    categoriesArr[i].addEventListener('click', function(){
+      if (this.innerText==="All"){
+        renderFeed(user)
+      } else {
+        renderFeedByCategory(user, this.innerText);
+      }
+      for (let j=0; j<categoriesArr.length; j++) {
+        categoriesArr[j].className = "feed-cat";
+      }
+      categoriesArr[i].className = "feed-cat category-selected";
+   })
+  }
 }
 
 function renderLlamaNamePicker() {
