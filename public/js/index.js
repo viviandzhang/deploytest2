@@ -77,6 +77,7 @@ function renderNextButton(user_id){
   chooseName.style.display = 'none';
   pressKeyTitle.style.display = 'none';
   nameContainer.style.backgroundColor = '#ffffff';
+  nameContainer.style.width = 'max-content';
   const nextButton = document.createElement('div');
   nextButton.id = "next-button";
   nextButton.innerHTML="Begin your Llama life";
