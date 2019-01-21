@@ -121,6 +121,7 @@ body {
 #choose-name{
     width: max-content;
     padding: 5px 15px;
+    cursor: pointer;
 }
 
 #name-container {
