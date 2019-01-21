@@ -25,10 +25,9 @@ function renderLlamaNamePicker() {
   appDiv.innerHTML = 
       '<div id="name-generator">'+
         '<div id="generator-container" class = "generator-container">' +
-           '<div id = "press-key-title">Welcome, Google User! Press any key to create your llama identity</div>'+
             '<div id="greeting">' +
-                '<div id=name-fixed>'+
-                    ''+
+                '<div class=name-fixed>'+
+                    'Welcome,'+
                 '</div>'+
                 '<div id = "name-container">'+
                     '<div id = "llama-thumbnail" onkeypress=randomize()>' +
@@ -41,6 +40,7 @@ function renderLlamaNamePicker() {
                 '</div>' +
               '</div>'+
             '</div>'+
+            '<div id = "press-key-title">Press any key to create your llama identity</div>'+
             '<button id="choose-name" class = "sign-in-button">'+
                    'I choose this name'+
             '</button>'+
@@ -72,14 +72,12 @@ function renderNextButton(user_id){
   let chooseName = document.getElementById('choose-name');
   let pressKeyTitle = document.getElementById('press-key-title');
   let nameContainer = document.getElementById('name-container');
-  let nameFixed = document.getElementById('name-fixed');
   /*chooseName.style.backgroundColor = '#46D9E5';
   chooseName.style.color = '#ffffff';*/
   chooseName.style.display = 'none';
   pressKeyTitle.style.display = 'none';
   nameContainer.style.backgroundColor = '#ffffff';
   nameContainer.style.width = 'max-content';
-  nameFixed.innerText = 'Welcome, ';
   const nextButton = document.createElement('div');
   nextButton.id = "next-button";
   nextButton.innerHTML="Begin your Llama life";
