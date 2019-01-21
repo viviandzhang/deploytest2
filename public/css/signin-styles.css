@@ -8,6 +8,11 @@ body {
     margin: 0;
 }
 
+#background-img {
+    background-image: url(images-signin/signin-background.jpg); 
+    background-color: #FBFBFB; 
+}
+
 #signin-description {
     font-family: Avenir, Helvetica, sans-serif;
     color: #394B59;
