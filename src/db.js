@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 // set up mongoDB connection
 const mongoURL = process.env.ATLAS_SRV; //'mongodb+srv://admin:admin@cluster0-ggqro.mongodb.net/test?retryWrites=true';
 const options = {
-    useNewUrlParser: true
+    useNewUrlParser: true,
 };
 mongoose.connect(mongoURL, options);
 mongoose.Promise = global.Promise;
