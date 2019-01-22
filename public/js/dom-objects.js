@@ -81,7 +81,7 @@ function dilemmaDOMObject (dilemmaJSON, user){
   let expandTextFooter = document.createElement('div');
   expandTextFooter.className = 'expand-text-footer';
   let numberOfVotes = dilemmaJSON.votes_yes + dilemmaJSON.votes_no;
-  expandTextFooter.innerHTML = numberOfVotes + ' votes, <span id="number-comments'+dilemmaJSON._id+'">7</span> comments';
+  expandTextFooter.innerHTML = numberOfVotes + ' votes, <span id="number-comments'+dilemmaJSON._id+'">0</span> comments';
   newDCardExpanded.appendChild(expandTextFooter);
 
   const dCardStatus = document.createElement('div');

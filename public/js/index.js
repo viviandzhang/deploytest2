@@ -1,6 +1,7 @@
 function renderLoggedInFeed(user) {
   const body = document.getElementsByTagName('body');
   body[0].removeEventListener('keydown', randomize);
+  body[0].style.backgroundColor = '#FCFCFD';
   const appDiv = document.getElementById('app');
   appDiv.innerHTML =
       '<ul id="categories">' + 
@@ -38,6 +39,7 @@ function renderLlamaNamePicker() {
   const appDiv = document.getElementById('app');
   const body = document.getElementsByTagName('body');
   body[0].addEventListener('keydown', randomize);
+  body[0].style.backgroundColor = 'rgb(70,217,229, 0.1)'
   appDiv.innerHTML = 
     '<div id=clouds>' + 
       '<div id=cloud1>' +

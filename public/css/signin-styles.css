@@ -126,7 +126,7 @@ body {
 }
 
 #name-container {
-    background-color:#EBF1F5;
+    background-color:white;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
