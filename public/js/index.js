@@ -41,25 +41,22 @@ function renderLlamaNamePicker() {
   appDiv.innerHTML = 
     '<div id=clouds>' + 
       '<div id=cloud1>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud2>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud3>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud4>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud5>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud6>' +
-      '</div'+ 
+      '</div>'+ 
     '</div>'+ 
     
       '<div id="name-generator">'+
         '<div id="generator-container" class = "generator-container">' +
-<<<<<<< HEAD
-=======
            '<div id = "press-key-title">Welcome! Press any key to create your unique llama identity</div>'+
->>>>>>> 1d7d2de86294c3513e7f1a1e4add69debceaea2d
             '<div id="greeting">' +
                 '<div class=name-fixed>'+
                     'Welcome,'+
@@ -92,17 +89,17 @@ function renderSignIn() {
   appDiv.innerHTML =
     '<div id=clouds>' +
       '<div id=cloud1>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud2>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud3>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud4>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud5>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud6>' +
-      '</div'+ 
+      '</div>'+ 
     '</div>' + 
 
     '</div>' + 

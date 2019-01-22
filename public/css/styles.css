@@ -671,9 +671,9 @@ form {
     height: 500px; 
     background-image: url("images-signin/bottomhilllayer2.png"), url("images-signin/tophilllayer2.png"); 
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
     position: sticky; 
-    margin-top: -4em; 
+    margin-top: -6em; 
     object-fit: fill; 
     z-index: -1; 
 }
@@ -683,11 +683,12 @@ form {
     height: 500px; 
     background-image: url("images-signin/newuser-hill.png"), url("images-signin/newuser-bgd-hills.png"); 
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
     position: relative; 
     margin-top: -4em; 
     object-fit: fill; 
     z-index: -1; 
+    margin: auto; 
 }
 
 #clouds
@@ -706,6 +707,7 @@ form {
     width: 400px; 
     height: 400px; 
     z-index: -1; 
+    animation: cloud-mvmt1 8s infinite; 
 
 }
 
@@ -714,10 +716,11 @@ form {
     background-image: url("images-signin/cloud2.png"); 
     background-size: contain; 
     position: relative;
-    margin-top: 40px; 
+    margin-top: 30px; 
     width: 400px; 
     height: 400px; 
     z-index: -1; 
+    animation: cloud-mvmt1 15s infinite; 
 }
 
 #cloud3 
@@ -726,29 +729,36 @@ form {
     background-size: contain; 
     position: fixed;
     top: 40px; 
-    right: 40px; 
+    left: 100px; 
     width: 400px; 
     height: 400px; 
     z-index: -1; 
+    animation: cloud-mvmt1 10s infinite; 
 }   
 
 
-@keyframes cloud-mvmt {
+@keyframes cloud-mvmt1 {
     0% {
-
+        left: 0%;
+        opacity: 0%
     }
 
-    50% {
+    10% {
+        opacity: 100%
+    }
 
+    90% {
+        opacity: 0%
     }
 
     100% {
-        
+        left: 100%; 
     }
 }
 
 .d-card-expanded:hover > .expand-text-footer{
- .d-card-expanded:hover > .expand-text-footer{
+}
+.d-card-expanded:hover > .expand-text-footer{
      color: #8A9BA8;
 }
  
