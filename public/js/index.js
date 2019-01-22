@@ -72,7 +72,7 @@ function renderLlamaNamePicker() {
                 '</div>' +
               '</div>'+
             '</div>'+
-            '<div id = "press-key-title">Press any key to create your llama identity</div>'+
+            '<div id = "press-key-title"></div>'+
             '<button id="choose-name" class = "sign-in-button">'+
                    'I choose this name'+
             '</button>'+

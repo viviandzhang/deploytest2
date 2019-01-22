@@ -701,54 +701,120 @@ form {
 #cloud1
 {
     background-image: url("images-signin/cloud1.png");
+    background-repeat: no-repeat;
     background-size: contain; 
-    position: relative;
-    margin-top: 40px; 
+    position: absolute;
+    margin-top: 30px;  
     width: 400px; 
-    height: 400px; 
+    height: 400px;
+    left: -40%; 
     z-index: -1; 
-    animation: cloud-mvmt1 8s infinite; 
-
+    animation: cloud-mvmt 15s infinite; 
+    animation-delay: 2s; 
 }
 
 #cloud2
 {
     background-image: url("images-signin/cloud2.png"); 
+    background-repeat: no-repeat;
     background-size: contain; 
-    position: relative;
-    margin-top: 30px; 
-    width: 400px; 
-    height: 400px; 
+    object-fit: fill; 
+    position: absolute;
+    margin-top: 15px; 
+    height: 400px;
+    width: 400px;  
+    left: -40%; 
     z-index: -1; 
-    animation: cloud-mvmt1 15s infinite; 
+    animation: cloud-mvmt 20s infinite; 
+    animation-delay: 1s; 
 }
 
 #cloud3 
 {
     background-image: url("images-signin/cloud3.png"); 
+    background-repeat: no-repeat;
     background-size: contain; 
-    position: fixed;
-    top: 40px; 
-    left: 100px; 
-    width: 400px; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 200px; 
     height: 400px; 
+    left: -40%; 
+    width: 400px; 
     z-index: -1; 
-    animation: cloud-mvmt1 10s infinite; 
+    animation: cloud-mvmt 10s infinite; 
 }   
 
 
-@keyframes cloud-mvmt1 {
+#cloud4 
+{
+    background-image: url("images-signin/cloud3.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 300px; 
+    height: 400px; 
+    left: -40%; 
+    width: 400px; 
+    z-index: -1; 
+    animation: cloud-mvmt 23s infinite; 
+    animation-delay: 8s;
+}   
+
+#cloud4 
+{
+    background-image: url("images-signin/cloud1.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 240px; 
+    height: 400px;
+    left: -40%;  
+    width: 400px; 
+    z-index: -1; 
+    animation: cloud-mvmt 17s infinite; 
+    animation-delay: 2s;
+}   
+
+#cloud5 
+{
+    background-image: url("images-signin/cloud2.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 330px; 
+    height: 400px; 
+    width: 400px; 
+    left: -40%; 
+    z-index: -1; 
+    animation: cloud-mvmt 10s infinite; 
+    animation-delay: 1s; 
+}   
+
+#cloud6 
+{
+    background-image: url("images-signin/cloud2.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 50px; 
+    height: 400px; 
+    width: 400px; 
+    left: -40%; 
+    z-index: -1; 
+    animation: cloud-mvmt s 13 infinite; 
+    animation-delay: 5s; 
+}   
+
+
+
+
+@keyframes cloud-mvmt {
     0% {
-        left: 0%;
-        opacity: 0%
-    }
-
-    10% {
-        opacity: 100%
-    }
-
-    90% {
-        opacity: 0%
+        left: -40%;
     }
 
     100% {
