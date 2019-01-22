@@ -5,6 +5,9 @@
 function renderFeed(user) {
   let dilemmaDiv = document.getElementById('feed');
   dilemmaDiv.innerHTML = "";
+  let feedHeaderDiv = document.getElementById('feed-header');
+  feedHeaderDiv.innerHTML = "";
+
 
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
@@ -63,7 +66,7 @@ function renderCategoryHeader (category) {
   if (category === "Education"){
     categoryTitle.innerText = 'Education';
     categoryImage.style.backgroundPosition = 'center top';
-    categoryDesc.innerText = 'Welcome to the Education category, where you can post any education dilemmas. Have a dilemma about schools or course-work? Your new llama friends can help!';
+    categoryDesc.innerText = 'Welcome to the Education category, where you can post any education dilemmas. Have a dilemma about schools or coursework? Your new llama friends can help!';
   }
   if (category === "Personal Finance"){
     categoryImage.style.backgroundPosition = 'center -60px';
@@ -106,6 +109,8 @@ function renderCategoryHeader (category) {
 
 function renderFeedByCategory(user, category) {
   let dilemmaDiv = document.getElementById('feed');
+  let feedHeaderDiv = document.getElementById('feed-header');
+  feedHeaderDiv.innerHTML = "";
   dilemmaDiv.innerHTML = "";
 
 
@@ -145,7 +150,7 @@ function renderFeedByCategory(user, category) {
         })
       }
     }
-    dilemmaDiv.prepend(renderCategoryHeader(category));
+    feedHeaderDiv.append(renderCategoryHeader(category));
   });
   
 

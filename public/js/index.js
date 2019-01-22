@@ -14,7 +14,8 @@ function renderLoggedInFeed(user) {
         '<li class="feed-cat">Spirituality</li>' +
         '<li class="feed-cat">Random</li>' +
       '</ul>' +
-      '<div id="feed"></div>';
+      '<div id = "feed-header"></div>' +
+        '<div id="feed"></div>';
   renderFeed(user);
 
   let categoriesArr = document.getElementsByClassName("feed-cat");
