@@ -2,6 +2,9 @@
   "name": "dilemma-llama",
   "version": "1.0.0",
   "description": "crowdsourced decision making",
+  "engines" : {
+    "node": "10.15.0"
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
