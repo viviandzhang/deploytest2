@@ -4,6 +4,10 @@
 
 function renderFeed(user) {
   let dilemmaDiv = document.getElementById('feed');
+  dilemmaDiv.innerHTML = "";
+  let feedHeaderDiv = document.getElementById('feed-header');
+  feedHeaderDiv.innerHTML = "";
+
 
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
@@ -34,8 +38,81 @@ function renderFeed(user) {
   });
 }
 
+function renderCategoryHeader (category) {
+  const categoryDiv = document.createElement ('div');
+  categoryDiv.className = 'category-div';
+
+  const categoryImageBack = document.createElement ('div');
+  categoryImageBack.className = 'category-image-back';
+  categoryDiv.appendChild(categoryImageBack);
+
+  const categoryImage = document.createElement ('div');
+  categoryImage.className = 'category-image';
+  categoryImageBack.appendChild(categoryImage);
+
+  const categoryHeader = document.createElement('div');
+  categoryHeader.className = 'category-header';
+  categoryDiv.appendChild(categoryHeader);
+
+  const categoryTitle = document.createElement('div');
+  categoryTitle.className = 'category-title';
+  categoryHeader.appendChild(categoryTitle);
+
+  const categoryDesc = document.createElement('div');
+  categoryDesc.className = 'category-desc';
+  categoryHeader.appendChild(categoryDesc);
+
+
+  if (category === "Education"){
+    categoryTitle.innerText = 'Education';
+    categoryImage.style.backgroundPosition = 'center top';
+    categoryDesc.innerText = 'Welcome to the Education category, where you can post any education dilemmas. Have a dilemma about schools or coursework? Your new llama friends can help!';
+  }
+  if (category === "Personal Finance"){
+    categoryImage.style.backgroundPosition = 'center -60px';
+    categoryTitle.innerText = 'Personal Finance';
+    categoryDesc.innerText = 'Welcome to the Personal Finance category, where you can post any personal finance dilemmas. Llamas know a lot about money and love to be helpful!';
+  }
+  if (category === "Life Issues") {
+    categoryImage.style.backgroundPosition = 'center -120px';
+    categoryTitle.innerText = 'Life Issues';
+    categoryDesc.innerText = 'Welcome to the Life Issues category, where you can post any life issues dilemmas. Have a dilemma about about any of lifes great issues (or small issues)? Ask your fellow llamas!';
+  }
+  if (category === "Career") {
+    categoryImage.style.backgroundPosition = 'center -180px';
+    categoryTitle.innerText = 'Career';
+    categoryDesc.innerText = 'Welcome to the Career category, where you can post any career dilemmas. Not sure what to do next in your career or even how to get started? Ask your llama friends to help!';
+  }
+  if (category === "Fashion") {
+    categoryImage.style.backgroundPosition = 'center -240px';
+    categoryTitle.innerText = 'Fashion';
+    categoryDesc.innerText = 'Welcome to the Fashion category, where you can post any fashion dilemmas. Llamas are super fashionable, so ask them about any of your outfit dilemmas!';
+  }
+  if (category === "Relationships") {
+    categoryImage.style.backgroundPosition = 'center -300px';
+    categoryTitle.innerText = 'Relationships';
+    categoryDesc.innerText = 'Welcome to the Relationship category, where you can post any relationship dilemmas. Have any big relationship dilemmas in your life? Ask the llamas for help!';
+  }
+  if (category === "Spirituality") {
+    categoryImage.style.backgroundPosition = 'center -360px';
+    categoryTitle.innerText = 'Spirituality';
+    categoryDesc.innerText = 'Welcome to the Spirituality category, where you can post any spiritual dilemmas. This is an inclusive, safe space to get opinions on your spiritual dilemmas from other llamas';
+  }
+  if (category === "Random") {
+    categoryImage.style.backgroundPosition = 'center -420px';
+    categoryTitle.innerText = 'Random';
+    categoryDesc.innerText = 'Welcome to the Random category, where you can post any random dilemmas. Not sure which category to put your dilemma under? Put it here!';
+  }
+  return categoryDiv;
+}
+
+
 function renderFeedByCategory(user, category) {
   let dilemmaDiv = document.getElementById('feed');
+  let feedHeaderDiv = document.getElementById('feed-header');
+  feedHeaderDiv.innerHTML = "";
+  dilemmaDiv.innerHTML = "";
+
 
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
@@ -73,7 +150,10 @@ function renderFeedByCategory(user, category) {
         })
       }
     }
+    feedHeaderDiv.append(renderCategoryHeader(category));
   });
+  
+
 }
 
 // ----------- Update dilemmas on the front end -------------

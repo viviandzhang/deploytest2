@@ -14,7 +14,8 @@ function renderLoggedInFeed(user) {
         '<li class="feed-cat">Spirituality</li>' +
         '<li class="feed-cat">Random</li>' +
       '</ul>' +
-      '<div id="feed"></div>';
+      '<div id = "feed-header"></div>' +
+        '<div id="feed"></div>';
   renderFeed(user);
 
   let categoriesArr = document.getElementsByClassName("feed-cat");
@@ -55,6 +56,10 @@ function renderLlamaNamePicker() {
     
       '<div id="name-generator">'+
         '<div id="generator-container" class = "generator-container">' +
+<<<<<<< HEAD
+=======
+           '<div id = "press-key-title">Welcome! Press any key to create your unique llama identity</div>'+
+>>>>>>> 1d7d2de86294c3513e7f1a1e4add69debceaea2d
             '<div id="greeting">' +
                 '<div class=name-fixed>'+
                     'Welcome,'+

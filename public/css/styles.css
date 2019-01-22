@@ -61,10 +61,24 @@ nav {
 
 #navbar-message {
     margin-right: auto;
+    display: flex;
+    align-items: center;
 }
 
 #navbar-message > #username {
     font-weight: 600;
+    height: max-content;
+}
+
+
+#nav-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    display: inline-block;
+    margin: 0px 5px;
+    background-image: url('lama.png');
+    background-size: 25px;
 }
 
 #categories {
@@ -196,6 +210,11 @@ nav {
     font-size: 12px;
     color: #BFCCD6;
     margin-bottom: 10px;
+}
+
+.d-card-cat:hover {
+    color: #46D9E5;
+    cursor: pointer;
 }
 
 
@@ -523,6 +542,7 @@ form {
 }
 
 #comp-title {
+    font-family: Avenir, Helvetica, sans-serif;
     font-size: 18px;
     font-weight: 600;
     color: #394B59;
@@ -534,6 +554,7 @@ form {
 }
 
 #comp-body{
+    font-family: Avenir, Helvetica, sans-serif;
     width: 480px;
     height: 75px;
     margin-bottom: 20px;
@@ -727,9 +748,57 @@ form {
 }
 
 .d-card-expanded:hover > .expand-text-footer{
+ .d-card-expanded:hover > .expand-text-footer{
      color: #8A9BA8;
 }
  
+.category-div{
+    width: 650px;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-left: 70px;
+    margin-bottom: 20px;
+    height: max-content;
+}
 
+.category-image-back {
+    width: 80px;
+    height: 80px;
+    background-color: #BFCCD6;
+    border-radius: 5px;
+    display: flex;
+    justify-content: baseline;
 
+}
 
+.category-image {
+    width: 60px;
+    height: 60px;
+    background-image: url('categoryIcons.png');
+    background-size: 60px;
+    margin: 10px;
+}
+
+.category-header {
+    margin-left: 20px;
+    width: 100%;
+}
+
+.category-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #394B59;
+    margin-bottom: 5px;
+}
+
+.category-desc {
+    font-size: 12px;
+    color: #5C7080;
+}
+
+#feed-header{
+    display: flex;
+    justify-content: center;
+}
