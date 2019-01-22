@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mit6148/zoellallen-artemiissia-viviandzhang#readme",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "http": "0.0.0",

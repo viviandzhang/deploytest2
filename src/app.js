@@ -3,6 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 const session = require('express-session'); 
+require('dotenv').config();
 //const session = require('express-session'); //for authentication- cookies
 
 // local dependencies
@@ -71,7 +72,7 @@ app.use(function (err, req, res, next) {
 });
 
 // post config
-const port = 3000;
+const port = (process.env.PORT || 3000);
 server = http.Server(app);
 server.listen(port, function () {
     console.log('server listening on port ' + port);
