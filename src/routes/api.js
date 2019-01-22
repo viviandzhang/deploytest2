@@ -155,6 +155,11 @@ router.post('/addVoteToComment', function(req, res) {
     res.send({});
 });
 
+router.post('/deleteComments', function(req, res) {
+    Dilemma.deleteMany({}, function(){})
+    res.send({})
+})
+
 router.post('/subtractVoteFromComment', function(req, res) {
     Comment.findById({_id: req.body._id}, function(err, currentComment){
         if (err) console.log(err);

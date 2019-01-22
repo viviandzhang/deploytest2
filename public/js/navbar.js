@@ -70,7 +70,7 @@ function returnUserColorHex(user){
   if (user.color === 'yellow'){
     return '#F2E741';
   }
-  if (user.color === 'yellow'){
+  if (user.color === 'orange'){
     return '#FFB200';
   }
 }

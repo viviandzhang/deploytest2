@@ -19,6 +19,7 @@ function renderFeed(user) {
 
       // render comments
       get('/api/comments', { 'parent_id' : currentDilemma._id }, function(cArray) {
+        document.getElementById('number-comments'+currentDilemma._id).innerText = cArray.length;
         for (let i = 0; i < cArray.length; i++) {
           let currentComment = cArray[i];
           if (currentComment.yes_or_no === "yes") {
@@ -134,6 +135,7 @@ function renderFeedByCategory(user, category) {
 
         // render comments
         get('/api/comments', { 'parent_id' : currentDilemma._id }, function(cArray) {
+          document.getElementById('number-comments'+currentDilemma._id).innerText = cArray.length;
           for (let i = 0; i < cArray.length; i++) {
             let currentComment = cArray[i];
             if (currentComment.yes_or_no === "yes") {

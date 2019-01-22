@@ -81,7 +81,7 @@ function dilemmaDOMObject (dilemmaJSON, user){
   let expandTextFooter = document.createElement('div');
   expandTextFooter.className = 'expand-text-footer';
   let numberOfVotes = dilemmaJSON.votes_yes + dilemmaJSON.votes_no;
-  expandTextFooter.innerText = numberOfVotes + ' votes, 7 comments';
+  expandTextFooter.innerHTML = numberOfVotes + ' votes, <span id="number-comments'+dilemmaJSON._id+'">7</span> comments';
   newDCardExpanded.appendChild(expandTextFooter);
 
   const dCardStatus = document.createElement('div');
@@ -364,7 +364,7 @@ function commentDOMObject (commentJSON, user) {
     if (commentJSON.creator_color === 'yellow'){
       commentThumb.style.backgroundColor = '#F2E741';
     }
-    if (commentJSON.creator_color === 'yellow'){
+    if (commentJSON.creator_color === 'orange'){
       commentThumb.style.backgroundColor = '#FFB200';
     }
 
@@ -372,7 +372,7 @@ function commentDOMObject (commentJSON, user) {
   
     const commentAuthor = document.createElement('span');
     commentAuthor.className = 'comment-author';
-    commentAuthor.innerText = commentJSON.creator_alias + ' posted ' + timeSince(new Date(commentJSON.timestamp));
+    commentAuthor.innerText = commentJSON.creator_alias + ' Llama posted ' + timeSince(new Date(commentJSON.timestamp));
     commentMeta.appendChild(commentAuthor);
 
     return commentDiv;

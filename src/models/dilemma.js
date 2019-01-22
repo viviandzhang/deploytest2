@@ -13,6 +13,8 @@ const DilemmaModelSchema = new mongoose.Schema ({
     active          : Boolean,
     votes_yes       : Number,
     votes_no        : Number,
+    final_comment   : String,
+    final_side      : String,   
 });
 
 // compile model from schema
