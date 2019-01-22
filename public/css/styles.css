@@ -673,3 +673,49 @@ form {
      color: #8A9BA8;
  }
  
+.category-div{
+    width: 650px;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 140px;
+    margin-bottom: 60px;
+    padding-top: 20px;
+    height: max-content;
+}
+
+.category-image-back {
+    width: 80px;
+    height: 80px;
+    background-color: #BFCCD6;
+    border-radius: 5px;
+    display: flex;
+    justify-content: baseline;
+
+}
+
+.category-image {
+    width: 60px;
+    height: 60px;
+    background-image: url('categoryIcons.png');
+    background-size: 60px;
+    margin: 10px;
+}
+
+.category-header {
+    margin-left: 20px;
+    width: 100%;
+}
+
+.category-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #394B59;
+    margin-bottom: 5px;
+}
+
+.category-desc {
+    font-size: 12px;
+    color: #5C7080;
+}
