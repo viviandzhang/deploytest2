@@ -645,7 +645,6 @@ form {
     z-index: 2;
  }
 
-<<<<<<< HEAD
 
 #llama-landscape {
     height: 500px; 
@@ -664,17 +663,73 @@ form {
     background-image: url("images-signin/newuser-hill.png"), url("images-signin/newuser-bgd-hills.png"); 
     background-repeat: no-repeat;
     background-size: contain;
-    position: sticky; 
+    position: relative; 
     margin-top: -4em; 
     object-fit: fill; 
     z-index: -1; 
 }
-=======
- .d-card-expanded:hover > .expand-text-footer{
+
+#clouds
+{
+    position: relative; 
+    height: 400px; 
+    z-index: -1; 
+}
+
+#cloud1
+{
+    background-image: url("images-signin/cloud1.png");
+    background-size: contain; 
+    position: relative;
+    margin-top: 40px; 
+    width: 400px; 
+    height: 400px; 
+    z-index: -1; 
+
+}
+
+#cloud2
+{
+    background-image: url("images-signin/cloud2.png"); 
+    background-size: contain; 
+    position: relative;
+    margin-top: 40px; 
+    width: 400px; 
+    height: 400px; 
+    z-index: -1; 
+}
+
+#cloud3 
+{
+    background-image: url("images-signin/cloud3.png"); 
+    background-size: contain; 
+    position: fixed;
+    top: 40px; 
+    right: 40px; 
+    width: 400px; 
+    height: 400px; 
+    z-index: -1; 
+}   
+
+
+@keyframes cloud-mvmt {
+    0% {
+
+    }
+
+    50% {
+
+    }
+
+    100% {
+        
+    }
+}
+
+.d-card-expanded:hover > .expand-text-footer{
      color: #8A9BA8;
- }
+}
  
 
 
 
->>>>>>> 4942f0127bd1521b096716057b5876bdae7fe10a

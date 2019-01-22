@@ -55,10 +55,6 @@ function renderLlamaNamePicker() {
     
       '<div id="name-generator">'+
         '<div id="generator-container" class = "generator-container">' +
-<<<<<<< HEAD
-           '<div id = "press-key-title">Welcome! Press any key to create your unique llama identity</div>'+
-=======
->>>>>>> 4942f0127bd1521b096716057b5876bdae7fe10a
             '<div id="greeting">' +
                 '<div class=name-fixed>'+
                     'Welcome,'+
@@ -116,15 +112,12 @@ function renderSignIn() {
         '</div>'+
       
         '<button id=become-llama class="sign-in-button">'+
-        '    <a class = "become-llama-text" href="/auth/google">Login with Google</a>'+
+        '    <a class = "become-llama-text" href="/auth/google"> Become a Llama </a>'+
         '</button>'+
-
 
         '<div id= llama-landscape>' + 
         '</div>'+
       '</div>'
-
-   
   
 }
 
