@@ -671,9 +671,9 @@ form {
     height: 500px; 
     background-image: url("images-signin/bottomhilllayer2.png"), url("images-signin/tophilllayer2.png"); 
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
     position: sticky; 
-    margin-top: -4em; 
+    margin-top: -6em; 
     object-fit: fill; 
     z-index: -1; 
 }
@@ -683,16 +683,150 @@ form {
     height: 500px; 
     background-image: url("images-signin/newuser-hill.png"), url("images-signin/newuser-bgd-hills.png"); 
     background-repeat: no-repeat;
-    background-size: contain;
-    position: sticky; 
+    background-size: 100%;
+    position: relative; 
     margin-top: -4em; 
     object-fit: fill; 
     z-index: -1; 
+    margin: auto; 
 }
 
- .d-card-expanded:hover > .expand-text-footer{
+#clouds
+{
+    position: relative; 
+    height: 400px; 
+    z-index: -1; 
+}
+
+#cloud1
+{
+    background-image: url("images-signin/cloud1.png");
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    margin-top: 30px;  
+    width: 400px; 
+    height: 400px;
+    left: -40%; 
+    z-index: -1; 
+    animation: cloud-mvmt 15s infinite; 
+    animation-delay: 2s; 
+}
+
+#cloud2
+{
+    background-image: url("images-signin/cloud2.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    object-fit: fill; 
+    position: absolute;
+    margin-top: 15px; 
+    height: 400px;
+    width: 400px;  
+    left: -40%; 
+    z-index: -1; 
+    animation: cloud-mvmt 20s infinite; 
+    animation-delay: 1s; 
+}
+
+#cloud3 
+{
+    background-image: url("images-signin/cloud3.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 200px; 
+    height: 400px; 
+    left: -40%; 
+    width: 400px; 
+    z-index: -1; 
+    animation: cloud-mvmt 10s infinite; 
+}   
+
+
+#cloud4 
+{
+    background-image: url("images-signin/cloud3.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 300px; 
+    height: 400px; 
+    left: -40%; 
+    width: 400px; 
+    z-index: -1; 
+    animation: cloud-mvmt 23s infinite; 
+    animation-delay: 8s;
+}   
+
+#cloud4 
+{
+    background-image: url("images-signin/cloud1.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 240px; 
+    height: 400px;
+    left: -40%;  
+    width: 400px; 
+    z-index: -1; 
+    animation: cloud-mvmt 17s infinite; 
+    animation-delay: 2s;
+}   
+
+#cloud5 
+{
+    background-image: url("images-signin/cloud2.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 330px; 
+    height: 400px; 
+    width: 400px; 
+    left: -40%; 
+    z-index: -1; 
+    animation: cloud-mvmt 10s infinite; 
+    animation-delay: 1s; 
+}   
+
+#cloud6 
+{
+    background-image: url("images-signin/cloud2.png"); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    object-fit: fill; 
+    margin-top: 50px; 
+    height: 400px; 
+    width: 400px; 
+    left: -40%; 
+    z-index: -1; 
+    animation: cloud-mvmt s 13 infinite; 
+    animation-delay: 5s; 
+}   
+
+
+
+
+@keyframes cloud-mvmt {
+    0% {
+        left: -40%;
+    }
+
+    100% {
+        left: 100%; 
+    }
+}
+
+.d-card-expanded:hover > .expand-text-footer{
+}
+.d-card-expanded:hover > .expand-text-footer{
      color: #8A9BA8;
- }
+}
  
 .category-div{
     width: 650px;

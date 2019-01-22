@@ -41,17 +41,17 @@ function renderLlamaNamePicker() {
   appDiv.innerHTML = 
     '<div id=clouds>' + 
       '<div id=cloud1>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud2>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud3>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud4>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud5>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud6>' +
-      '</div'+ 
+      '</div>'+ 
     '</div>'+ 
     
       '<div id="name-generator">'+
@@ -72,7 +72,7 @@ function renderLlamaNamePicker() {
                 '</div>' +
               '</div>'+
             '</div>'+
-            '<div id = "press-key-title">Press any key to create your llama identity</div>'+
+            '<div id = "press-key-title"></div>'+
             '<button id="choose-name" class = "sign-in-button">'+
                    'I choose this name'+
             '</button>'+
@@ -89,17 +89,17 @@ function renderSignIn() {
   appDiv.innerHTML =
     '<div id=clouds>' +
       '<div id=cloud1>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud2>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud3>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud4>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud5>' +
-      '</div'+
+      '</div>'+
       '<div id=cloud6>' +
-      '</div'+ 
+      '</div>'+ 
     '</div>' + 
 
     '</div>' + 
@@ -114,15 +114,12 @@ function renderSignIn() {
         '</div>'+
       
         '<button id=become-llama class="sign-in-button">'+
-        '    <a class = "become-llama-text" href="/auth/google">Login with Google</a>'+
+        '    <a class = "become-llama-text" href="/auth/google"> Become a Llama </a>'+
         '</button>'+
-
 
         '<div id= llama-landscape>' + 
         '</div>'+
       '</div>'
-
-   
   
 }
 
