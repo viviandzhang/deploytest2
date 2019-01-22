@@ -72,7 +72,7 @@ app.use(function (err, req, res, next) {
 });
 
 // post config
-const port = (process.env.PORT || 5000);
+const port = (process.env.PORT || 3000);
 const host = '0.0.0.0';
 server = http.Server(app);
 server.listen(port, host, function () {
