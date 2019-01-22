@@ -212,6 +212,11 @@ nav {
     margin-bottom: 10px;
 }
 
+.d-card-cat:hover {
+    color: #46D9E5;
+    cursor: pointer;
+}
+
 
 .d-card-title {
     font-size: 18px;
