@@ -125,16 +125,32 @@ function dilemmaDOMObject (dilemmaJSON, user){
   // --------------------------- do categories --------------------------------
   const dCardCategories = document.createElement('div');
   dCardCategories.className = 'd-card-categories';
-  let categoriesString = '';
   for (let i = 0; i < (dilemmaJSON.categories).length; i++){
+    let dCardCat = document.createElement('span');
+    dCardCat.className = 'd-card-cat';
+    dCardCat.innerText = dilemmaJSON.categories[i];
+
     if (i === (dilemmaJSON.categories).length - 1){
-      categoriesString += (dilemmaJSON.categories)[i];
+      dCardCategories.appendChild(dCardCat);
     }
     else{
-      categoriesString += (dilemmaJSON.categories)[i] + ' · ';
+      dCardCategories.appendChild(dCardCat);
+      const dot = document.createElement('span')
+      dot.innerText =  ' · ';
+      dCardCategories.appendChild(dot);
     }
+    dCardCat.addEventListener('click', function(){
+      renderFeedByCategory(user, dilemmaJSON.categories[i])
+      let categoriesArr = document.getElementsByClassName("feed-cat");
+      for (let j=0; j<categoriesArr.length; j++) {
+        if (categoriesArr[j].innerText === dilemmaJSON.categories[i]){
+          categoriesArr[j].className = "feed-cat category-selected"
+        } else {
+          categoriesArr[j].className = "feed-cat";
+        }
+      }
+    })
   }
-  dCardCategories.innerText = categoriesString;  
   newDCardExpanded.appendChild(dCardCategories);
 
   const dCardTitle = document.createElement('div');
@@ -162,12 +178,10 @@ function dilemmaDOMObject (dilemmaJSON, user){
   newDCardExpanded.addEventListener('click', function () {
     if (expanded === false){
       dCardBody.classList.remove('truncated');
-      let debateSection = document.getElementById('debate-section' + dilemmaJSON._id);
       debateSection.style.display = "flex";
       newDCardExpanded.style.cursor = 'default';
       expandTextFooter.style.display = 'none';
       dCardBody.style.marginBottom = '20px';
-      //expanded = true;
     }
   });
 

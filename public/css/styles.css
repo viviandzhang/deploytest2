@@ -61,10 +61,24 @@ nav {
 
 #navbar-message {
     margin-right: auto;
+    display: flex;
+    align-items: center;
 }
 
 #navbar-message > #username {
     font-weight: 600;
+    height: max-content;
+}
+
+
+#nav-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    display: inline-block;
+    margin: 0px 5px;
+    background-image: url('lama.png');
+    background-size: 25px;
 }
 
 #categories {
@@ -196,6 +210,11 @@ nav {
     font-size: 12px;
     color: #BFCCD6;
     margin-bottom: 10px;
+}
+
+.d-card-cat:hover {
+    color: #46D9E5;
+    cursor: pointer;
 }
 
 
@@ -523,6 +542,7 @@ form {
 }
 
 #comp-title {
+    font-family: Avenir, Helvetica, sans-serif;
     font-size: 18px;
     font-weight: 600;
     color: #394B59;
@@ -534,6 +554,7 @@ form {
 }
 
 #comp-body{
+    font-family: Avenir, Helvetica, sans-serif;
     width: 480px;
     height: 75px;
     margin-bottom: 20px;

@@ -54,6 +54,27 @@ function newNavbarItem(text, url) {
     return item;
   }
 
+function returnUserColorHex(user){
+  if (user.color === 'pink'){
+    return '#F3ACE2';
+  }
+  if (user.color === 'green'){
+    return '#95D74E';
+  }
+  if (user.color === 'purple'){
+    return '#BA98E0';
+  }
+  if (user.color === 'blue'){
+    return '#4ABCF3';
+  }
+  if (user.color === 'yellow'){
+    return '#F2E741';
+  }
+  if (user.color === 'yellow'){
+    return '#FFB200';
+  }
+}
+
 function renderNavbar(user) {
     const navBarDiv = document.getElementById('nav-wrapper');
     navBarDiv.innerHTML="";
@@ -65,7 +86,8 @@ function renderNavbar(user) {
 
     if(user._id !== undefined) {
       if(user.color !== null || user.adjective !== null) {
-        navBarMsg.innerHTML = 'Hello, <span id="username">'+user.name+' ('+user.adjective+' '+user.color+' Llama)!</span>';
+        navBarMsg.innerHTML = '<div>Hello, </div><div id="nav-thumb"></div><div id="username">'+user.adjective+' Llama!</div>';
+        document.getElementById("nav-thumb").style.backgroundColor = returnUserColorHex(user);
         navBarDiv.appendChild(newNavbarItem('Browse', '/'));
         navBarDiv.appendChild(newNavbarItem('Your Activity', '/'));
         const newDilemmaButton = document.createElement('button');
@@ -78,7 +100,7 @@ function renderNavbar(user) {
         navBarMsg.innerHTML = 'Hello, <span id="username">'+user.name+'! Please choose your llama name'+'</span>';
       }
     } else {
-      navBarMsg.innerHTML = 'Hello, <span id="username">and welcome to Dilemma Llama!</span>';
+      navBarMsg.innerHTML = 'Hello, and welcome to Dilemma Llama!';
       const linkToGoogle = document.createElement('a');
       linkToGoogle.href = '/auth/google';
 
