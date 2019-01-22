@@ -699,10 +699,9 @@ form {
     height: max-content;
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
-    margin-left: 190px;
-    margin-bottom: 60px;
-    padding-top: 20px;
+    margin-top: 60px;
+    margin-left: 70px;
+    margin-bottom: 20px;
     height: max-content;
 }
 
@@ -739,4 +738,9 @@ form {
 .category-desc {
     font-size: 12px;
     color: #5C7080;
+}
+
+#feed-header{
+    display: flex;
+    justify-content: center;
 }
