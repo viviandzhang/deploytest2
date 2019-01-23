@@ -20,55 +20,58 @@ function timeSince(timeStamp) {
 }
 
 // DILEMMA
-function dilemmaDOMObject (dilemmaJSON, user){
+function dilemmaDOMObject (dilemmaJSON, user, meta=true){
   // d-container 
   const newDilemma = document.createElement('div');
   newDilemma.setAttribute('id', dilemmaJSON._id);
   newDilemma.className = 'd-container';
 
-  const dMeta = document.createElement('div');
-  dMeta.className = 'd-meta';
-  newDilemma.appendChild(dMeta);
+  if (meta) {
+    const dMeta = document.createElement('div');
+    dMeta.className = 'd-meta';
+    newDilemma.appendChild(dMeta);
 
-  // --------------------- thumbnail mapping ----------------------------
-  const dThumbnail = document.createElement('div');
-  dThumbnail.className = 'd-thumbnail';
-  if (dilemmaJSON.creator_color === 'pink'){
-    dThumbnail.style.backgroundColor = '#F3ACE2';
-  }
-  if (dilemmaJSON.creator_color === 'green'){
-    dThumbnail.style.backgroundColor = '#95D74E';
-  }
-  if (dilemmaJSON.creator_color === 'purple'){
-    dThumbnail.style.backgroundColor = '#BA98E0';
-  }
-  if (dilemmaJSON.creator_color === 'blue'){
-    dThumbnail.style.backgroundColor = '#4ABCF3';
-  }
-  if (dilemmaJSON.creator_color === 'yellow'){
-    dThumbnail.style.backgroundColor = '#F2E741';
-  }
-  if (dilemmaJSON.creator_color === 'orange'){
-    dThumbnail.style.backgroundColor = '#FFB200';
-  }
-  
-  
-  
-  dMeta.appendChild(dThumbnail);
+    // --------------------- thumbnail mapping ----------------------------
+    const dThumbnail = document.createElement('div');
+    dThumbnail.className = 'd-thumbnail';
+    if (dilemmaJSON.creator_color === 'pink'){
+      dThumbnail.style.backgroundColor = '#F3ACE2';
+    }
+    if (dilemmaJSON.creator_color === 'green'){
+      dThumbnail.style.backgroundColor = '#95D74E';
+    }
+    if (dilemmaJSON.creator_color === 'purple'){
+      dThumbnail.style.backgroundColor = '#BA98E0';
+    }
+    if (dilemmaJSON.creator_color === 'blue'){
+      dThumbnail.style.backgroundColor = '#4ABCF3';
+    }
+    if (dilemmaJSON.creator_color === 'yellow'){
+      dThumbnail.style.backgroundColor = '#F2E741';
+    }
+    if (dilemmaJSON.creator_color === 'orange'){
+      dThumbnail.style.backgroundColor = '#FFB200';
+    }
+    
+    
+    
+    dMeta.appendChild(dThumbnail);
 
-  const dCreator = document.createElement('div');
-  dCreator.className = 'd-creator';
-  dCreator.innerText = dilemmaJSON.creator_alias + " Llama";
-  dMeta.appendChild(dCreator);
+    const dCreator = document.createElement('div');
+    dCreator.className = 'd-creator';
+    dCreator.innerText = dilemmaJSON.creator_alias + " Llama";
+    dMeta.appendChild(dCreator);
 
-  // ---------------------------- Timestamp -------------------------------
-  const dTimestamp = document.createElement('div');
-  dTimestamp.className = 'd-timestamp';
-  if (dilemmaJSON.timestamp != null) {
-    dTimestamp.innerText = 'Posted ' + timeSince(new Date(dilemmaJSON.timestamp));
+    // ---------------------------- Timestamp -------------------------------
+    const dTimestamp = document.createElement('div');
+    dTimestamp.className = 'd-timestamp';
+    if (dilemmaJSON.timestamp != null) {
+      dTimestamp.innerText = 'Posted ' + timeSince(new Date(dilemmaJSON.timestamp));
   }
   
   dMeta.appendChild(dTimestamp);
+  }
+  
 
   // d-card-expanded -- within d-container
   let newDCardExpanded = document.createElement('div');

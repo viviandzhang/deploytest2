@@ -89,7 +89,7 @@ function renderNavbar(user) {
         navBarMsg.innerHTML = '<div>Hello, </div><div id="nav-thumb"></div><div id="username">'+user.adjective+' Llama!</div>';
         document.getElementById("nav-thumb").style.backgroundColor = returnUserColorHex(user);
         navBarDiv.appendChild(newNavbarItem('Browse', '/'));
-        navBarDiv.appendChild(newNavbarItem('Your Activity', '/'));
+        navBarDiv.appendChild(newNavbarItem('Your Activity', '/activity'));
         const newDilemmaButton = document.createElement('button');
         newDilemmaButton.id = 'new-dilemma';
         newDilemmaButton.className = 'nav-item nav-button';

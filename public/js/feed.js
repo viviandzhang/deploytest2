@@ -114,7 +114,6 @@ function renderFeedByCategory(user, category) {
   feedHeaderDiv.innerHTML = "";
   dilemmaDiv.innerHTML = "";
 
-
   get('/api/dilemmas', {}, function(dArray) {
     for (let i = 0; i < dArray.length; i++) {
       const currentDilemma = dArray[i];
@@ -155,6 +154,43 @@ function renderFeedByCategory(user, category) {
     feedHeaderDiv.append(renderCategoryHeader(category));
   });
   
+
+}
+
+function renderFeedByUser(user){
+  let dilemmaDiv = document.getElementById('feed');
+  dilemmaDiv.innerHTML = "";
+
+  get('/api/dilemmas', {}, function(dArray) {
+    for (let i = 0; i < dArray.length; i++) {
+      const dilemmaCreatorId = dArray[i].creator_id;
+      let isByUser = (user._id === dilemmaCreatorId);
+
+      if (isByUser) {
+        const newDilemmaDOMObj = dilemmaDOMObject(currentDilemma, user)
+        dilemmaDiv.prepend(newDilemmaDOMObj);
+        let yes_votes = 0;
+        let no_votes = 0;
+
+        // render comments
+        get('/api/comments', { 'parent_id' : currentDilemma._id }, function(cArray) {
+          for (let i = 0; i < cArray.length; i++) {
+            let currentComment = cArray[i];
+            if (currentComment.yes_or_no === "yes") {
+              yesDiv = document.getElementById('comments-yes' + currentComment.parent_id)
+              yesDiv.prepend(commentDOMObject(currentComment, user));
+              yes_votes = yes_votes + currentComment.votes;
+            } else {
+              noDiv = document.getElementById('comments-no' + currentComment.parent_id)
+              noDiv.prepend(commentDOMObject(currentComment, user));
+              no_votes = no_votes + currentComment.votes;
+            }
+          }
+          updateDilemmaVotes(currentDilemma._id, yes_votes, no_votes);
+        })
+      }
+    }
+  });
 
 }
 
